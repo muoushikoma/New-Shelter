@@ -27,8 +27,7 @@ window.sceneDossier = function (canvas) {
   b.addLight(140, 40, 330, H('#ffe0b0'), 1.05);
   b.addLight(400, 120, 160, H('#a0b0d0'), 0.5);
   // 照片（半身像贴在档案上）
-  ACT.portrait(b, 22, 26, C.zhou, { bg: [H('#4a4a48'), H('#5a5a56')] });
-  b.rect(20, 24, 44, 2, H('#f0ece0')); b.rect(20, 74, 44, 6, H('#f0ece0')); b.rect(20, 24, 2, 56, H('#f0ece0')); b.rect(62, 24, 2, 56, H('#f0ece0'));
+  b.rect(20, 22, 62, 80, H('#f0ece0'));
   // 红色印章
   for (let a = 0; a < 64; a++) { const t = a / 64 * Math.PI * 2; b.set(Math.round(128 + Math.cos(t) * 16), Math.round(44 + Math.sin(t) * 16), H('#a02828')); b.set(Math.round(128 + Math.cos(t) * 15), Math.round(44 + Math.sin(t) * 15), H('#a02828')); }
   const ctx = PX.present(b, canvas, 4, { levels: 10, tint: [0.6, 0.62, 0.75] });
@@ -37,10 +36,12 @@ window.sceneDossier = function (canvas) {
   const ui = new PX.UI(960, 540);
   const T = (s, x, y, c, sz, o) => ui.text(s, x, y, c, sz, o);
   const ink = '#2a221a', inkL = '#5a4a3a', red = '#9a2020';
+  // 照片
+  LA.draw(ui, LA.portrait('zhou'), 44, 48, 2);
   // 印章文字
   T('机 密', 256, 80, '#a02828', 12, { align: 'center' }); T('边境区', 256, 62, '#a02828', 12, { align: 'center' }); T('民防委', 256, 98, '#a02828', 12, { align: 'center' });
   // 左页：基础信息
-  let y = 166;
+  let y = 212;
   T('档案 · No.07-003', 40, y, inkL, 12); y += 20;
   T('周建国', 40, y, ink, 12); T('56 岁 · 男', 100, y, inkL, 12); y += 18;
   T('出身：前阵线干部（区粮站副站长）', 40, y, ink, 12); y += 18;
@@ -115,15 +116,12 @@ window.sceneDossier = function (canvas) {
   }
   const names = { zhou: '周建国', player: '你', lin: '林秋', su: '苏曼', zhao: '赵铁军', ana: '阿娜', liu: '刘小川', stranger: '伤兵' };
   for (const [k, [x, yy]] of Object.entries(nodes)) {
-    const mb = new PX.Buf(40, 48); ACT.portrait(mb, 0, 0, C[k], { rim: false }); mb.emit.fill(1);
-    const crop = new PX.Buf(24, 24); for (let j = 0; j < 24; j++) for (let i = 0; i < 24; i++) crop.set(i, j, mb.get(i + 8, j + 9)); crop.emit.fill(1);
     const big = k === 'zhou';
-    const s = big ? 2 : 1.5;
-    const sz = 24 * s;
+    const s = big ? 2 : 1;
+    const sz = 32 * s;
     ui.rect(x - sz / 2 - 3, yy - sz / 2 - 3, sz + 6, sz + 6, big ? '#d8a040' : k === 'player' ? '#f0d040' : '#07080a');
     ui.rect(x - sz / 2 - 1, yy - sz / 2 - 1, sz + 2, sz + 2, '#07080a');
-    if (big) ui.blitImage(crop, x - sz / 2, yy - sz / 2, 2);
-    else { const c2 = document.createElement('canvas'); c2.width = 24; c2.height = 24; const cc = c2.getContext('2d'); cc.putImageData(crop.toImageData(cc), 0, 0); ui.ctx.imageSmoothingEnabled = false; ui.ctx.drawImage(c2, x - sz / 2, yy - sz / 2, sz, sz); }
+    LA.draw(ui, LA.head(k), x - sz / 2, yy - sz / 2, s);
     T(names[k], x, yy + sz / 2 + 4, k === 'player' ? '#f0d040' : '#d8d0c0', 12, { align: 'center', shadow: '#000' });
   }
   // 图例

@@ -15,11 +15,9 @@
 | **人物档案 / 关系网** | **地表搜刮** |
 | ![](concept/out/dossier.png) | ![](concept/out/surface.png) |
 
-### 风格试验：《请出示证件》式人物与 UI
+### 角色头像风格（平涂 + 墨线）
 
-| 门外有人（观察窗 + 证件比对） | 人员登记表 |
-|---|---|
-| ![](concept/out/pp_door.png) | ![](concept/out/pp_cast.png) |
+![](concept/out/cast.png)
 
 概念图全部由代码程序化绘制（`concept/*.js`，原生 480×270，4× 放大）。重新生成：
 
@@ -27,4 +25,4 @@
 cd concept && node render.mjs          # 需要 playwright + chromium
 ```
 
-也可以直接用浏览器打开 `concept/index.html?scene=main|meeting|dossier|surface|pp_door|pp_cast`。
+也可以直接用浏览器打开 `concept/index.html?scene=main|meeting|dossier|surface|cast`。

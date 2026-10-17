@@ -416,7 +416,7 @@ function sceneMain(canvas) {
   ];
   let rx = 328;
   for (const [ic, c1, c2, label, v, vc] of res) {
-    ui.icon(rx, 9, ICON[ic], iconPal(c1, c2), 2);
+    HD.draw(ui, HD.icon(ic === 'food' ? 'can' : ic, 14), rx, 8);
     T(label, rx + 16, 8, '#7a828c', 12);
     const lw = ui.measure(label);
     T(v, rx + 20 + lw, 8, vc, 12);
@@ -463,33 +463,30 @@ function sceneMain(canvas) {
   const px0 = 716, py0 = 34, pw = 240, ph = 434;
   ui.panel(px0, py0, pw, ph, { title: '人物 · 林秋', titleBg: '#2a1d1a' });
   // 半身像
-  const pb = new PX.Buf(40, 48);
-  ACT.portrait(pb, 0, 0, C.lin);
-  pb.emit.fill(1);
-  ui.rect(px0 + 9, py0 + 21, 84, 100, '#07080a'); ui.rect(px0 + 10, py0 + 22, 82, 98, '#3a3f45');
-  ui.blitImage(pb, px0 + 11, py0 + 23, 2);
-  T('31 岁 · 女', px0 + 102, py0 + 24, '#c8c0b0', 12);
-  T('出身：前护士', px0 + 102, py0 + 42, '#c8c0b0', 12);
-  T('对政权：犬儒', px0 + 102, py0 + 60, '#a0a8b0', 12);
+  ui.rect(px0 + 8, py0 + 19, 116, 144, '#07080a'); ui.rect(px0 + 9, py0 + 20, 114, 142, '#4a3e36');
+  LA.draw(ui, LA.portrait('lin'), px0 + 10, py0 + 21, 2);
+  T('31 岁 · 女', px0 + 130, py0 + 24, '#c8c0b0', 12);
+  T('前护士', px0 + 130, py0 + 42, '#c8c0b0', 12);
+  T('对政权：', px0 + 130, py0 + 60, '#7a8088', 12);
+  T('犬儒', px0 + 130, py0 + 76, '#a0a8b0', 12);
   // 特质标签
   const tag = (x0, y0, s, c, bg) => { const w = ui.measure(s) + 8; ui.rect(x0, y0, w, 15, bg); T(s, x0 + 4, y0 + 1, c, 12); return w + 4; };
-  let tx = px0 + 102;
-  tx += tag(tx, py0 + 80, '温柔', '#d8e8c8', '#2a3a24');
-  tx += tag(tx, py0 + 80, '失眠', '#c8c8e8', '#26263a');
-  tx = px0 + 102;
-  tx += tag(tx, py0 + 99, '秘密 ×2', '#e8c8c8', '#3a2222');
+  let tx = px0 + 130;
+  tx += tag(tx, py0 + 100, '温柔', '#d8e8c8', '#2a3a24');
+  tx += tag(tx, py0 + 100, '失眠', '#c8c8e8', '#26263a');
+  tx = px0 + 130;
+  tx += tag(tx, py0 + 120, '秘密 ×2', '#e8c8c8', '#3a2222');
   // 需求条
-  let by = py0 + 132;
+  let by = py0 + 172;
   const needs = [
     ['饥饿', 0.71, '#c8823a'], ['口渴', 0.38, '#5a9ad0'], ['体温', 0.44, '#7ab0e0'],
     ['疲劳', 0.83, '#8a7ac0'], ['压力', 0.66, '#c04a4a'], ['欲望', 0.35, '#c05a9a'],
   ];
-  for (const [n, v, c] of needs) { T(n, px0 + 12, by - 2, '#9aa0a8', 12); ui.bar(px0 + 50, by, 178, 10, v, c); by += 16; }
+  for (const [n, v, c] of needs) { T(n, px0 + 12, by - 2, '#9aa0a8', 12); ui.bar(px0 + 50, by, 178, 10, v, c); by += 14; }
   // 当前行为
   by += 4;
   ui.rect(px0 + 8, by, pw - 16, 1, '#3a3e44'); by += 6;
   T('正在：照看陌生伤兵', px0 + 12, by, '#e8dcc0', 12); by += 18;
-  T('意图：（看不清）', px0 + 12, by, '#7a8088', 12); by += 20;
   // 内心
   ui.rect(px0 + 8, by, pw - 16, 52, '#14100e'); ui.rect(px0 + 8, by, 2, 52, '#8a5a3a');
   ui.para('“药只剩三支了。周建国昨天来要了一支，说是给他的心脏……他看我的眼神不对。”', px0 + 16, by + 4, pw - 30, '#d8c8a8', 12, 15);
@@ -513,17 +510,14 @@ function sceneMain(canvas) {
   const roster = [['player', '你'], ['lin', '林秋'], ['zhou', '周'], ['ana', '阿娜'], ['zhao', '赵'], ['su', '苏曼'], ['liu', '小刘'], ['stranger', '伤兵']];
   let rxx = 8;
   for (const [k, n] of roster) {
-    const mb = new PX.Buf(40, 48); ACT.portrait(mb, 0, 0, C[k], { rim: false }); mb.emit.fill(1);
-    // 只截取脸部 24×24
-    const crop = new PX.Buf(24, 24); for (let y = 0; y < 24; y++) for (let x0 = 0; x0 < 24; x0++) crop.set(x0, y, mb.get(x0 + 8, y + 9)); crop.emit.fill(1);
     const sel = k === 'lin';
-    ui.rect(rxx, by0 + 6, 28, 28, sel ? '#d8a040' : '#07080a');
-    ui.blitImage(crop, rxx + 2, by0 + 8, 1);
+    ui.rect(rxx, by0 + 4, 36, 36, sel ? '#d8a040' : '#07080a');
+    LA.draw(ui, LA.head(k), rxx + 2, by0 + 6, 1);
     // 未知位置的人变暗
-    if (k === 'ana' || k === 'zhao') { ui.rect(rxx + 2, by0 + 8, 24, 24, 'rgba(0,0,0,0.55)'); T('?', rxx + 10, by0 + 13, '#ff9ab0', 12); }
-    if (k === 'stranger') { ui.rect(rxx + 2, by0 + 30, 24, 2, '#c03030'); }
-    T(n, rxx + 14, by0 + 37, sel ? '#f0d8a0' : '#8a9098', 12, { align: 'center' });
-    rxx += 32;
+    if (k === 'ana' || k === 'zhao') { ui.rect(rxx + 2, by0 + 6, 32, 32, 'rgba(0,0,0,0.6)'); T('?', rxx + 14, by0 + 14, '#ff9ab0', 12); }
+    if (k === 'stranger') { ui.rect(rxx + 2, by0 + 36, 32, 2, '#c03030'); }
+    T(n, rxx + 18, by0 + 42, sel ? '#f0d8a0' : '#8a9098', 12, { align: 'center' });
+    rxx += 38;
   }
   ui.rect(rxx + 2, by0 + 6, 1, 54, '#3a3e44');
   // 事件日志

@@ -57,14 +57,18 @@ window.sceneMeeting = function (canvas) {
     ['liu', 344, 106],
     ['zhao', 392, 90],
   ];
-  for (const [k, x, y] of seat) ACT.portrait(b, x - 20, y, C[k], { noBg: true, rim: false });
+  for (const [k, x, y] of seat) {
+    const cv = LA.portrait(k, { noBg: true });
+    const d = cv.getContext('2d').getImageData(0, 0, cv.width, cv.height).data;
+    for (let j = 0; j < cv.height; j++) for (let i = 0; i < cv.width; i++) {
+      const o = (j * cv.width + i) * 4;
+      if (d[o + 3]) b.set(x - 28 + i, y - 18 + j, [d[o], d[o + 1], d[o + 2]]);
+    }
+  }
   // 周建国拿着账本（举在胸前）
   b.rect(214, 130, 18, 12, H('#cfc4a8')); b.rect(214, 130, 18, 2, H('#4a2a2a')); b.vline(222, 130, 12, H('#8a7a60'));
   for (let i = 0; i < 4; i++) b.hline(216, 134 + i * 2, 5, H('#5a5a6a'));
   b.rect(210, 136, 5, 5, ACT.SKIN.warm[1]); b.rect(231, 136, 5, 5, ACT.SKIN.warm[2]);
-  // 赵铁军双臂抱胸
-  b.rect(374, 128, 36, 7, sh(C.zhao.coat, 0.85)); b.hline(374, 128, 36, sh(C.zhao.coat, 1.15));
-  b.rect(376, 130, 5, 4, ACT.SKIN.tan[1]); b.rect(403, 130, 5, 4, ACT.SKIN.tan[2]);
 
   // ---------- 桌子 ----------
   b.rect(60, 148, 370, 6, H('#7a5434')); b.hline(60, 148, 370, H('#a07448')); b.hline(60, 153, 370, H('#3a2414'));
@@ -136,12 +140,11 @@ window.sceneMeeting = function (canvas) {
   // 对话框
   const dx = 120, dy = 352, dw = 720, dh = 180;
   ui.panel(dx, dy, dw, dh, { base: 'rgba(14,12,12,0.95)', rim: '#4a3a30' });
-  const pb = new PX.Buf(40, 48); ACT.portrait(pb, 0, 0, C.zhou, { bg: [H('#2a1a18'), H('#3a2420')] }); pb.emit.fill(1);
-  ui.rect(dx + 10, dy + 10, 84, 100, '#07080a'); ui.rect(dx + 11, dy + 11, 82, 98, '#5a4030');
-  ui.blitImage(pb, dx + 12, dy + 12, 2);
-  T('周建国', dx + 104, dy + 10, '#e8c890', 12);
-  T('前阵线干部 · 持有仓库钥匙 · 持枪', dx + 160, dy + 10, '#7a7068', 12);
-  ui.para('「同志们——各位。从今天起，配给按贡献来分。干活多的多吃，这很公平。账本我来记，钥匙我来保管。有意见的，现在说。」', dx + 104, dy + 30, dw - 120, '#e8e0d0', 12, 17);
+  ui.rect(dx + 9, dy + 12, 116, 144, '#07080a'); ui.rect(dx + 10, dy + 13, 114, 142, '#5a4030');
+  LA.draw(ui, LA.portrait('zhou'), dx + 11, dy + 14, 2);
+  T('周建国', dx + 136, dy + 10, '#e8c890', 12);
+  T('前阵线干部 · 持有仓库钥匙 · 持枪', dx + 192, dy + 10, '#7a7068', 12);
+  ui.para('「同志们——各位。从今天起，配给按贡献来分。干活多的多吃，这很公平。账本我来记，钥匙我来保管。有意见的，现在说。」', dx + 136, dy + 30, dw - 150, '#e8e0d0', 12, 17);
   // 选项
   const choices = [
     ['1', '「同意。总得有人管。」', [['周建国 信任↑', '#6ab06a'], ['苏曼 失望', '#c05050']]],
@@ -153,15 +156,15 @@ window.sceneMeeting = function (canvas) {
   let cy = dy + 88;
   choices.forEach(([k, s, tags], i) => {
     const hot = i === 1;
-    if (hot) { ui.rect(dx + 102, cy - 1, dw - 114, 17, '#3a2418'); ui.rect(dx + 102, cy - 1, 3, 17, '#e8a060'); }
-    T(k, dx + 110, cy, hot ? '#f0c080' : '#8a8078', 12);
-    T(s, dx + 126, cy, hot ? '#f8ecd8' : '#c8c0b0', 12);
-    let tx = dx + 126 + ui.measure(s) + 12;
+    if (hot) { ui.rect(dx + 132, cy - 1, dw - 144, 17, '#3a2418'); ui.rect(dx + 132, cy - 1, 3, 17, '#e8a060'); }
+    T(k, dx + 140, cy, hot ? '#f0c080' : '#8a8078', 12);
+    T(s, dx + 156, cy, hot ? '#f8ecd8' : '#c8c0b0', 12);
+    let tx = dx + 156 + ui.measure(s) + 12;
     for (const [t, c] of tags) { const w = ui.measure(t) + 8; ui.rect(tx, cy, w, 15, 'rgba(255,255,255,0.05)'); ui.rect(tx, cy, 2, 15, c); T(t, tx + 5, cy, c, 12); tx += w + 6; }
     cy += 17;
   });
   // 倒计时：其他人不会等你
-  ui.rect(dx + 104, dy + dh - 8, dw - 116, 3, '#2a2420'); ui.rect(dx + 104, dy + dh - 8, Math.round((dw - 116) * 0.6), 3, '#c87a3a');
+  ui.rect(dx + 136, dy + dh - 8, dw - 148, 3, '#2a2420'); ui.rect(dx + 136, dy + dh - 8, Math.round((dw - 148) * 0.6), 3, '#c87a3a');
   T('NPC 不会等你：沉默太久，别人会先开口', dx + dw - 12, dy + 10, '#6a6058', 12, { align: 'right' });
 
   ui.blit(canvas, 2);

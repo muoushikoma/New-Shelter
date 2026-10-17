@@ -170,8 +170,8 @@ window.sceneSurface = function (canvas) {
   items.forEach(([n, q, c], i) => {
     const x = 20 + i * 68, y = 472;
     ui.rect(x, y, 62, 50, '#0a0b0d'); ui.rect(x + 1, y + 1, 60, 48, '#1e2126');
-    ui.rect(x + 23, y + 8, 16, 16, c); ui.rect(x + 23, y + 8, 16, 2, 'rgba(255,255,255,0.3)');
-    T(n, x + 31, y + 28, '#c8c0b0', 12, { align: 'center' });
+    HD.draw(ui, HD.icon({ 罐头: 'can', 蜡烛: 'candle', 绷带: 'bandage', 香烟: 'cig', 阵线证件: 'permit', 照片: 'photo' }[n], 32), x + 15, y + 1);
+    T(n, x + 31, y + 33, '#c8c0b0', 12, { align: 'center' });
     T('×' + q, x + 58, y + 2, '#8a9098', 12, { align: 'right' });
   });
   // 提示
