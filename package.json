@@ -12,7 +12,8 @@
     "shot": "node tools/shot.mjs",
     "template:adult": "tsx tools/make-adult-template.ts",
     "test:routes": "tsx tools/routes.ts",
-    "econ": "tsx tools/econ.ts"
+    "econ": "tsx tools/econ.ts",
+    "export:content": "tsx tools/export-reference.ts"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

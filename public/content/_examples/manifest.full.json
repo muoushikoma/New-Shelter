@@ -1,0 +1,10 @@
+{
+  "_说明": "一个启用了全部类别的 manifest 示例。真正生效的是上一级目录的 manifest.json。",
+  "name": "我的内容包",
+  "version": "1",
+  "author": "",
+  "events": ["events/example.json", "events/my_story.json"],
+  "text": ["text/override.json"],
+  "people": ["people/new_people.json"],
+  "images": ["images/images.json"]
+}

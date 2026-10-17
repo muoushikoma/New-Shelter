@@ -3,8 +3,10 @@ import type { World, ItemKey, Person } from '../sim/types';
 import { P, rel, roomOf, day } from '../sim/util';
 import { ITEMS } from './items';
 import { powerOf } from '../sim/intimacy';
+import { matchWhen, fillText } from './match';
+import { setImage } from '../art/overrides';
 
-export interface ScenePage { speaker: 'initiator' | 'partner' | 'witness' | null; text: string }
+export interface ScenePage { speaker: 'initiator' | 'partner' | 'witness' | null; text: string; cg?: string }
 export interface SceneDef {
   id: string; hook: string; when?: Record<string, unknown>; weight?: number; once?: boolean; tags?: string[];
   cg?: string; pages?: ScenePage[]; lines?: string[]; aftertaste?: string[];
@@ -25,11 +27,18 @@ export async function loadAdultContent(base = 'content/adult/'): Promise<{ count
       try {
         const data = await fetch(base + f).then((r) => r.json());
         const arr: SceneDef[] = Array.isArray(data) ? data : [data];
-        for (const s of arr) if (s && s.id && s.hook && !isPlaceholderOnly(s)) scenes.push(s);
+        for (const s of arr) if (s && s.id && s.hook && !isPlaceholderOnly(s)) { s.cg = cgKey(base, s.cg); for (const pg of s.pages || []) pg.cg = cgKey(base, pg.cg); scenes.push(s); }
       } catch (e) { loadError += `${f}: ${(e as Error).message}\n`; }
     }
   } catch (e) { loadError = (e as Error).message; }
   return { count: scenes.length, error: loadError };
+}
+// cg 可以写图片键（cg.xxx，来自 images 映射）或相对于 content/adult/ 的路径（cg/xxx.png）
+function cgKey(base: string, cg: string | undefined): string | undefined {
+  if (!cg || !/\.(png|jpe?g|webp|gif)$/i.test(cg)) return cg;
+  const key = 'cg.adult:' + cg;
+  if (typeof Image !== 'undefined') { const img = new Image(); img.src = base + cg; setImage(key, img); }
+  return key;
 }
 export const adultStats = () => ({ count: scenes.length, error: loadError, loaded });
 
@@ -82,33 +91,12 @@ export function buildContext(w: World, ctx: Record<string, unknown>): SceneConte
   };
 }
 
-function getPath(o: unknown, path: string): unknown {
-  let cur: unknown = o;
-  for (const k of path.split('.')) { if (cur == null) return undefined; cur = (cur as Record<string, unknown>)[k]; }
-  return cur;
-}
 function matches(s: SceneDef, c: SceneContext, w: World): boolean {
   if (s.hook !== c.hook) return false;
   if (s.once && seenOnce.has(s.id)) return false;
   const tags = s.tags || [];
-  if (!w.settings.coercion && (tags.includes('coercion') || c.consent === 'coerced')) { if (tags.includes('coercion')) return false; }
-  for (const [k, v] of Object.entries(s.when || {})) {
-    const m = k.match(/^(.*)\.(any|in|lt|gt|lte|gte|between|exists)$/);
-    if (!m) { if (getPath(c, k) !== v) return false; continue; }
-    const [, path, op] = m;
-    const val = getPath(c, path);
-    switch (op) {
-      case 'any': if (!Array.isArray(val) || !(v as unknown[]).some((x) => (val as unknown[]).includes(x))) return false; break;
-      case 'in': if (!(v as unknown[]).includes(val)) return false; break;
-      case 'lt': if (!(Number(val) < Number(v))) return false; break;
-      case 'gt': if (!(Number(val) > Number(v))) return false; break;
-      case 'lte': if (!(Number(val) <= Number(v))) return false; break;
-      case 'gte': if (!(Number(val) >= Number(v))) return false; break;
-      case 'between': { const [a, b] = v as number[]; if (!(Number(val) >= a && Number(val) <= b)) return false; break; }
-      case 'exists': if (!!val !== !!v) return false; break;
-    }
-  }
-  return true;
+  if (!w.settings.coercion && tags.includes('coercion')) return false;
+  return matchWhen(s.when, c);
 }
 
 export function findScene(w: World, c: SceneContext): SceneDef | null {
@@ -121,10 +109,5 @@ export function findScene(w: World, c: SceneContext): SceneDef | null {
   return cands[0];
 }
 
-// 文本变量替换
-export function fill(text: string, c: SceneContext): string {
-  return text
-    .replace(/\{\?([a-zA-Z.]+)\.(gt|lt|eq):([^ ?]+)\s*\?\s*([^|}]*)\|([^}]*)\}/g, (_, p, op, v, a, b) => { const x = getPath(c, p); const ok = op === 'gt' ? Number(x) > Number(v) : op === 'lt' ? Number(x) < Number(v) : String(x) === v; return (ok ? a : b).trim(); })
-    .replace(/\{([^{}|]+)\|([^{}|]+)\|([^{}|:]+):(initiator|partner)\}/g, (_, m, f, n, who) => { const g = getPath(c, who + '.gender'); return g === 'male' ? m : g === 'female' ? f : n; })
-    .replace(/\{([a-zA-Z.]+)\}/g, (_, p) => { const v = getPath(c, p); return v == null ? '' : String(v); });
-}
+// 文本变量替换（与剧情事件共用同一套语法）
+export function fill(text: string, c: SceneContext): string { return fillText(text, c); }

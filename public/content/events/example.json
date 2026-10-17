@@ -1,0 +1,125 @@
+[
+  {
+    "id": "ex_old_photo",
+    "title": "一张照片",
+    "trigger": { "on": "hourly", "hours": [19, 23], "chance": 0.15, "once": true, "minDay": 3 },
+    "cast": { "a": { "when": { "rel.trust.gte": 30 }, "pick": "max:rel.trust" } },
+    "speaker": "a",
+    "art": "dark",
+    "text": "{a.name}坐在床沿上，手里捏着一张边角卷起来的照片。看见你过来，{他|她|TA:a}没有把它藏起来。\n\n照片上是一栋带院子的房子，门口站着几个人，都在笑。",
+    "choices": [
+      {
+        "label": "在{他|她|TA:a}旁边坐下，听{他|她|TA:a}说",
+        "effects": [
+          { "op": "rel", "from": "a", "to": "player", "trust": 6, "affection": 5 },
+          { "op": "need", "who": "a", "need": "stress", "add": -10 },
+          { "op": "memory", "who": "a", "about": "player", "kind": "listened", "weight": 20, "text": "那天晚上，{player.name}听我讲了家里的事。" }
+        ],
+        "result": "{a.name}讲了很久。房子在河对岸，已经三年没回去过了。讲到后来，{他|她|TA:a}把照片翻过去，扣在膝盖上。\n\n「等这一切结束了……」{他|她|TA:a}没有说下去。",
+        "next": "ex_old_photo_2"
+      },
+      {
+        "label": "「省省吧，想这些没用。」",
+        "effects": [
+          { "op": "rel", "from": "a", "to": "player", "affection": -6, "resentment": 4 },
+          { "op": "need", "who": "a", "need": "stress", "add": 6 }
+        ],
+        "result": "{a.name}把照片塞回了大衣内袋，翻身对着墙。"
+      },
+      {
+        "label": "（用一支烟换一个安静的晚上）递给{他|她|TA:a}一支烟",
+        "when": { "player.items.cigs.gte": 1 },
+        "why": "你没有烟",
+        "tags": [["香烟 -1", "#a8a080"]],
+        "effects": [
+          { "op": "item", "who": "player", "item": "cigs", "qty": -1 },
+          { "op": "rel", "from": "a", "to": "player", "affection": 4, "debt": 3 },
+          { "op": "need", "who": "a", "need": "stress", "add": -14 }
+        ],
+        "result": "你们俩谁也没说话，烟头在黑暗里一明一暗。"
+      }
+    ]
+  },
+  {
+    "id": "ex_old_photo_2",
+    "title": "一张照片",
+    "trigger": { "on": "manual" },
+    "cast": { "a": {} },
+    "speaker": "a",
+    "text": "{?a.rel.trust.gt:60 ? {a.name}忽然把照片塞进你手里。「你替我收着。我怕哪天我……你就把它烧了，别让别人看。」 | {a.name}把照片收好，冲你点了点头。}",
+    "choices": [
+      { "label": "收下", "when": { "a.rel.trust.gt": 60 }, "hide": true, "effects": [{ "op": "fact", "key": "story.photo_kept", "value": true }, { "op": "rel", "from": "a", "to": "player", "trust": 8 }], "result": "你把照片夹进了自己的证件里。" },
+      { "label": "……", "result": "" }
+    ]
+  },
+  {
+    "id": "ex_frozen_soldier",
+    "title": "门口的兵",
+    "trigger": { "on": "daily", "hour": 8, "chance": 0.35, "once": true, "when": { "warPhase.gte": 2 } },
+    "art": "door",
+    "text": "早上推开铁门透气的时候，你看见台阶下面趴着一个人。是个兵，军大衣上结满了霜。他已经硬了。\n\n雪地上有一串脚印，从镇子的方向来，到这里就停了。",
+    "choices": [
+      {
+        "label": "搜一搜他身上",
+        "check": { "skill": "scavenge", "bonus": 25 },
+        "effects": [
+          { "op": "item", "who": "player", "item": "ammo", "qty": 4 },
+          { "op": "item", "who": "player", "item": "food", "qty": 1 },
+          { "op": "need", "who": "player", "need": "stress", "add": 6 },
+          { "op": "log", "text": "你从门口的死兵身上搜出了子弹和一包压缩饼干。" }
+        ],
+        "result": "他的手指冻得掰不开。你还是从大衣里摸出了一个弹匣和一包压缩饼干。证件上的照片是个很年轻的人。",
+        "fail": {
+          "effects": [{ "op": "cond", "who": "player", "cond": "frostbite", "sev": 25 }, { "op": "need", "who": "player", "need": "warmth", "add": -15 }],
+          "result": "你在雪地里跪了太久。什么也没找到，手指却开始发白、发木。"
+        }
+      },
+      {
+        "label": "叫大家一起把他埋了",
+        "effects": [
+          { "op": "need", "who": "everyone", "need": "energy", "add": -8 },
+          { "op": "need", "who": "everyone", "need": "warmth", "add": -10 },
+          { "op": "rel", "from": "all", "to": "player", "respect": 3 },
+          { "op": "fact", "key": "story.buried_soldier", "value": true }
+        ],
+        "result": "地冻得太硬，挖不下去。最后你们只是把他拖到了远处的弹坑里，盖上雪。有人念了几句什么。"
+      },
+      { "label": "关上门", "effects": [{ "op": "need", "who": "player", "need": "stress", "add": 3 }], "result": "铁门合上的声音很响。" }
+    ]
+  },
+  {
+    "id": "ex_cold_offer",
+    "title": "冷夜",
+    "trigger": { "on": "hourly", "hours": [22, 2], "chance": 0.12, "cooldown": 5, "when": { "settings.adult": true, "power": false } },
+    "cast": { "a": { "when": { "rel.desire.gt": 45, "rel.trust.gt": 35, "asleep": false } } },
+    "speaker": "a",
+    "art": "dark",
+    "text": "停电以后，屋里冷得像冰窖。{a.name}抱着毯子站在你的铺位旁边，呼出的气都是白的。\n\n「……一个人睡不着。我能过来吗？」",
+    "choices": [
+      {
+        "label": "掀开被子",
+        "tags": [["亲密", "#c05a9a"]],
+        "effects": [
+          { "op": "intimacy", "initiator": "a", "partner": "player", "consent": "willing", "motive": ["慰藉", "取暖"] },
+          { "op": "need", "who": "player", "need": "warmth", "add": 20 },
+          { "op": "need", "who": "a", "need": "warmth", "add": 20 }
+        ],
+        "result": ""
+      },
+      {
+        "label": "只是挤在一起取暖",
+        "effects": [
+          { "op": "need", "who": "player", "need": "warmth", "add": 18 },
+          { "op": "need", "who": "a", "need": "warmth", "add": 18 },
+          { "op": "rel", "from": "a", "to": "player", "trust": 5, "affection": 3 }
+        ],
+        "result": "你们背靠背躺着，谁也没动。后半夜，{a.name}的呼吸终于均匀了。"
+      },
+      {
+        "label": "「回去吧。」",
+        "effects": [{ "op": "rel", "from": "a", "to": "player", "affection": -3 }, { "op": "need", "who": "a", "need": "stress", "add": 5 }],
+        "result": "{a.name}站了一会儿，回到了黑暗里。"
+      }
+    ]
+  }
+]

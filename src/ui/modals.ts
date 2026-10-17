@@ -1,4 +1,5 @@
 // 各种窗口：事件对话、交易、仓库、会议、目标日志、关系、人物档案、物品、地图……
+import { getImage } from '../art/overrides';
 import type { App, Modal } from './app';
 import { trim } from './app';
 import { UI, UI_W, UI_H } from '../engine/ui';
@@ -147,18 +148,28 @@ export class EventModal implements Modal {
     if (!this.sceneTried && this.v.adultCtx) { this.sceneTried = true; const c = buildContext(w, this.v.adultCtx); this.scene = findScene(w, c); this.page = 0; (this as unknown as { ctx: unknown }).ctx = c; }
     const W = 760;
     const twEst = W - (this.v.speaker ? 112 : 16) - 16;
-    const H = Math.min(500, Math.max(240, 70 + ui.paraHeight(this.v.text, twEst, 17) + (this.v.lines?.length || 0) * 18 + this.v.choices.length * 18 + (this.result !== null ? 30 + ui.paraHeight(this.result, twEst, 17) : 0) + (this.v.adultCtx ? 20 : 0)));
+    const cg = getImage(this.scene && this.page < (this.scene.pages?.length || 0) ? this.scene.pages![this.page].cg || this.scene.cg : this.scene?.cg || this.v.cg);
+    // 插图：像素小图（宽 ≤ 360）按整数倍放大，大图按比例缩小；最大 728×190，居中
+    const fit = cg ? Math.min((W - 32) / cg.naturalWidth, 190 / cg.naturalHeight) : 1;
+    const cgK = cg ? (cg.naturalWidth <= 360 ? Math.max(1, Math.floor(fit)) : Math.min(1, fit)) : 1;
+    const cgH = cg ? Math.round(cg.naturalHeight * cgK) + 10 : 0;
+    const H = Math.min(530, Math.max(240, cgH + 70 + ui.paraHeight(this.v.text, twEst, 17) + (this.v.lines?.length || 0) * 18 + this.v.choices.length * 18 + (this.result !== null ? 30 + ui.paraHeight(this.result, twEst, 17) : 0) + (this.v.adultCtx ? 20 : 0)));
     const { x, y } = frameModal(ui, W, H, this.v.title, { titleBg: this.v.art === 'dark' ? '#2a1424' : this.v.art === 'door' ? '#1a2230' : '#2a1d1a' });
+    if (cg) {
+      const iw = Math.round(cg.naturalWidth * cgK), ih = Math.round(cg.naturalHeight * cgK);
+      ui.rect(x + (W - iw) / 2 - 1, y + 25, iw + 2, ih + 2, '#4a3e36');
+      ui.image(cg, x + (W - iw) / 2, y + 26, iw, ih);
+    }
     const sp = P(w, this.v.speaker || null);
     let tx = x + 16;
-    if (sp) { portraitBox(ui, sp, x + 14, y + 26); tx = x + 112; }
+    if (sp) { portraitBox(ui, sp, x + 14, y + 26 + cgH); tx = x + 112; }
     const tw = W - (tx - x) - 16;
     // 成人场景分页
     if (this.scene && this.page < (this.scene.pages?.length || 0)) {
       const pg = this.scene.pages![this.page];
       const c = (this as unknown as { ctx: never }).ctx;
       const who = pg.speaker === 'initiator' ? (c as { initiator: { name: string } }).initiator.name : pg.speaker === 'partner' ? (c as { partner: { name: string } }).partner.name : '';
-      let yy = y + 30;
+      let yy = y + 30 + cgH;
       if (who) { ui.text(who, tx, yy, '#e8c890'); yy += 20; }
       ui.para(fill(pg.text, c), tx, yy, tw, '#e8e0d0', 18);
       ui.text(`${this.page + 1}/${this.scene.pages!.length}`, x + W - 60, y + H - 46, '#6a6058');
@@ -166,7 +177,7 @@ export class EventModal implements Modal {
       ui.region(x, y, W, H, () => this.advance(app));
       return;
     }
-    let yy = y + 28;
+    let yy = y + 28 + cgH;
     const text = this.scene && this.scene.pages?.length ? '' : this.v.text;
     yy = ui.para(text, tx, yy, tw, '#e8e0d0', 17);
     if (this.v.adultCtx && !this.scene && w.settings.adult) { ui.text('[成人内容接口：此处可由内容包填充]', tx, yy + 2, '#6a4a5a'); yy += 18; }
@@ -523,7 +534,9 @@ export class InventoryModal implements Modal {
     if (!items.length) ui.text('空空如也。', x + 16, yy, '#8a9098');
     for (const [k, v] of items) {
       const key = k as ItemKey;
-      ui.text(`${ITEMS[key].name}　${Math.floor((v || 0) * 10) / 10}${ITEMS[key].unit || ''}`, x + 16, yy, '#e8dcc0');
+      const icon = getImage('item.' + key);
+      if (icon) ui.image(icon, x + 16, yy - 1, 16, 16);
+      ui.text(`${ITEMS[key].name}　${Math.floor((v || 0) * 10) / 10}${ITEMS[key].unit || ''}`, x + (icon ? 36 : 16), yy, '#e8dcc0');
       ui.text(trim(ui, ITEMS[key].desc, 300), x + 160, yy, '#8a9098');
       const act = (label: string, fn: () => void) => ui.button(x + 480, yy - 2, 70, 17, label, fn);
       if (key === 'food') act('吃', () => { me.action = { ...mk('eat', 'kitchen', { obj: 'table', dur: 12 }), playerCmd: true }; app.pop(); });

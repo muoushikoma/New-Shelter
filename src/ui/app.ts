@@ -42,8 +42,29 @@ export class App {
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas; this.ctx = canvas.getContext('2d')!;
     this.ctx.imageSmoothingEnabled = false;
-    canvas.addEventListener('mousemove', (e) => { const [x, y] = this.toUI(e); this.ui.mx = x; this.ui.my = y; });
-    canvas.addEventListener('mousedown', (e) => { this.audio.unlock(); const [x, y] = this.toUI(e); this.onClick(x, y, e.button); });
+    // 鼠标与触屏统一走 pointer 事件；触屏：轻点 = 左键，上下拖动 = 滚轮
+    let touch: { y: number; acc: number; moved: boolean } | null = null;
+    canvas.addEventListener('pointermove', (e) => {
+      const [x, y] = this.toUI(e); this.ui.mx = x; this.ui.my = y;
+      if (touch && e.pointerType !== 'mouse') {
+        touch.acc += touch.y - e.clientY; touch.y = e.clientY;
+        const step = 18 * (window.devicePixelRatio > 1 ? 1 : 0.8);
+        while (Math.abs(touch.acc) > step) { this.ui.wheel += Math.sign(touch.acc); touch.acc -= Math.sign(touch.acc) * step; touch.moved = true; }
+      }
+    });
+    canvas.addEventListener('pointerdown', (e) => {
+      this.audio.unlock();
+      const [x, y] = this.toUI(e); this.ui.mx = x; this.ui.my = y;
+      if (e.pointerType === 'mouse') this.onClick(x, y, e.button);
+      else touch = { y: e.clientY, acc: 0, moved: false };
+    });
+    canvas.addEventListener('pointerup', (e) => {
+      if (e.pointerType === 'mouse' || !touch) return;
+      const moved = touch.moved; touch = null;
+      if (!moved) { const [x, y] = this.toUI(e); this.onClick(x, y, 0); }
+    });
+    canvas.addEventListener('pointercancel', () => { touch = null; });
+    canvas.style.touchAction = 'none';
     canvas.addEventListener('contextmenu', (e) => e.preventDefault());
     canvas.addEventListener('wheel', (e) => { this.ui.wheel += Math.sign(e.deltaY); e.preventDefault(); }, { passive: false });
     window.addEventListener('keydown', (e) => this.onKey(e));

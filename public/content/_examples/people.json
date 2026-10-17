@@ -1,0 +1,23 @@
+{
+  "_说明": "新增人物示例。复制到 content/people/ 下并在 manifest.json 的 people 里列出。新人物会进入随机抽取的角色池，也可能作为访客来敲门。所有人物必须是成年人（age ≥ 18）。",
+  "people": [
+    {
+      "key": "qiao",
+      "name": "乔四",
+      "age": 44,
+      "gender": "m",
+      "orientation": "straight",
+      "origin": "trader",
+      "originText": "货车司机",
+      "bio": "跑边境线的货车司机。他说他认识哨所里的每一个人，但没人知道真假。",
+      "look": { "skin": "tan", "hair": "#2a2522", "style": "cap", "cap": "#4a3a2a", "coat": "#5a4a30", "pants": "#2e2a26", "male": true, "stubble": true, "heavy": true },
+      "skills": { "scavenge": 55, "persuade": 45, "mechanic": 40 },
+      "pers": { "power": 55, "morality": 40, "fear": 60, "attach": 30, "lust": 50, "social": 70, "agree": 45, "neuro": 35, "regime": "cynic" },
+      "traits": ["油滑", "烟瘾"],
+      "secrets": [{ "id": "qiao_smuggle", "text": "他的货车夹层里运过人。", "severity": 60 }],
+      "goals": ["E_CROSS", "W_MARKET"],
+      "inv": { "cigs": 12, "alcohol": 1 },
+      "knows": ["K_SMUG"]
+    }
+  ]
+}

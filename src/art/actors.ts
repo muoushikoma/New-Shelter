@@ -1,5 +1,6 @@
 // 角色美术：场景小人（约 10×20）与 40×48 半身像，沿用概念图初版画风
 import { Buf, RGB, hex, shade, bayer } from '../engine/pixel';
+import { getImage } from './overrides';
 
 export type SkinKey = 'pale' | 'warm' | 'tan';
 export type HairStyle = 'short' | 'receding' | 'shaved' | 'cap' | 'tied' | 'bun' | 'wavy' | 'long' | 'bald';
@@ -274,6 +275,15 @@ export function portraitCanvas(id: string, look: Look & { age?: number }, opt: {
   const key = id + (opt.dead ? ':dead' : '') + (opt.rim === false ? ':nr' : '');
   let c = pCache.get(key);
   if (c) return c;
+  const custom = getImage('portrait.' + id);
+  if (custom) {
+    // 内容包头像：保持原分辨率（建议 40×48 或 80×96）
+    c = document.createElement('canvas'); c.width = custom.naturalWidth; c.height = custom.naturalHeight;
+    const g = c.getContext('2d')!; g.drawImage(custom, 0, 0);
+    if (opt.dead) { const d = g.getImageData(0, 0, c.width, c.height); for (let i = 0; i < d.data.length; i += 4) { const v = (d.data[i] * 0.3 + d.data[i + 1] * 0.5 + d.data[i + 2] * 0.2) * 0.7; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; } g.putImageData(d, 0, 0); }
+    pCache.set(key, c);
+    return c;
+  }
   const b = new Buf(40, 48);
   portrait(b, 0, 0, look, opt);
   if (opt.dead) for (let i = 0; i < b.c.length; i += 3) { const g = (b.c[i] * 0.3 + b.c[i + 1] * 0.5 + b.c[i + 2] * 0.2) * 0.7; b.c[i] = g; b.c[i + 1] = g; b.c[i + 2] = g; }
@@ -286,9 +296,13 @@ export function headCanvas(id: string, look: Look & { age?: number }, dead = fal
   const key = 'h:' + id + (dead ? ':dead' : '');
   let c = pCache.get(key);
   if (c) return c;
+  const head = getImage('head.' + id);
   const src = portraitCanvas(id, look, { rim: false, dead });
   c = document.createElement('canvas'); c.width = 24; c.height = 24;
-  c.getContext('2d')!.drawImage(src, -8, -9);
+  const g = c.getContext('2d')!; g.imageSmoothingEnabled = false;
+  if (head && !dead) g.drawImage(head, 0, 0, 24, 24);
+  else if (src.width !== 40) { const k = src.width / 40; g.drawImage(src, 8 * k, 9 * k, 24 * k, 24 * k, 0, 0, 24, 24); }
+  else g.drawImage(src, -8, -9);
   pCache.set(key, c);
   return c;
 }

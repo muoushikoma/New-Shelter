@@ -1,5 +1,6 @@
 import { App } from './ui/app';
 import { loadAdultContent } from './content/adult';
+import { loadContentPacks } from './content/pack';
 
 const canvas = document.getElementById('game') as HTMLCanvasElement;
 canvas.width = 1920; canvas.height = 1080;
@@ -16,6 +17,7 @@ const app = new App(canvas);
 
 async function start() {
   try { await document.fonts.load('12px "Fusion Pixel"'); } catch { /* 字体加载失败时用系统字体 */ }
+  await loadContentPacks();
   if (app.w?.settings.adult) loadAdultContent();
   const loop = (t: number) => { app.frame(t); requestAnimationFrame(loop); };
   requestAnimationFrame(loop);

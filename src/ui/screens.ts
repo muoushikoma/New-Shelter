@@ -9,6 +9,8 @@ import { day, P, player } from '../sim/util';
 import { loadAdultContent, adultStats } from '../content/adult';
 import { Buf } from '../engine/pixel';
 import { drawBackground } from '../art/shelter';
+import { getImage } from '../art/overrides';
+import { packStats } from '../content/pack';
 
 const SAVE_PREFIX = 'shelter.save.';
 export function saveGame(w: World, slot: string) {
@@ -26,7 +28,9 @@ export function autosave(w: World) { saveGame(w, 'auto'); }
 export function saveDelete() { /* 结局后保留自动存档以便回看 */ }
 
 let titleBg: HTMLCanvasElement | null = null;
-function titleBackground() {
+function titleBackground(): CanvasImageSource {
+  const custom = getImage('ui.title');
+  if (custom) return custom;
   if (titleBg) return titleBg;
   const b = new Buf(480, 270);
   drawBackground(b, { power: true, archiveOpen: false, collapse: 0, drain: false, farmBuilt: false, farm: 0, cans: 14, night: true, dusk: false, phase: 2, damage: 20, filter: false, radioFixed: false, water: 60, fuelBarrels: 2, meds: 2, occupied: false });
@@ -61,6 +65,8 @@ export function drawTitle(app: App) {
   btn('设置', () => { app.screen = 'settings'; });
   ui.text('18+ · 含成人主题、暴力与政治压迫的描写。成人内容默认关闭。', 66, UI_H - 40, '#6a6058');
   ui.text('像素字体：Fusion Pixel（OFL）', 66, UI_H - 22, '#4a4840');
+  const ps = packStats();
+  if (ps.loaded && (ps.events + ps.text + ps.people + ps.images || ps.errors.length)) ui.text(`内容包：剧情 ${ps.events} · 文本 ${ps.text} · 人物 ${ps.people} · 图片 ${ps.images}${ps.errors.length ? ` · ${ps.errors.length} 个错误（按 F12 看控制台）` : ''}`, 520, UI_H - 22, ps.errors.length ? '#c87060' : '#6a6858');
 }
 
 export class NewGameState {

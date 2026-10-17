@@ -13,6 +13,7 @@ export interface EventView {
   lines?: { who: string; text: string }[]; // 其他人的表态
   choices: Choice[];
   art?: string;              // 小剧场类型（meeting / door / dark / outside）
+  cg?: string;               // 内容包插图（images 里的键）
   adultCtx?: Record<string, unknown>; // 成人内容接口的上下文
 }
 export interface EventDef {
@@ -24,3 +25,6 @@ export interface EventDef {
 
 export const EVENTS: Record<string, EventDef> = {};
 export function defEvent(e: EventDef) { EVENTS[e.id] = e; }
+
+// 每小时调用的外部钩子（内容包的剧情事件在这里检查触发条件）
+export const HOURLY_HOOKS: ((w: World) => void)[] = [];

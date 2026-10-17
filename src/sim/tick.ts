@@ -8,7 +8,7 @@ import { checkGoals } from './goals';
 import { directorHourly } from './director';
 import { dailyWar, tickExpeditions, hourWar } from './war';
 import { distributeRations, dailyPolitics } from './politics';
-import { EVENTS, EventView } from './events';
+import { EVENTS, EventView, HOURLY_HOOKS } from './events';
 import { alive, present, player, minuteOfDay, hasCond, day, P, log, cnt, hour } from './util';
 import { computeEnding } from './ending';
 import { rnd } from '../engine/rng';
@@ -44,6 +44,7 @@ export function stepMinute(w: World) {
     checkGoals(w);
     hourWar(w);
     directorHourly(w);
+    for (const h of HOURLY_HOOKS) h(w);
     for (const p of alive(w)) { const c = p.conds.find((x) => x.type === 'pregnant'); if (c && c.sev > 18 && !w.facts[`pregKnown:${p.id}`]) { w.facts[`pregKnown:${p.id}`] = true; w.pending.push({ id: 'pregnant', t: w.t, ctx: { id: p.id } }); } }
   }
   if (m === 6 * 60) dailyWar(w);

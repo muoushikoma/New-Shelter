@@ -1,0 +1,498 @@
+[
+  {
+    "id": "K_MIL",
+    "title": "知道军方驻点",
+    "methods": [
+      {
+        "id": "kmil_radio",
+        "label": "修好电台，收听军方频道",
+        "adult": false
+      },
+      {
+        "id": "kmil_station",
+        "label": "去火车站一带打探",
+        "adult": false
+      },
+      {
+        "id": "kmil_ask",
+        "label": "向知情的人打听",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "K_SMUG",
+    "title": "知道走私路线",
+    "methods": [
+      {
+        "id": "ksmug_ask",
+        "label": "向知情的人打听",
+        "adult": false
+      },
+      {
+        "id": "ksmug_church",
+        "label": "去教堂找线索",
+        "adult": false
+      },
+      {
+        "id": "ksmug_radio",
+        "label": "夜里收听对岸的电台",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "K_DRAIN",
+    "title": "找到排水暗渠",
+    "methods": [
+      {
+        "id": "kdrain_clear",
+        "label": "清理坍塌区的瓦砾",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "K_ARCHIVE",
+    "title": "打开档案室",
+    "methods": [
+      {
+        "id": "arch_key",
+        "label": "用钥匙开门",
+        "adult": false
+      },
+      {
+        "id": "arch_getkey",
+        "label": "从持钥匙的人手里弄到钥匙（交易/偷/求）",
+        "adult": false
+      },
+      {
+        "id": "arch_crowbar",
+        "label": "用撬棍撬开",
+        "adult": false
+      },
+      {
+        "id": "arch_pick",
+        "label": "请会机械的人撬锁",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "R_RADIO",
+    "title": "修好电台",
+    "methods": [
+      {
+        "id": "radio_fix",
+        "label": "找到电台零件，由会机械的人修理",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "C_MIL",
+    "title": "与军方建立联系",
+    "methods": [
+      {
+        "id": "cmil_supply",
+        "label": "送物资上门",
+        "adult": false
+      },
+      {
+        "id": "cmil_gifts",
+        "label": "结交军需官（烟、酒）",
+        "adult": false
+      },
+      {
+        "id": "cmil_inform",
+        "label": "告发避难所里的逃兵",
+        "adult": false
+      },
+      {
+        "id": "cmil_leader",
+        "label": "以避难所领导者身份用电台谈判",
+        "adult": false
+      },
+      {
+        "id": "cmil_intim",
+        "label": "和军官发展关系",
+        "adult": true
+      }
+    ]
+  },
+  {
+    "id": "C_SMUG",
+    "title": "与走私者搭上线",
+    "methods": [
+      {
+        "id": "csmug_pay",
+        "label": "带上值钱的东西去黑市",
+        "adult": false
+      },
+      {
+        "id": "csmug_intro",
+        "label": "请认识他们的人引荐",
+        "adult": false
+      },
+      {
+        "id": "csmug_job",
+        "label": "替他们跑一趟货",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "E_PASS",
+    "title": "取得通行资格",
+    "methods": [
+      {
+        "id": "pass_buy",
+        "label": "用物资向军方换",
+        "adult": false
+      },
+      {
+        "id": "pass_favor",
+        "label": "军需官的人情",
+        "adult": false
+      },
+      {
+        "id": "pass_leader",
+        "label": "用避难所的物资做交换（以领导者身份）",
+        "adult": false
+      },
+      {
+        "id": "pass_forge",
+        "label": "伪造通行证",
+        "adult": false
+      },
+      {
+        "id": "pass_steal",
+        "label": "从军官身上偷",
+        "adult": false
+      },
+      {
+        "id": "pass_dead",
+        "label": "冒用死人的证件",
+        "adult": false
+      },
+      {
+        "id": "pass_intim",
+        "label": "和军官做交易",
+        "adult": true
+      }
+    ]
+  },
+  {
+    "id": "E_SEAT",
+    "title": "买到偷渡名额",
+    "methods": [
+      {
+        "id": "seat_pay",
+        "label": "付钱",
+        "adult": false
+      },
+      {
+        "id": "seat_work",
+        "label": "替他们干活抵账",
+        "adult": false
+      },
+      {
+        "id": "seat_intim",
+        "label": "和走私头子做交易",
+        "adult": true
+      }
+    ]
+  },
+  {
+    "id": "E_CROSS",
+    "title": "越过边境",
+    "methods": [
+      {
+        "id": "cross_pass",
+        "label": "持通行证走检查站",
+        "adult": false
+      },
+      {
+        "id": "cross_boat",
+        "label": "跟走私船过河",
+        "adult": false
+      },
+      {
+        "id": "cross_drain",
+        "label": "钻排水渠，涉过界河",
+        "adult": false
+      },
+      {
+        "id": "cross_rc",
+        "label": "跟红十字车队撤离",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "P_KEY",
+    "title": "掌管仓库钥匙",
+    "methods": [
+      {
+        "id": "key_vote",
+        "label": "在会上被推选为保管人",
+        "adult": false
+      },
+      {
+        "id": "key_take",
+        "label": "从保管人身上拿（偷 / 抢）",
+        "adult": false
+      },
+      {
+        "id": "key_ask",
+        "label": "让保管人交给你",
+        "adult": false
+      },
+      {
+        "id": "key_intim",
+        "label": "成为保管人的枕边人",
+        "adult": true
+      }
+    ]
+  },
+  {
+    "id": "P_WEAPON",
+    "title": "掌握武器",
+    "methods": [
+      {
+        "id": "wpn_storage",
+        "label": "从仓库拿（如果规矩允许）",
+        "adult": false
+      },
+      {
+        "id": "wpn_take",
+        "label": "从持枪的人那里偷 / 换",
+        "adult": false
+      },
+      {
+        "id": "wpn_outside",
+        "label": "在边境哨所或车站搜",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "P_LEADER",
+    "title": "成为公认的领导者",
+    "methods": [
+      {
+        "id": "lead_vote",
+        "label": "在会上当选",
+        "adult": false
+      },
+      {
+        "id": "lead_coup",
+        "label": "政变",
+        "adult": false
+      },
+      {
+        "id": "lead_mil",
+        "label": "被军方任命",
+        "adult": false
+      },
+      {
+        "id": "lead_merit",
+        "label": "众望所归",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "P_STABLE",
+    "title": "建立稳定的秩序",
+    "methods": [
+      {
+        "id": "stable_fair",
+        "label": "公平地分配，兑现承诺",
+        "adult": false
+      },
+      {
+        "id": "stable_fear",
+        "label": "让所有人都怕你",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "W_HOARD",
+    "title": "攒下一份家底",
+    "methods": [
+      {
+        "id": "hoard_save",
+        "label": "省下自己的配给，藏起来",
+        "adult": false
+      },
+      {
+        "id": "hoard_steal",
+        "label": "从仓库里偷",
+        "adult": false
+      },
+      {
+        "id": "hoard_trade",
+        "label": "倒卖",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "W_MARKET",
+    "title": "打通黑市渠道",
+    "methods": [
+      {
+        "id": "market_trade",
+        "label": "在黑市交易",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "L_PARTNER",
+    "title": "有一个伴侣",
+    "methods": [
+      {
+        "id": "love_court",
+        "label": "追求：聊天、陪伴、送东西",
+        "adult": false
+      },
+      {
+        "id": "love_crisis",
+        "label": "一起熬过难关",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "L_PLAN",
+    "title": "和伴侣有共同的打算",
+    "methods": [
+      {
+        "id": "plan_talk",
+        "label": "和伴侣商量将来",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "S_FOOD",
+    "title": "地下种出食物",
+    "methods": [
+      {
+        "id": "food_farm",
+        "label": "找到菌种和种子，搭种植床，照料到收获",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "S_WATER",
+    "title": "自己的水源",
+    "methods": [
+      {
+        "id": "water_filter",
+        "label": "找到滤水器材并装好",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "S_SELF",
+    "title": "避难所能自给自足",
+    "methods": [
+      {
+        "id": "self_both",
+        "label": "完成「地下种出食物」和「自己的水源」",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "S_RC",
+    "title": "联系上救援组织",
+    "methods": [
+      {
+        "id": "rc_visit",
+        "label": "去红十字站登记",
+        "adult": false
+      },
+      {
+        "id": "rc_radio",
+        "label": "用电台呼叫",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "S_REBUILD",
+    "title": "一个能长久运转的小社会",
+    "methods": [
+      {
+        "id": "rebuild",
+        "label": "自给 + 规矩 + 人",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "D_PATRON",
+    "title": "找到靠山",
+    "methods": [
+      {
+        "id": "patron_serve",
+        "label": "为领导者效力，成为亲信",
+        "adult": false
+      },
+      {
+        "id": "patron_mil",
+        "label": "替军方做眼线",
+        "adult": false
+      },
+      {
+        "id": "patron_intim",
+        "label": "成为强者的情人",
+        "adult": true
+      }
+    ]
+  },
+  {
+    "id": "D_ORG",
+    "title": "加入外面的组织",
+    "methods": [
+      {
+        "id": "org_mil",
+        "label": "参军 / 给军方当差",
+        "adult": false
+      },
+      {
+        "id": "org_smug",
+        "label": "入伙走私团伙",
+        "adult": false
+      }
+    ]
+  },
+  {
+    "id": "R_DEPOSE",
+    "title": "推翻现在的领导者",
+    "methods": [
+      {
+        "id": "depose_vote",
+        "label": "发起不信任表决",
+        "adult": false
+      },
+      {
+        "id": "depose_expose",
+        "label": "在会上揭发他的秘密",
+        "adult": false
+      },
+      {
+        "id": "depose_coup",
+        "label": "用武力",
+        "adult": false
+      }
+    ]
+  }
+]

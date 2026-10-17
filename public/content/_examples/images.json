@@ -1,0 +1,10 @@
+{
+  "_说明": "图片映射示例。把这个文件复制到 content/images/images.json，图片放在 content/images/ 下，路径相对于本文件。在 manifest.json 的 images 里列出 \"images/images.json\"。",
+  "portrait.lin": "portraits/lin.png",
+  "head.lin": "portraits/lin_head.png",
+  "portrait.player": "portraits/player.png",
+  "item.food": "items/food.png",
+  "item.meds": "items/meds.png",
+  "cg.old_photo": "cg/old_photo.png",
+  "ui.title": "ui/title.png"
+}

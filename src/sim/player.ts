@@ -1,3 +1,4 @@
+import { lines } from '../content/lines';
 // 玩家能做的事：对物件、对人。返回选项与结果文字，由 UI 展示
 import type { Action, ItemKey, Person, RoomId, World } from './types';
 import { OBJ, ROOM, BEDS } from '../content/layout';
@@ -340,14 +341,14 @@ function chatLine(w: World, t: Person): string {
   const me = player(w);
   const op = opinion(w, t.id, me.id);
   const n = t.needs;
-  if (n.hunger < 25) return pick(w.rng, ['我饿得眼睛都花了。', '你身上……有吃的吗？', '再这样下去，我会做出什么事来，我自己都不知道。']);
-  if (n.warmth < 25) return pick(w.rng, ['冷……冷得睡不着。', '我的脚趾没知觉了。']);
-  if (n.stress > 75) return pick(w.rng, ['我受不了了。', '你听，炮声又近了。', '我们会死在这里的，对不对？']);
+  if (n.hunger < 25) return pick(w.rng, lines('chat.hungry', ['我饿得眼睛都花了。', '你身上……有吃的吗？', '再这样下去，我会做出什么事来，我自己都不知道。']));
+  if (n.warmth < 25) return pick(w.rng, lines('chat.cold', ['冷……冷得睡不着。', '我的脚趾没知觉了。']));
+  if (n.stress > 75) return pick(w.rng, lines('chat.stressed', ['我受不了了。', '你听，炮声又近了。', '我们会死在这里的，对不对？']));
   if (t.conds.some((c) => c.type === 'grief')) return '……我老是梦见' + (t.mem.find((m) => m.kind === 'death')?.text.replace('死了。', '') || '他') + '。';
-  if (op < 0) return pick(w.rng, ['有话快说。', '我跟你没什么好聊的。', '……']);
-  if (t.partner === me.id) return pick(w.rng, ['你今天还好吗？', '晚上……一起睡吧，暖和。', '等这一切结束了，你想去哪儿？']);
+  if (op < 0) return pick(w.rng, lines('chat.hostile', ['有话快说。', '我跟你没什么好聊的。', '……']));
+  if (t.partner === me.id) return pick(w.rng, lines('chat.partner', ['你今天还好吗？', '晚上……一起睡吧，暖和。', '等这一切结束了，你想去哪儿？']));
   const lead = P(w, w.politics.leader);
-  const pool = [t.bio, t.thought ? `（${t.thought}）` : '', lead && lead !== t ? (opinion(w, t.id, lead.id) < 20 ? `${lead.name}？哼。` : `${lead.name}还算靠得住。`) : '', w.war.phase >= 2 ? '你听说了吗？镇子西边全炸平了。' : '你觉得战争什么时候结束？', t.traits.includes('烟瘾') ? '有烟吗？' : ''].filter(Boolean);
+  const pool = [t.bio, t.thought ? `（${t.thought}）` : '', lead && lead !== t ? (opinion(w, t.id, lead.id) < 20 ? `${lead.name}？哼。` : `${lead.name}还算靠得住。`) : '', w.war.phase >= 2 ? '你听说了吗？镇子西边全炸平了。' : '你觉得战争什么时候结束？', t.traits.includes('烟瘾') ? '有烟吗？' : '', ...lines('chat.general', [])].filter(Boolean);
   return pick(w.rng, pool);
 }
 

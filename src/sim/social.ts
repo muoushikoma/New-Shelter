@@ -1,3 +1,4 @@
+import { lines } from '../content/lines';
 // 社交：聊天、流言、目击、偷窃、私藏、治疗、打架、亲密的入口
 import type { Action, ItemKey, Person, World, Rumor } from './types';
 import { clamp, rel, relAdd, opinion, addMem, log, nm, roomOf, peopleIn, awake, present, cnt, addItem, takeItem, bark, hasCond, knowFact, P, tagMethod, uid, pron, isNight } from './util';
@@ -101,7 +102,7 @@ export function chat(w: World, a: Person, b: Person, data?: Record<string, unkno
   // 交换知识（信任足够时）
   shareKnowledge(w, a, b); shareKnowledge(w, b, a);
   // 吵起来
-  if (ra.resentment > 55 && chance(w.rng, 0.25)) { relAdd(w, a.id, b.id, { resentment: 3 }); relAdd(w, b.id, a.id, { resentment: 3, affection: -3 }); bark(a, w, pick(w.rng, ['你什么意思？', '别跟我来这套。', '我早就看你不顺眼。'])); }
+  if (ra.resentment > 55 && chance(w.rng, 0.25)) { relAdd(w, a.id, b.id, { resentment: 3 }); relAdd(w, b.id, a.id, { resentment: 3, affection: -3 }); bark(a, w, pick(w.rng, lines('quarrel', ['你什么意思？', '别跟我来这套。', '我早就看你不顺眼。']))); }
 }
 
 // NPC 之间的闲聊（头顶对白），让玩家看得到他们在交往
@@ -110,18 +111,18 @@ function smallTalk(w: World, a: Person, b: Person): string {
   const n = a.needs;
   const lead = P(w, w.politics.leader);
   const pool: string[] = [];
-  if (n.hunger < 35) pool.push('饿死了……', '你还有吃的吗？');
-  if (n.warmth < 35) pool.push('冷……', '今晚挤一挤吧。');
-  if (n.stress > 65) pool.push('我睡不着。', '炮声又近了。', '我们会死在这儿吗？');
-  if (r.state === 'lovers' || r.state === 'flirting') pool.push('（凑近耳边说了什么）', '……晚上来找我。', '你冷不冷？');
-  if (r.resentment > 45) pool.push('你什么意思？', '别跟我装。');
+  if (n.hunger < 35) pool.push(...lines('small.hungry', ['饿死了……', '你还有吃的吗？']));
+  if (n.warmth < 35) pool.push(...lines('small.cold', ['冷……', '今晚挤一挤吧。']));
+  if (n.stress > 65) pool.push(...lines('small.stressed', ['我睡不着。', '炮声又近了。', '我们会死在这儿吗？']));
+  if (r.state === 'lovers' || r.state === 'flirting') pool.push(...lines('small.lovers', ['（凑近耳边说了什么）', '……晚上来找我。', '你冷不冷？']));
+  if (r.resentment > 45) pool.push(...lines('small.hostile', ['你什么意思？', '别跟我装。']));
   if (lead && lead !== a && lead !== b) pool.push(opinion(w, a.id, lead.id) < 15 ? `${lead.name}那个人……（压低声音）` : `${lead.name}还算靠得住。`);
   if (w.rumors.some((x) => a.knows['rumor:' + x.id] && !x.about.includes(b.id))) pool.push('（压低声音）你听说了吗……');
   if (w.war.phase === 2) pool.push('镇子西边全炸平了。');
   if (w.war.phase === 3) pool.push('外面说的是另一种话了。');
   if (a.goals[0] === 'E_CROSS') pool.push('要是能过河就好了。');
   if (a.goals[0] === 'S_SELF' || a.goals[0] === 'S_REBUILD') pool.push('得想办法自己种点东西。');
-  if (!pool.length) pool.push('……', '你以前是干什么的？', '天什么时候才亮。', '有烟吗？');
+  if (!pool.length) pool.push(...lines('small.general', ['……', '你以前是干什么的？', '天什么时候才亮。', '有烟吗？']));
   return pick(w.rng, pool);
 }
 function reply(w: World, b: Person, a: Person): string {
