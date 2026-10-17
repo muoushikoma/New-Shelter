@@ -1,4 +1,5 @@
 // 外部世界：战争时钟、敲门的人、地表探索、军营/黑市/红十字
+import { emptySome, hasScene } from './explore';
 import type { Action, ItemKey, LocId, Person, World, Encounter } from './types';
 import { LOCS } from '../content/locations';
 import { ITEMS } from '../content/items';
@@ -87,7 +88,7 @@ function resolveNpcExpedition(w: World, e: World['expeditions'][0]) {
   if (roll < danger * 0.35) addCond(w, p, 'wound', rint(w.rng, 15, 40));
   p.needs.warmth = clamp(p.needs.warmth - 25); p.needs.energy = clamp(p.needs.energy - 20);
   const got: Partial<Record<ItemKey, number>> = {};
-  const loot = () => { for (const [k, a, b, pr] of L.loot || []) if (rnd(w.rng) < pr * (1 - w.locs[e.loc].looted / 140)) { const n = rint(w.rng, a, b); got[k] = (got[k] || 0) + n; } w.locs[e.loc].looted = clamp(w.locs[e.loc].looted + 8); };
+  const loot = () => { for (const [k, a, b, pr] of L.loot || []) if (rnd(w.rng) < pr * (1 - w.locs[e.loc].looted / 140)) { const n = rint(w.rng, a, b); got[k] = (got[k] || 0) + n; } w.locs[e.loc].looted = clamp(w.locs[e.loc].looted + 8); const sc = w.locs[e.loc].scene; if (sc) emptySome(sc, 0.1, w.rng); };
   const result: string[] = [];
   switch (e.purpose) {
     case 'cross': {
@@ -179,7 +180,7 @@ function rollEncounter(w: World, mult: number) {
   tr.encounter = makeEncounter(w, kind);
 }
 
-function makeEncounter(w: World, kind: string): Encounter {
+export function makeEncounter(w: World, kind: string): Encounter {
   const op = milName(w);
   switch (kind) {
     case 'patrol': return { kind, text: `一队${w.war.phase >= 3 ? '占领军' : '宪兵'}打着手电过来了。${w.war.phase < 3 ? '他们在抓逃兵。' : '他们在搜捕「阵线分子」。'}`, options: [
@@ -269,7 +270,7 @@ export function locActions(w: World): LocAction[] {
   const A: LocAction[] = [];
   const add = (id: string, label: string, ok: boolean, why = '', cost = 30, tip = '', method?: string, adult = false) => { if (adult && !w.settings.adult) return; A.push({ id, label, ok, why, cost, tip, method, adult }); };
   const mil = hasMil(w, me);
-  if (L.loot) add('search', '搜刮', w.locs[loc].looted < 95, '已经搜空了', 60, `这里还剩约 ${Math.max(0, 100 - w.locs[loc].looted)}%`);
+  if (L.loot) add('search', hasScene(loc) ? '在外围随便翻翻（快，东西少）' : '搜刮', w.locs[loc].looted < 95, '已经搜空了', hasScene(loc) ? 30 : 60, `这里还剩约 ${Math.max(0, 100 - w.locs[loc].looted)}%`);
   if (loc === 'camp') {
     add('mil_supply', '送物资（6 份口粮）', cnt(me.inv, 'food') >= 6, '需要带 6 份口粮', 30, '建立与军方的联系', 'cmil_supply');
     add('mil_gift', '打点关系（5 支烟或 1 瓶酒）', cnt(me.inv, 'cigs') >= 5 || cnt(me.inv, 'alcohol') >= 1, '需要烟或酒', 30, '结交军需官', 'cmil_gifts');
@@ -319,7 +320,7 @@ export function doLocAction(w: World, id: string): string {
     case 'search': {
       tr.searches++;
       const got: Partial<Record<ItemKey, number>> = {};
-      const bonus = 1 + teamSkill(w, 'scavenge') / 150 + (team(w).length - 1) * 0.25;
+      const bonus = (1 + teamSkill(w, 'scavenge') / 150 + (team(w).length - 1) * 0.25) * (hasScene(loc) ? 0.45 : 1); // 有建筑可进的地方，外围只能捡点零碎
       for (const [k, a, b, pr] of L.loot || []) if (rnd(w.rng) < pr * (1 - w.locs[loc].looted / 120)) { const n = Math.max(1, Math.round(rint(w.rng, a, b) * bonus * (1 - w.locs[loc].looted / 150))); got[k] = (got[k] || 0) + n; }
       w.locs[loc].looted = clamp(w.locs[loc].looted + 20 + team(w).length * 4);
       for (const [k, v] of Object.entries(got)) addItem(me.inv, k as ItemKey, v || 0);

@@ -26,6 +26,7 @@ function trip(w: World, loc: LocId, acts: string[]) {
   while (w.trip && w.t < w.trip.until && !w.ending) stepMinute(w);
   if (!w.trip) return ['（路上出事了）'];
   tripArrive(w);
+  w.trip!.encounter = null; // 路线测试只验证地点上的行动，不测进场时的随机遭遇
   const out: string[] = [];
   for (const a of acts) {
     if (!w.trip) break;

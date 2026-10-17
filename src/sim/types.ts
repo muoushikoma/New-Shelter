@@ -130,7 +130,7 @@ export interface WarState {
 }
 
 export type LocId = 'grain' | 'hospital' | 'party' | 'station' | 'church' | 'houses' | 'border' | 'camp' | 'market' | 'redcross';
-export interface LocState { looted: number; known: boolean; visits: number }
+export interface LocState { looted: number; known: boolean; visits: number; scene?: import('./explore').XScene }
 
 export interface Expedition {
   members: string[]; loc: LocId; leaveAt: number; returnAt: number; purpose: string; carry: Partial<Record<ItemKey, number>>;
@@ -141,6 +141,7 @@ export interface Encounter { kind: string; text: string; options: { id: string; 
 export interface Trip {
   loc: LocId; members: string[]; stage: 'going' | 'at' | 'back' | 'done'; until: number; notes: string[];
   encounter: Encounter | null; searches: number; arrivedAt: number; result: string[];
+  explore?: import('./explore').Explore;   // 正在建筑里搜刮
 }
 
 export interface PendingEvent { id: string; t: number; ctx: Record<string, unknown> }

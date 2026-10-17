@@ -47,6 +47,7 @@ tools/         无头模拟、内容校验、截图与自动试玩脚本
 
 | 命令 | 产物 |
 |---|---|
+| `npm run test:explore` | 场景化搜刮：生成各种建筑、检查连通性、自动搜一遍 |
 | `npm run electron` | 本地用 Electron 运行桌面版 |
 | `npm run dist:win` | `release/` 下的 Windows 安装版和便携版 exe（在 Linux 上打包需要 wine，建议交给 CI） |
 | `npm run dist:linux` | Linux AppImage |

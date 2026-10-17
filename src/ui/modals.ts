@@ -1,4 +1,6 @@
 // 各种窗口：事件对话、交易、仓库、会议、目标日志、关系、人物档案、物品、地图……
+import { ExploreModal } from './explore';
+import { hasScene, startExplore } from '../sim/explore';
 import { getImage } from '../art/overrides';
 import type { App, Modal } from './app';
 import { trim } from './app';
@@ -732,6 +734,15 @@ export class MapModal implements Modal {
       yy = ui.para(e.text, px + 12, yy, pw - 24, '#f0c8a0', 16) + 6;
       for (const o of e.options) yy = ui.option(px + 6, yy, pw - 12, o.label, () => { this.out.push(resolveEncounter(w, o.id)); this.advanceAfter(app, 20); });
       return;
+    }
+    // 进楼里搜（场景化搜刮）
+    if (hasScene(tr.loc)) {
+      const sc = w.locs[tr.loc].scene;
+      const left = sc ? sc.conts.filter((c) => !c.searched && c.kind !== 'pile').length : null;
+      yy = ui.option(px + 6, yy, pw - 12, tr.explore ? '回到楼里继续搜' : '进楼里搜', () => {
+        if (!tr.explore) startExplore(w);
+        app.push(new ExploreModal(app, () => { const n = tr.notes[tr.notes.length - 1]; if (n) this.out.push(n); if (!w.trip) app.pop(); }));
+      }, { tags: [[left === null ? '还没进去过' : left ? `还有 ${left} 处没翻` : '已经翻遍了', '#8ab0d8']], tip: '走进建筑，一间一间地搜。待得越久越危险。' });
     }
     const acts = locActions(w);
     for (const a of acts) {

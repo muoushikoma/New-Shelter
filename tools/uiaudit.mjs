@@ -84,6 +84,26 @@ const r = await page.evaluate(async () => {
     for (let i = 0; i < 30; i++) c.add(i % 2 ? 'npc' : 'me', '很长的一句话，'.repeat(1 + (i % 5))); frame('对话 · 长记录');
   }
   a.modals = []; a.menu = null;
+  // 搜刮场景：主界面、菜单、背包、被发现
+  {
+    const W = await import('/src/sim/war.ts');
+    const X = await import('/src/sim/explore.ts');
+    const { ExploreModal } = await import('/src/ui/explore.ts');
+    for (const loc of ['houses', 'church', 'party']) {
+      w.locs[loc].known = true; w.facts.exploreTut = true;
+      W.startTrip(w, loc, []); W.tripArrive(w); w.trip.encounter = null;
+      const ex = X.startExplore(w);
+      const m = new ExploreModal(a, () => {}); a.modals = [m]; frame('搜刮 ' + loc);
+      const sc = X.sceneOf(w, ex); const c = sc.conts[0];
+      m.menu = { x: 400, y: 300, t: { on: 'cont', id: c.id, label: '衣柜（锁着）', x: c.x, y: 200, w: 20, h: 30 } }; frame('搜刮菜单 ' + loc); m.menu = null;
+      ex.bag = { food: 5, cigs: 12, meds: 2, blanket: 1 }; m.bagOpen = true; frame('搜刮背包 ' + loc); m.bagOpen = false;
+      const e = W.makeEncounter(w, 'patrol'); m.encounter = { text: '手电筒的光照到了你的脸上。\n\n' + e.text, options: e.options, result: null }; frame('被发现 ' + loc);
+      m.encounter.result = '你们缩在断墙后面，手电的光从头顶扫过去。他们走了。'; frame('被发现结果 ' + loc); m.encounter = null;
+      w.trip = null; delete w.locs[loc].scene;
+    }
+    a.modals = [];
+    w.people.forEach((p) => { if (!p.alive) return; p.present = true; p.action = null; });
+  }
   for (const id of Object.keys(E.EVENTS)) {
     try {
       const ctx = { caller: other.id, kind: 'refugee', proposal: { kind: 'leader', target: other.id, label: '测试' }, accuser: other.id, accused: me.id, item: 'food', n: 1, from: other.id, initiator: other.id, partner: me.id, consent: 'willing', motive: ['慰藉'], hook: 'scene', a: other.id, b: me.id, about: other.id, by: other.id, leader: other.id, job: 'crank', target: other.id, id: other.id };

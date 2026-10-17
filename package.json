@@ -1,7 +1,7 @@
 {
   "name": "new-shelter",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -18,7 +18,8 @@
     "dist:win": "vite build && electron-builder --win --x64",
     "dist:linux": "vite build && electron-builder --linux",
     "android:sync": "vite build && node tools/android-setup.mjs",
-    "icons": "node tools/make-icons.mjs"
+    "icons": "node tools/make-icons.mjs",
+    "test:explore": "tsx tools/explore-test.ts"
   },
   "devDependencies": {
     "@capacitor/android": "^7.6.9",
