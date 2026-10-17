@@ -16,12 +16,15 @@
 <script src="hires.js"></script>
 <script src="scene_main.js"></script>
 <script src="scene_sheet.js"></script>
+<script src="pp.js"></script>
+<script src="scene_pp_cast.js"></script>
+<script src="scene_pp_door.js"></script>
 <script src="scene_meeting.js"></script>
 <script src="scene_dossier.js"></script>
 <script src="scene_surface.js"></script>
 <script>
   const name = new URLSearchParams(location.search).get('scene') || 'main';
-  const fn = { main: sceneMain, meeting: window.sceneMeeting, dossier: window.sceneDossier, surface: window.sceneSurface, sheet: window.sceneSheet }[name];
+  const fn = { main: sceneMain, meeting: window.sceneMeeting, dossier: window.sceneDossier, surface: window.sceneSurface, sheet: window.sceneSheet, pp_cast: window.scenePPCast, pp_door: window.scenePPDoor }[name];
   document.fonts.ready.then(() => { fn(document.getElementById('cv')); document.title += ' · done'; window.__done = true; });
 </script>
 </body>
