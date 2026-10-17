@@ -1,0 +1,1225 @@
+[
+  {
+    "id": "ns.lin.player.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "male"
+      ],
+      "partner.id.in": [
+        "lin"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{temperature} 度。{?privacy.eq:curtain ? 帘子外面有人翻了个身，床板吱了一声。 | 门闩是你从里面插上的，铁销冰得粘手。}林秋没有脱外衣，先解了围巾，叠好，放在枕头边上。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我手上有碘酒味，洗不掉的。」她把手伸给你闻，又缩回去。「……你要是嫌，就说。」"
+      },
+      {
+        "speaker": null,
+        "text": "你握住那只手，指节是裂的，掌心却烫。她低下头，额头抵在你锁骨上，过了很久才开始解你的扣子，一颗一颗，像在数脉搏。"
+      },
+      {
+        "speaker": null,
+        "text": "她的身体很瘦，肋骨在你手掌下一根一根起伏。你吻她的颈侧，她咬住嘴唇不出声，腿却慢慢缠上来，把你往里带。"
+      },
+      {
+        "speaker": null,
+        "text": "你进去的时候她猛地吸了一口气，指甲掐进你背上。毯子滑下去了，冷气贴着皮肤，只有相连的地方是热的，热得发疼。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……慢一点。」她在你耳边说，声音发颤，「我好久……好久没有被人这样抱着了。」"
+      },
+      {
+        "speaker": null,
+        "text": "她到的时候整个人绷成一张弓，又软下来，喘着，把脸埋进你肩窝。你感觉到有什么湿的东西，不知道是汗还是眼泪。"
+      },
+      {
+        "speaker": null,
+        "text": "后来她第一次没有失眠。睡着之前，她的手还搭在你的手腕上，两根手指按着脉。"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "relief"
+    ]
+  },
+  {
+    "id": "ns.lin.npc.comfort.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "lin"
+      ],
+      "partner.isPlayer": true,
+      "partner.gender.in": [
+        "male"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.any": [
+        "慰藉",
+        "逃避",
+        "取暖",
+        "爱慕"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "凌晨三点，林秋又醒着。她在你的铺位边站了很久，大衣裹得严严实实，手里攥着那条暗红色的围巾。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「我睡不着。一闭眼就是医院走廊，灯一盏一盏灭。」她停了一下，「……你让我躺一会儿，就一会儿。」"
+      },
+      {
+        "speaker": null,
+        "text": "她钻进来，带着一身寒气和药水味。起初她只是背对着你蜷着，后来翻过身，冰凉的手从你衣服下摆伸进来，贴在你小腹上取暖。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「别说话。」她吻你，吻得很笨，像很久没做过这件事，「什么都别问。我丈夫的事，今晚别问。」"
+      },
+      {
+        "speaker": null,
+        "text": "她跨坐上来，大衣还披在肩上，像一顶帐篷罩住两个人。她扶着你，一点一点沉下去，咬着自己的手背不让声音漏出来。"
+      },
+      {
+        "speaker": null,
+        "text": "她动得很慢，很重，每一下都像在把什么东西从身体里压出去。结束时她伏在你胸口，肩膀抖了很久。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「谢谢。」她说，然后又说，「……对不起。」你不知道她在跟谁道歉。"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "bond"
+    ]
+  },
+  {
+    "id": "ns.lin.deal.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "male"
+      ],
+      "partner.id.in": [
+        "lin"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "motive.any": [
+        "交易"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "你把说好的{deal.item}放在病床边的铁盘上。林秋看了它很久，那是她看病人伤口时的眼神：先估量，再决定。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……行。」她把东西收进药箱夹层，扣上锁，「灯别开。」"
+      },
+      {
+        "speaker": null,
+        "text": "她自己躺下，自己解开衣服，动作利落得像在做术前准备。你碰她的时候，她的身体是顺从的，眼睛一直看着天花板上的水渍。"
+      },
+      {
+        "speaker": null,
+        "text": "整个过程她只说了一句话：「快点。」结束后她立刻坐起来，背对着你扣扣子，扣错了一颗，又全部解开重扣。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「以后有人发烧，我照样给你看。」她说，「这是两回事。你记住，这是两回事。」"
+      }
+    ],
+    "aftertaste": [
+      "bitter",
+      "distant"
+    ]
+  },
+  {
+    "id": "ns.ana.player.male.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "male"
+      ],
+      "partner.id.in": [
+        "ana"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "阿娜先点了一支烟，吸了两口，按灭在罐头盒里，把剩下半截别在耳朵上。「留着，待会儿抽。」她笑，「我们那边的规矩。」"
+      },
+      {
+        "speaker": "partner",
+        "text": "「你冷得发抖。」她把你的手拉进她的毛衣里，按在她胸口，「这样呢？俱乐部后台比这儿还冷，我们都是这么暖手的。」"
+      },
+      {
+        "speaker": null,
+        "text": "她的乳房在你掌心里很沉，很热，乳尖硬得硌手。她仰头吻你，舌头上有烟草和雪水的味道，一边吻一边低声哼着一支你听不懂的歌。"
+      },
+      {
+        "speaker": null,
+        "text": "她把你推倒，骑上来，裙摆撩到腰上。她很湿，你进去的时候她「啊」了一声，又捂住嘴，眼睛弯起来，像在笑自己。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「嘘……他们会听见的。」她说着，腰却一下比一下沉，「让他们听见又怎样？反正外面在打仗。」"
+      },
+      {
+        "speaker": null,
+        "text": "她到的时候用她的母语喊了一个词，咬在你肩上。你随后也到了，她不让你出来，夹着你，趴在你身上喘，头发散了你满脸。"
+      },
+      {
+        "speaker": null,
+        "text": "她把耳朵上那半截烟取下来点上，分你一口。烟头的红光一明一暗。「过了河，」她说，「我带你去听真正的歌。」"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "relief",
+      "noisy"
+    ]
+  },
+  {
+    "id": "ns.ana.player.female.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "female"
+      ],
+      "partner.id.in": [
+        "ana"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{temperature} 度，阿娜的鼻尖冻得通红。她拉你躺进她那条带流苏的旧披肩里，「在俱乐部，同台的女歌手们冬天挤一张沙发睡，」她说，「没人觉得奇怪。」"
+      },
+      {
+        "speaker": "partner",
+        "text": "「可是我想的比挤一张沙发多一点。」她的手停在你腰上，「……你呢？」"
+      },
+      {
+        "speaker": null,
+        "text": "你吻她。她的嘴唇裂着口子，有一点血腥味。她轻轻笑出声，一只手解开你的衣服，另一只手还在给你们俩掖披肩的边角。"
+      },
+      {
+        "speaker": null,
+        "text": "她的手指冰凉，探进你腿间的时候你倒吸一口气。她立刻停住，在你耳边哈气，「我暖一暖再来。」第二次，她的手是热的。"
+      },
+      {
+        "speaker": null,
+        "text": "她很耐心，也很坏，在你快要到的时候放慢，看着你的脸笑。你抓住她的手腕，她才肯继续，直到你弓起身体，把呼声咬碎在她颈窝里。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「换你了。」她拉着你的手往下，声音哑了，「慢慢来……对，就是那儿。」"
+      },
+      {
+        "speaker": null,
+        "text": "后来你们裹在一起，听着头顶隐约的炮声。她用她的母语给你唱了半首歌，唱到一半睡着了。"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "bond"
+    ]
+  },
+  {
+    "id": "ns.ana.npc.song.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "ana"
+      ],
+      "partner.isPlayer": true,
+      "consent.in": [
+        "eager",
+        "willing"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "大家睡下以后，阿娜还坐在炉子边，把最后一点火拨旺。她回头看你，招了招手。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「你今晚一直在看我唱歌。」她把烟递给你，「别不承认。我在台上唱了六年，谁在看我，我闭着眼都知道。」"
+      },
+      {
+        "speaker": null,
+        "text": "她凑过来，用烟头的火光照你的脸，然后吻了你。很慢，很认真，像在台上唱最后一首歌，知道唱完就要散场。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「我不要你的东西，也不要你保护我。」她解开你的衣领，「我只要今天晚上。明天的事，明天再说。」"
+      },
+      {
+        "speaker": null,
+        "text": "她拉着你的手探进她的衣服里，引着你，告诉你哪里要轻、哪里要重。她不压低声音，喘息和炉火的噼啪声混在一起。"
+      },
+      {
+        "speaker": null,
+        "text": "最后她靠在你身上，汗在冷空气里冒着白汽。「我们那边有句话，」她说，「冬天里抱过的人，是要记一辈子的。」"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "noisy"
+    ]
+  },
+  {
+    "id": "ns.zhao.player.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "female"
+      ],
+      "partner.id.in": [
+        "zhao"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "赵铁军坐在床沿上，没动。他的手搁在膝盖上，指关节上全是旧疤，黑色的煤粉嵌在纹路里，洗了二十年也没洗出来。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我手重。」他瓮声瓮气地说，没有看你，「弄疼了你就踹我。我说真的。」"
+      },
+      {
+        "speaker": null,
+        "text": "你拉过他的手放在自己腰上。他像捧着一块随时会碎的东西，过了很久才收紧。他身上有酒味、汗味，还有炉灰的味道。"
+      },
+      {
+        "speaker": null,
+        "text": "他把你整个抱起来放到床上，压上来的时候用胳膊撑住了自己的分量。你能感觉到他硬得厉害，却一直等着，等你点头。"
+      },
+      {
+        "speaker": null,
+        "text": "你点了头。他进来得很深，很满，你喊出声，他立刻停住，粗重地喘，「疼？」你摇头，扣住他的后背让他继续。"
+      },
+      {
+        "speaker": null,
+        "text": "他像在井下抡镐一样，一下一下，沉，稳，床板在你们身下吱吱作响。你到的时候抓破了他的肩膀，他闷哼一声，也跟着交代了。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……我坐牢那两年，」他躺在你旁边，看着黑漆漆的顶，「做梦都没梦到过这个。」"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "noisy"
+    ]
+  },
+  {
+    "id": "ns.zhao.npc.bottle.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "zhao"
+      ],
+      "partner.isPlayer": true,
+      "partner.gender.in": [
+        "female"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "酒瓶空了，放在地上。赵铁军的眼睛红着，不是醉，是熬的。他把你按在墙上，又松开，后退了一步。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「你说不，我现在就走，回去睡我的。」他的声音哑得像砂纸，「我这辈子不碰不愿意的人。工头那种人才那样。」"
+      },
+      {
+        "speaker": null,
+        "text": "你没有说不。他低头吻你，胡茬扎得你脸疼，手掌从你后背滑下去，隔着裤子托住你，把你往他身上带。"
+      },
+      {
+        "speaker": null,
+        "text": "他没有脱你的衣服，只是解开了必要的扣子。墙很冷，他的胸口很烫。你被他顶在墙和他之间，每一下都撞得你脚尖离地。"
+      },
+      {
+        "speaker": null,
+        "text": "他在你耳边粗声喘着，叫你的名字，叫得很难听，也很真。最后他抵着你不动了，额头靠在你肩上，像一头累垮的牲口。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「……明天你要是后悔，就当我喝多了。」他替你把扣子一颗一颗扣好，手指笨得扣了三次。"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "shame"
+    ]
+  },
+  {
+    "id": "ns.su.player.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "male"
+      ],
+      "partner.id.in": [
+        "su"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "苏曼摘下发卡，一根一根放进铁皮笔盒里，盘了二十年的发髻散下来，里面掺着一半白发。她做这件事的样子，像在批改作业。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我丈夫死了九年。」她说，「之后我没让任何人碰过我。所以你要是只是冷，或者只是怕，现在说还来得及。」"
+      },
+      {
+        "speaker": null,
+        "text": "你说不是。她看了你很久，像在判断一个学生有没有撒谎，然后点了点头，开始解她那件褪色的毛呢外套。"
+      },
+      {
+        "speaker": null,
+        "text": "她的身体比她的脸年轻，也比她的话软。你吻她胸口的时候，她闭着眼，一只手抓着床单，另一只手插进你头发里，攥得很紧。"
+      },
+      {
+        "speaker": null,
+        "text": "她很久才湿，你很耐心。等你终于进去，她轻轻「啊」了一声，那声音连她自己都吓了一跳，随即红了脸，别过头去。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……别看我。」她说。可她的腿缠住了你的腰，一点也不让你走。"
+      },
+      {
+        "speaker": null,
+        "text": "她到的时候没有声音，只是全身发抖，咬着手指，眼角有泪。之后她背过身，过了很久才说：「谢谢你没有急。」"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "bond"
+    ]
+  },
+  {
+    "id": "ns.su.npc.letter.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "su"
+      ],
+      "partner.isPlayer": true,
+      "partner.gender.in": [
+        "male"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "蜡烛只剩指甲盖那么长。苏曼把写了一半的信折起来，压在枕头下面。信是写给一个被带走的学生的，她知道寄不出去。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「陪我坐一会儿。」她说，然后自己先笑了，「不对。我不想只是坐着。我都快五十的人了，不想再假装。」"
+      },
+      {
+        "speaker": null,
+        "text": "她吹灭了蜡烛。黑暗里她的动作很果断，解开你的衣服，也解开她自己的，拉着你的手放在她小腹上，那里有一道很旧的疤。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「慢点，」她说，「我教了半辈子书，最会等。你也要学会等。」"
+      },
+      {
+        "speaker": null,
+        "text": "她在上面，动得很慢，像在一行一行默写一首背得烂熟的诗。最后她伏下来，喘着，用额头抵住你的额头。"
+      },
+      {
+        "speaker": null,
+        "text": "天亮前她就起来了，重新盘好头发，一根白发也没露出来。只有那封信，后来她再也没写下去。"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "tender"
+    ]
+  },
+  {
+    "id": "ns.liu.player.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "female"
+      ],
+      "partner.id.in": [
+        "liu"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "刘小川手足无措地坐着，帽子攥在手里，帽檐都被他捏变了形。他脸上有一道机油印子，你用拇指替他抹掉，他整个人都僵住了。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我……我没跟别人……」他结巴了，脸红到耳根，「我是说，我知道怎么修发电机，可是这个我不知道怎么……」"
+      },
+      {
+        "speaker": null,
+        "text": "你拉过他的手。他的手很大，很粗糙，抖得厉害。你教他，他学得很认真，像拆一台从没见过的机器，一个零件一个零件地摸。"
+      },
+      {
+        "speaker": null,
+        "text": "他吻你的胸口，吻你的肚子，问你「这样行吗」，问了七八遍。等你终于把他拉进身体里，他闷哼一声，额头抵着你，一动也不敢动。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我……我怕我太快……」他喘着说。你笑了，抱住他，告诉他快也没关系，这里没人打分。"
+      },
+      {
+        "speaker": null,
+        "text": "他果然很快。可是他不肯停，红着脸，用手、用嘴，固执地、笨拙地，一直弄到你在他怀里发抖为止。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我喜欢你很久了。」后来他说，声音埋在你头发里，「从你第一天进来，帮我扶那个油桶开始。」"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "bond"
+    ]
+  },
+  {
+    "id": "ns.liu.npc.gen.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "liu"
+      ],
+      "partner.isPlayer": true,
+      "partner.gender.in": [
+        "female"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "发电机修好了，嗡嗡声重新稳下来，灯泡亮了。刘小川满手油污地转过身，看见你还站在门口，笑得像个傻子。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「它又能转了。」他说，然后笑容慢慢收住，「我有句话憋了好多天。我要是说了你别笑话我……我能不能抱抱你？」"
+      },
+      {
+        "speaker": null,
+        "text": "他抱你的时候先在裤子上擦了半天手。发电机房很暖，空气里是柴油和热铁的味道，他心跳得隔着两层衣服都听得见。"
+      },
+      {
+        "speaker": null,
+        "text": "他吻你，你回吻他，他的胆子才大起来，把你抱上工具台，扳手和螺丝哗啦啦掉了一地。他也不管，只顾着解你的扣子。"
+      },
+      {
+        "speaker": null,
+        "text": "他进来得很急，又马上慢下来，一边动一边看你的脸，看你皱眉就停，看你咬唇就加快。灯泡在头顶晃，影子在墙上晃。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「我会对你好的。」结束后他喘着说，「我什么都能修。屋顶、炉子……什么都能。」"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "bond",
+      "noisy"
+    ]
+  },
+  {
+    "id": "ns.wang.npc.pact.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "wang"
+      ],
+      "partner.isPlayer": true,
+      "partner.gender.in": [
+        "male"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.any": [
+        "交易"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "transaction",
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "王翠把门闩插好，从大衣内衬里摸出一个小纸包，里面是一只避孕套。她把它拍在你手心里，像在柜台上找零。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「先说好。」她解开围巾，「我不跟谁谈感情。我要的是夜里有人挨着我睡，有人敢替我挡事。你出力，我出东西，两清。」"
+      },
+      {
+        "speaker": null,
+        "text": "她脱衣服很快，一点也不扭捏。四十出头的身体，丰腴，结实，小腹上有几道浅浅的纹。她拉你躺下，自己骑了上来。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「看什么？」她挑了挑眉，伸手握住你，熟练地替你戴好，「我在边境混了十几年，什么没见过。你只管省着点力气。」"
+      },
+      {
+        "speaker": null,
+        "text": "她坐下来，一口气吞到底，舒服地叹了一声。她知道自己要什么，掌着节奏，时快时慢，偶尔俯下来咬你的耳朵，说几句粗话。"
+      },
+      {
+        "speaker": null,
+        "text": "她到的时候眯着眼，大腿夹紧你，喉咙里发出一种低低的、满足的声音。随后她撑着你的胸口，把你也送到了头。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「不错。」她翻身下来，从烟盒里抽出两支，一支给你，「这笔买卖，我不亏。你也不亏。」"
+      }
+    ],
+    "aftertaste": [
+      "relief"
+    ]
+  },
+  {
+    "id": "ns.wang.player.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "male"
+      ],
+      "partner.id.in": [
+        "wang"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "王翠听完你的话，没急着回答。她慢慢剥开一颗糖，含进嘴里，又把糖纸叠成小方块塞进口袋。什么东西在她手里都要留着。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「你倒是直接。」她上下打量你，「行啊。我也冷，也憋。不过我丑话说在前头，睡了不等于我仓库的东西归你。」"
+      },
+      {
+        "speaker": null,
+        "text": "她吻你，嘴里是甜的。她的手很有经验，三两下就把你撩得喘不上气，然后才不紧不慢地解开自己的衣服，金戒指在内衬里叮当响。"
+      },
+      {
+        "speaker": null,
+        "text": "她躺下，张开腿，把你拉进去。「用点力，」她说，「别跟个书生似的。」你照做了，她仰起脖子，舒服地哼了一声。"
+      },
+      {
+        "speaker": null,
+        "text": "她不装，也不忍，叫得很直白，手抓着你的屁股往里按。到的时候她骂了一句粗话，笑着，浑身的肉都在颤。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「你这人还行。」她用你的衬衫擦了擦汗，「下回再想要，带包烟来。不是价钱，是礼数。」"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "tender"
+    ]
+  },
+  {
+    "id": "ns.jiang.player.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "female"
+      ],
+      "partner.id.in": [
+        "jiang"
+      ],
+      "partner.age.gte": 20,
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "蒋小舟先把眼镜摘下来，折好，放在枕头底下，又拿出来，放到更远的地方。你没见过一个读到大学三年级的成年人这么紧张。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我读过很多书，」他说，「讲这件事的也读过。可是没有一本告诉我，手应该放在哪儿。」"
+      },
+      {
+        "speaker": null,
+        "text": "你牵着他的手放在你胸口。他的掌心全是汗，却很烫。他吻你，起初只是碰一碰，后来越吻越深，呼吸乱成一团。"
+      },
+      {
+        "speaker": null,
+        "text": "他很硬，也很急，第一次没找准，窘得想躲。你笑着扶住他，引着他进来。他的眼睛一下子睁大了，像看见了什么他一直相信的东西。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「原来……」他说不下去了，把脸埋在你颈窝里，一下一下动着，越来越快，嘴里断断续续地念着你的名字。"
+      },
+      {
+        "speaker": null,
+        "text": "他坚持得不久，可他在你耳边说了很多话：关于战争结束后，关于自由，关于你。那些话放在白天会很可笑，在这里却不。"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "bond"
+    ]
+  },
+  {
+    "id": "ns.jiang.npc.fear.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "jiang"
+      ],
+      "partner.isPlayer": true,
+      "partner.gender.in": [
+        "female"
+      ],
+      "initiator.age.gte": 20,
+      "consent.in": [
+        "eager",
+        "willing"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "广播里念到了他们学校的名字。蒋小舟一整天都没说话，夜里却来了，站在你的铺位边，眼镜片上全是哈气。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「我不想一个人死在这里，什么都没做过。」他声音发抖，「我知道这么说很自私。你可以拒绝。你拒绝我也不会怪你。」"
+      },
+      {
+        "speaker": null,
+        "text": "你掀开毯子。他躺进来，抱着你，像抱着一根浮木，抱了很久才敢吻你。他的吻又急又乱，带着咸味。"
+      },
+      {
+        "speaker": null,
+        "text": "你帮他脱掉那件洗得发白的学生外套。他在你身体里的时候一直睁着眼，好像怕一闭眼，这一切就会被谁没收。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「谢谢你，」他喘着说，「谢谢你……我会记住的，不管以后去哪儿，不管他们把我关在哪儿。」"
+      },
+      {
+        "speaker": null,
+        "text": "他睡着的时候还攥着你的手。你听着通风机咯吱咯吱地转，很久都没有睡着。"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "relief"
+    ]
+  },
+  {
+    "id": "ns.ye.player.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "female"
+      ],
+      "partner.id.in": [
+        "ye"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "叶琳把刀从靴筒里拔出来，放在伸手够得着的地方，才开始解衣服。军装底下是一件缝补过很多次的旧背心。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我不会说好听的。」她说，「你想要那些，找别人。」"
+      },
+      {
+        "speaker": null,
+        "text": "你不要那些。你吻她，她起初很僵，像在站岗，后来才慢慢松开，一只手按住你的后颈，吻得又狠又深，咬破了你的嘴唇。"
+      },
+      {
+        "speaker": null,
+        "text": "她身上有很多疤，你一条一条摸过去，她没有拦。你的手滑到她腿间，她已经湿了，喉咙里压着一声闷哼，抓住你的手腕往里按。"
+      },
+      {
+        "speaker": null,
+        "text": "她不喜欢慢。你照她要的做，两根手指，再用力一点，她咬住你的肩膀，整个人绷紧，像拉满的弓弦，然后猛地松开。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……轮到我了。」她翻身压住你，眼睛在黑暗里亮得吓人。她的手比你想的更懂，懂得让你哭出来。"
+      },
+      {
+        "speaker": null,
+        "text": "后来她背对着你躺着，你以为她睡了。过了很久她说：「今晚我没做梦。」声音轻得几乎听不见。"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "bond"
+    ]
+  },
+  {
+    "id": "ns.ye.npc.nightmare.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "ye"
+      ],
+      "partner.isPlayer": true,
+      "partner.gender.in": [
+        "female"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "叶琳又从梦里惊醒了，满头冷汗，手已经摸到了刀柄。看清是你，她才松开手，盯着墙，胸口剧烈起伏。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「别问。」她说。过了一会儿又说，「……也别走。」"
+      },
+      {
+        "speaker": null,
+        "text": "她把你拉进怀里，抱得很紧，手指掐进你的胳膊。然后她吻你，吻得像在确认你是活的，是热的，不是梦里那些冻硬的脸。"
+      },
+      {
+        "speaker": null,
+        "text": "她没有什么耐心，扯开你的衣服，手掌贴着你的皮肤一路往下。你在她手里很快就喘不上气，她看着你，眼神终于有了温度。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「再来。」她低声说，像在下命令，「让我听见你。我需要听见点别的声音。」"
+      },
+      {
+        "speaker": null,
+        "text": "你们一直到通风机换班的时候才停。她把额头抵在你肩上，第一次说起了她的部队，只说了一句：「就剩我一个。」"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "bond"
+    ]
+  },
+  {
+    "id": "ns.marina.player.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "male"
+      ],
+      "partner.id.in": [
+        "marina"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "玛丽娜把她那本护照塞进枕套里，拍了拍，像在哄它睡觉。然后她转过来，金色的头发在昏暗里像一团快熄的火。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我在这个国家待了三年，」她的口音很重，用词却很准，「写了很多关于你们的报道。现在我想知道一点别的。」"
+      },
+      {
+        "speaker": null,
+        "text": "她吻你的样子很专注，像在采访，问题一个接一个：这里呢？这样呢？你喜欢吗？你回答她，她就记住，下一次做得更好。"
+      },
+      {
+        "speaker": null,
+        "text": "她的身体很白，冷得起了一层细细的鸡皮疙瘩。你吻遍她的胸口，她笑着说痒，又按着你的头不让你停，一路往下。"
+      },
+      {
+        "speaker": null,
+        "text": "你用嘴让她到了一次。她喘着把你拉上来，盘腿缠住你，引着你进去，用她自己的语言说了一句很长的话，你一个字都没听懂。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我说的是，」后来她翻译给你听，点了一支烟，「如果这篇报道能发出去，你不会在里面。你是我的。」"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "relief"
+    ]
+  },
+  {
+    "id": "ns.marina.npc.curious.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "marina"
+      ],
+      "partner.isPlayer": true,
+      "partner.gender.in": [
+        "male"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "玛丽娜坐在你的铺位上，膝盖上摊着一本写满外文的笔记本。看见你回来，她合上本子，把笔夹在耳朵上。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「我的签证早就过期了，」她说，「护照也许明天就会变成一张死刑判决。所以我决定，今天想做什么，就做什么。」"
+      },
+      {
+        "speaker": null,
+        "text": "她拉你坐下，跨坐到你腿上，一边解你的扣子一边端详你的脸，像在对焦。「别动，」她说，「让我记住这个。」"
+      },
+      {
+        "speaker": null,
+        "text": "她把你引进身体的时候闭上了眼睛。她动得很投入，长发垂下来扫着你的脸，喘息里夹着外语的单词，像在念一份电报。"
+      },
+      {
+        "speaker": null,
+        "text": "到的时候她仰起头，喉咙绷得很紧，喊出了一个人名，不是你的。她愣了一下，然后伏在你肩上，很久没抬头。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「对不起。」她说，「那是我在首都的摄影师。他们在广场上……」她没说完，只是把你抱得更紧了些。"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "shame"
+    ]
+  },
+  {
+    "id": "ns.han.warmth.01",
+    "hook": "scene",
+    "when": {
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.any": [
+        "取暖",
+        "慰藉"
+      ],
+      "partner.isPlayer": true,
+      "partner.gender.in": [
+        "female"
+      ],
+      "initiator.id.in": [
+        "han"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "老韩把他那条打了补丁的军毯抖开，盖在你们两个人身上。他身上有土豆、旱烟和冻土的味道，像整个冬天的农场。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「我老伴走了六年。」他说，「我这把年纪，也不图什么。就是……夜里太冷了，冷得人想哭。」"
+      },
+      {
+        "speaker": null,
+        "text": "他的手很粗，很慢，抚过你的后背，像抚过一垄刚翻过的地。他吻你的额头，吻你的眼睛，最后才犹豫着吻你的嘴。"
+      },
+      {
+        "speaker": null,
+        "text": "他进来得很慢，很小心，一直问你冷不冷。毯子底下慢慢热起来了，他的呼吸沉沉地喷在你耳边，带着一点咳嗽。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「你别嫌我这把老骨头硌人。」他说完自己先笑了，笑出一阵咳嗽，「年轻时候，我在地里能扛两麻袋。」"
+      },
+      {
+        "speaker": null,
+        "text": "后来他睡得很沉，打着呼噜，一只手还护在你背后。你想起他口袋里那几粒种子，不知道明年春天它们会被种在哪里。"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "relief"
+    ]
+  },
+  {
+    "id": "ns.han.player.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "female"
+      ],
+      "partner.id.in": [
+        "han"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "老韩听懂了你的意思，搓着手，半天没说话。他脸上的皱纹在昏暗里很深，像犁过的沟。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「我比你大那么多，」他说，「你图我什么呢？……算了，不问了。这世道，问那么多干什么。」"
+      },
+      {
+        "speaker": null,
+        "text": "他脱衣服很慢，叠得整整齐齐，像要下地前把衣裳挂在地头。他的身体干瘦而结实，胸口的毛已经白了一半。"
+      },
+      {
+        "speaker": null,
+        "text": "他抱着你，像抱着一捆怕被雪压坏的苗。动起来的时候不快，可每一下都很实在，很暖，暖得你想哭。"
+      },
+      {
+        "speaker": null,
+        "text": "结束后他咳嗽了一阵，喘匀了，把你的手放进他那件旧棉袄的口袋里。里面有几粒种子，被他的体温焐得温温的。"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  }
+]

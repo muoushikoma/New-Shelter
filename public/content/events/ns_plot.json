@@ -1,0 +1,1051 @@
+[
+  {
+    "id": "ns_ana_river",
+    "title": "对岸的人",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        20,
+        23
+      ],
+      "chance": 0.1,
+      "once": true,
+      "minDay": 5
+    },
+    "cast": {
+      "a": {
+        "who": "ana",
+        "when": {
+          "rel.trust.gte": 50
+        }
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "阿娜把你拉到通风井边上，确认四下没人，才压低声音开口。\n\n「河对岸有个人，大家叫他老鹰。冬天河面冻实了，他每个月走两趟，带烟和药过来，带人过去。」她顿了顿，「过去的人，要付钱。很多钱。」",
+    "choices": [
+      {
+        "label": "「带上我。我们一起走。」",
+        "effects": [
+          {
+            "op": "know",
+            "who": "player",
+            "fact": "K_SMUG"
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 8,
+            "affection": 5
+          },
+          {
+            "op": "fact",
+            "key": "story.ana_cross_together",
+            "value": true
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": 25,
+            "text": "{player.name}说要跟我一起过河。"
+          }
+        ],
+        "result": "她看了你很久，伸出小拇指。「我们那边是这样说定的。」你勾住了它。"
+      },
+      {
+        "label": "「你为什么告诉我？」",
+        "effects": [
+          {
+            "op": "know",
+            "who": "player",
+            "fact": "K_SMUG"
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 3
+          }
+        ],
+        "result": "「因为一个人过河，冻死了没人知道。」她笑了一下，「两个人，至少还有一个能回来讲故事。」"
+      },
+      {
+        "label": "「这种事，应该让领导知道。」",
+        "when": {
+          "leader": "npc"
+        },
+        "hide": true,
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": -20,
+            "resentment": 15,
+            "affection": -8
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": -40,
+            "text": "我信错了人。{player.name}想把老鹰的事告诉领导。"
+          }
+        ],
+        "result": "阿娜的脸一下子冷了。「你说吧。」她转身就走，「我会说是你编的。看看他们信谁。」"
+      },
+      {
+        "label": "「太危险了。冰面会裂的。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": 2
+          },
+          {
+            "op": "know",
+            "who": "player",
+            "fact": "K_SMUG"
+          }
+        ],
+        "result": "「留在这儿就不危险吗？」她摇摇头，「等占领军来了，像我这样口音的人，第一批就会被拉出去。」"
+      }
+    ]
+  },
+  {
+    "id": "ns_marina_film",
+    "title": "胶卷",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        13,
+        20
+      ],
+      "chance": 0.1,
+      "once": true,
+      "minDay": 4
+    },
+    "cast": {
+      "a": {
+        "who": "marina",
+        "when": {
+          "rel.trust.gte": 45
+        }
+      }
+    },
+    "speaker": "a",
+    "text": "玛丽娜把你叫到一边，从大衣袖子的夹层里抽出三个小铁盒。\n\n「火车站广场，十一月九号。」她的声音很平，「他们说那些人是暴徒。这里面是他们的脸。如果有人搜到它，我会死。如果它出不去，他们就白死了。」",
+    "choices": [
+      {
+        "label": "「藏进通风井。那里没人会去翻。」",
+        "effects": [
+          {
+            "op": "fact",
+            "key": "story.film_hidden",
+            "value": "vent"
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 10,
+            "affection": 5
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": 30,
+            "text": "{player.name}帮我藏了胶卷。"
+          }
+        ],
+        "result": "你们趁着换班，把铁盒塞进通风井的缝里，用碎砖堵上。玛丽娜在砖上划了一个很小的记号。"
+      },
+      {
+        "label": "「交给军方，说不定能换一张通行证。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": -12,
+            "resentment": 10
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 8
+          }
+        ],
+        "result": "「你知道开枪的是谁吗？」她把铁盒收了回去，「是军方。」"
+      },
+      {
+        "label": "「你自己藏好。别把我卷进去。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": -4
+          }
+        ],
+        "result": "她点点头，像是早就料到了。「对。这才是聪明人的回答。」"
+      }
+    ]
+  },
+  {
+    "id": "ns_jiang_broadcast",
+    "title": "通缉",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        18,
+        22
+      ],
+      "chance": 0.12,
+      "once": true,
+      "minDay": 3,
+      "when": {
+        "power": true
+      }
+    },
+    "cast": {
+      "a": {
+        "who": "jiang"
+      },
+      "b": {
+        "who": "zhou",
+        "optional": true
+      }
+    },
+    "speaker": "a",
+    "text": "收音机里，播音员用一成不变的腔调念着名单：「……省师范学院，反革命煽动分子，以下人员务必于三日内向当地内务处报到……」\n\n蒋小舟手里的罐头掉在地上，滚到了桌子底下。没有人去捡。",
+    "lines": [
+      {
+        "who": "b",
+        "text": "反动学生。抓一个，少一个。"
+      }
+    ],
+    "choices": [
+      {
+        "label": "关掉收音机",
+        "effects": [
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -5
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 4
+          }
+        ],
+        "result": "屋里一下子安静了。蒋小舟弯腰把罐头捡起来，擦了擦，手一直在抖。"
+      },
+      {
+        "label": "「他们找不到这儿的。」（对他说）",
+        "effects": [
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -8
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 6,
+            "affection": 3
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": 20,
+            "text": "广播念名单那天，{player.name}站在我这边。"
+          },
+          {
+            "op": "event",
+            "id": "ns_jiang_night",
+            "delay": 300
+          }
+        ],
+        "result": "「你不知道他们，」他小声说，「他们什么都找得到。」可他没有再发抖。"
+      },
+      {
+        "label": "「名单上有你吗？」（当着大家的面）",
+        "effects": [
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 15
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "fear": 10,
+            "trust": -8
+          },
+          {
+            "op": "rel",
+            "from": "all",
+            "to": "a",
+            "trust": -4
+          }
+        ],
+        "result": "所有人都看着他。蒋小舟张了张嘴，什么也没说出来。那天晚上，有人把铺位挪得离他远了一点。"
+      }
+    ]
+  },
+  {
+    "id": "ns_he_cellar",
+    "title": "地窖",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        6,
+        9
+      ],
+      "chance": 0.1,
+      "once": true,
+      "minDay": 6,
+      "when": {
+        "warPhase.gte": 2
+      }
+    },
+    "cast": {
+      "a": {
+        "who": "he",
+        "when": {
+          "rel.trust.gte": 50
+        }
+      }
+    },
+    "speaker": "a",
+    "text": "何神父在炉子边祷告完，把你叫到身边。\n\n「教堂的地窖里，有一条旧排水道，」他低声说，「四十年前修的，那时候还允许做弥撒。顺着它走，能一直走到河边的芦苇荡。我一直没跟任何人说。」",
+    "choices": [
+      {
+        "label": "「为什么现在告诉我？」",
+        "effects": [
+          {
+            "op": "know",
+            "who": "player",
+            "fact": "K_SMUG"
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 4
+          },
+          {
+            "op": "fact",
+            "key": "story.he_route_told",
+            "value": true
+          }
+        ],
+        "result": "「因为我老了，走不动了。」他笑了笑，「路不该跟着人一起埋进土里。」"
+      },
+      {
+        "label": "「应该让大家都知道。」",
+        "effects": [
+          {
+            "op": "know",
+            "who": "player",
+            "fact": "K_SMUG"
+          },
+          {
+            "op": "know",
+            "who": "all",
+            "fact": "K_SMUG"
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "respect": 3
+          },
+          {
+            "op": "rel",
+            "from": "all",
+            "to": "player",
+            "trust": 2
+          },
+          {
+            "op": "fact",
+            "key": "story.he_route_public",
+            "value": true
+          }
+        ],
+        "result": "何神父犹豫了一下，点点头。那天中午，他在长桌边把这条路讲给了所有人。有人眼睛亮了，有人开始算计。"
+      },
+      {
+        "label": "「这条路，只有我们俩知道。」",
+        "effects": [
+          {
+            "op": "know",
+            "who": "player",
+            "fact": "K_SMUG"
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": -3,
+            "respect": -4
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 6
+          },
+          {
+            "op": "fact",
+            "key": "story.he_route_secret",
+            "value": true
+          }
+        ],
+        "result": "「秘密是有分量的。」他叹了口气，「你要背得动才好。」"
+      }
+    ]
+  },
+  {
+    "id": "ns_han_seeds",
+    "title": "种子",
+    "trigger": {
+      "on": "daily",
+      "hour": 9,
+      "once": true,
+      "minDay": 5,
+      "when": {
+        "food.lt": 45
+      }
+    },
+    "cast": {
+      "a": {
+        "who": "han",
+        "when": {
+          "items.seeds.gte": 1
+        }
+      }
+    },
+    "speaker": "a",
+    "art": "meeting",
+    "text": "早饭的时候，老韩把一个布包放在长桌上，打开，里面是几小包种子和一团用湿报纸包着的菌种。\n\n「下层那块地方有渗水，暖和，见不着光也不要紧。」他说，「豆芽一个礼拜，蘑菇一个月。就是得有人跟我一起翻土、挑水。」",
+    "choices": [
+      {
+        "label": "「我跟你干。」",
+        "effects": [
+          {
+            "op": "need",
+            "who": "player",
+            "need": "energy",
+            "add": -10
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 8,
+            "respect": 6
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -10
+          },
+          {
+            "op": "shelter",
+            "key": "farm",
+            "add": 5
+          },
+          {
+            "op": "fact",
+            "key": "story.han_farm",
+            "value": true
+          }
+        ],
+        "result": "你们用铁锹和罐头盒把下层的碎砖清出一块地方。老韩跪在地上，把种子一粒一粒按进土里，像在按手印。"
+      },
+      {
+        "label": "「叫大家轮班干。」",
+        "effects": [
+          {
+            "op": "need",
+            "who": "everyone",
+            "need": "energy",
+            "add": -5
+          },
+          {
+            "op": "rel",
+            "from": "all",
+            "to": "player",
+            "respect": 2
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "respect": 4
+          },
+          {
+            "op": "shelter",
+            "key": "farm",
+            "add": 5
+          },
+          {
+            "op": "fact",
+            "key": "story.han_farm",
+            "value": true
+          }
+        ],
+        "result": "有人嘟囔，有人干得很卖力。中午的时候，下层多了一块湿漉漉的黑土，像这个地方第一次长出了一点希望。"
+      },
+      {
+        "label": "「先顾眼前吧。种子也能吃。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "resentment": 10,
+            "trust": -5
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 10
+          }
+        ],
+        "result": "老韩没说话，把布包重新系好，揣回怀里。他一整天都没再开口。"
+      }
+    ]
+  },
+  {
+    "id": "ns_zhou_letter",
+    "object": "files",
+    "label": "翻一翻档案柜最底下那层",
+    "title": "复写纸",
+    "trigger": {
+      "once": true
+    },
+    "cast": {
+      "b": {
+        "who": "zhou",
+        "optional": true
+      }
+    },
+    "text": "最底下那层的卷宗受了潮，粘在一起。你一份一份揭开，在一沓发黄的复写纸里，看见了一个熟悉的签名：周建国。\n\n「……经查，该户主长期收听敌台，散布消极言论，建议从严处理。」下面列着七个名字。有两个，你在镇上听说过。",
+    "choices": [
+      {
+        "label": "把它收起来",
+        "effects": [
+          {
+            "op": "fact",
+            "key": "story.zhou_letter_found",
+            "value": true
+          },
+          {
+            "op": "need",
+            "who": "player",
+            "need": "stress",
+            "add": 3
+          }
+        ],
+        "result": "你把那张复写纸折好，塞进贴身的口袋。它轻得几乎感觉不到，却像一颗没拉环的手榴弹。"
+      },
+      {
+        "label": "拿去长桌上，给所有人看",
+        "when": {
+          "b.name.exists": true
+        },
+        "why": "周建国不在这里",
+        "effects": [
+          {
+            "op": "fact",
+            "key": "story.zhou_letter_found",
+            "value": true
+          },
+          {
+            "op": "fact",
+            "key": "story.zhou_letter_public",
+            "value": true
+          },
+          {
+            "op": "rel",
+            "from": "all",
+            "to": "b",
+            "trust": -15,
+            "respect": -10
+          },
+          {
+            "op": "rel",
+            "from": "b",
+            "to": "player",
+            "resentment": 35,
+            "fear": 10
+          },
+          {
+            "op": "rel",
+            "from": "all",
+            "to": "player",
+            "respect": 3
+          },
+          {
+            "op": "log",
+            "text": "周建国写过举报信的事，所有人都知道了。",
+            "important": true
+          }
+        ],
+        "result": "长桌边一片死寂。周建国的脸先是涨红，又变得煞白。「这是伪造的！」他说，「这种东西谁都能写！」没有人接话。"
+      },
+      {
+        "label": "烧掉它",
+        "effects": [
+          {
+            "op": "fact",
+            "key": "story.zhou_letter_burned",
+            "value": true
+          },
+          {
+            "op": "need",
+            "who": "player",
+            "need": "stress",
+            "add": -2
+          }
+        ],
+        "result": "火苗舔上纸角，七个名字一个接一个蜷曲、变黑。你不知道自己是在保护谁。"
+      }
+    ]
+  },
+  {
+    "id": "ns_lin_morphine",
+    "title": "吗啡",
+    "trigger": {
+      "on": "hourly",
+      "chance": 0.2,
+      "cooldown": 10,
+      "minDay": 3
+    },
+    "cast": {
+      "b": {
+        "when": {
+          "conds.any": [
+            "wound"
+          ],
+          "health.lt": 60
+        }
+      },
+      "a": {
+        "who": "lin"
+      }
+    },
+    "speaker": "b",
+    "text": "{b.name}的伤口又裂开了，疼得在铺上打滚，牙齿咬进了毯子里。林秋给{他|她|TA:b}换了药，药柜里已经没有止疼片了。\n\n你注意到，林秋的手在她那只药箱的夹层上停了一下，又移开了。",
+    "lines": [
+      {
+        "who": "a",
+        "text": "……忍一忍。天亮就好了。"
+      }
+    ],
+    "choices": [
+      {
+        "label": "（低声对林秋）「你那支吗啡……」",
+        "check": {
+          "skill": "persuade",
+          "bonus": 10
+        },
+        "effects": [
+          {
+            "op": "need",
+            "who": "b",
+            "need": "stress",
+            "add": -25
+          },
+          {
+            "op": "health",
+            "who": "b",
+            "add": 3
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 10
+          },
+          {
+            "op": "rel",
+            "from": "b",
+            "to": "player",
+            "affection": 6,
+            "debt": 6
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": -3
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": -5,
+            "text": "我把留给自己的那支吗啡给了{b.name}。{player.name}知道。"
+          }
+        ],
+        "result": "林秋看了你很久，终于打开了夹层。针头扎进去不到一分钟，{b.name}就安静了下来。林秋坐在床边，把空针管握在手里，握了很久。",
+        "fail": {
+          "effects": [
+            {
+              "op": "rel",
+              "from": "a",
+              "to": "player",
+              "resentment": 8,
+              "trust": -6
+            }
+          ],
+          "result": "「你看错了。」林秋把药箱扣上，抱在怀里，「我什么都没有。」"
+        }
+      },
+      {
+        "label": "按住{b.name}，让林秋重新缝合",
+        "effects": [
+          {
+            "op": "need",
+            "who": "player",
+            "need": "energy",
+            "add": -8
+          },
+          {
+            "op": "health",
+            "who": "b",
+            "add": 4
+          },
+          {
+            "op": "rel",
+            "from": "b",
+            "to": "player",
+            "trust": 4
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "respect": 3
+          }
+        ],
+        "result": "你把全身的重量压在{b.name}身上。{他|她|TA:b}的惨叫把所有人都吵醒了。缝完最后一针，林秋的额头上全是汗。"
+      },
+      {
+        "label": "递一瓶酒过去",
+        "when": {
+          "player.items.alcohol.gte": 1
+        },
+        "why": "你没有酒",
+        "effects": [
+          {
+            "op": "item",
+            "who": "player",
+            "item": "alcohol",
+            "qty": -1
+          },
+          {
+            "op": "need",
+            "who": "b",
+            "need": "stress",
+            "add": -12
+          },
+          {
+            "op": "rel",
+            "from": "b",
+            "to": "player",
+            "affection": 4,
+            "debt": 3
+          }
+        ],
+        "result": "{b.name}灌了半瓶，终于昏昏沉沉地睡了过去。"
+      },
+      {
+        "label": "走开",
+        "effects": [],
+        "result": "呻吟声一直响到后半夜。"
+      }
+    ]
+  },
+  {
+    "id": "ns_marina_passport",
+    "title": "护照",
+    "trigger": {
+      "on": "daily",
+      "hour": 10,
+      "once": true,
+      "when": {
+        "warPhase.gte": 3
+      }
+    },
+    "cast": {
+      "a": {
+        "who": "marina"
+      }
+    },
+    "speaker": "a",
+    "text": "镇子换了旗。听说占领军在挨家挨户查外国人，有的被客客气气送上卡车，有的被当成间谍拉走。没人知道区别在哪儿。\n\n玛丽娜把她的护照摊在桌上，盯着上面的照片看了很久。「它是一张门票，」她说，「也可能是一张判决书。」",
+    "choices": [
+      {
+        "label": "「留着它。占领军未必和这边的人一样。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 4
+          },
+          {
+            "op": "fact",
+            "key": "story.marina_keep_passport",
+            "value": true
+          }
+        ],
+        "result": "她把护照收进了贴身的口袋。「你说得对。赌一把。我们这一行，本来就是赌。」"
+      },
+      {
+        "label": "「烧了它。没有护照，你就只是一个难民。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 3
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 10
+          },
+          {
+            "op": "fact",
+            "key": "story.marina_burned_passport",
+            "value": true
+          }
+        ],
+        "result": "火苗卷起了封面上的烫金国徽。玛丽娜看着它烧完，忽然笑了一声：「现在我和你们一样了。」"
+      },
+      {
+        "label": "「它能换多少？」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": -8,
+            "resentment": 6
+          },
+          {
+            "op": "tag",
+            "who": "player",
+            "tag": "交易",
+            "n": 1
+          }
+        ],
+        "result": "玛丽娜慢慢合上护照，抬眼看你。「比你这条命值钱。」她说，「这是事实，不是威胁。」"
+      }
+    ]
+  },
+  {
+    "id": "ns_ye_frequency",
+    "object": "radio",
+    "label": "让叶琳听一听这个频段",
+    "title": "呼号",
+    "trigger": {
+      "once": true,
+      "when": {
+        "power": true
+      }
+    },
+    "cast": {
+      "a": {
+        "who": "ye"
+      }
+    },
+    "speaker": "a",
+    "text": "叶琳戴上耳机，手指在旋钮上一格一格地拧。杂音里忽然冒出一串短促的嘀嗒声。她的脸色变了。\n\n「这是我们师的呼号。」她低声说，「后勤营。他们还在。就在火车站那边。」",
+    "choices": [
+      {
+        "label": "「把位置记下来。」",
+        "effects": [
+          {
+            "op": "know",
+            "who": "player",
+            "fact": "K_MIL"
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 3
+          }
+        ],
+        "result": "她用铅笔在墙上画了一张简图。画完，她用手掌把它抹掉了。「记在脑子里。别留在墙上。」"
+      },
+      {
+        "label": "「你想回去吗？」",
+        "effects": [
+          {
+            "op": "know",
+            "who": "player",
+            "fact": "K_MIL"
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 8
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 5
+          }
+        ],
+        "result": "「回去？」叶琳摘下耳机，「回去，他们会先枪毙我，再给我发一枚勋章。」"
+      },
+      {
+        "label": "「关掉吧。」",
+        "effects": [],
+        "result": "她关掉了。可你知道，她已经记住了那个频段。"
+      }
+    ]
+  },
+  {
+    "id": "ns_su_class",
+    "title": "墙上的字",
+    "trigger": {
+      "on": "daily",
+      "hour": 15,
+      "chance": 0.3,
+      "once": true,
+      "minDay": 6
+    },
+    "cast": {
+      "a": {
+        "who": "su"
+      },
+      "b": {
+        "who": "zhao",
+        "optional": true
+      },
+      "c": {
+        "who": "zhou",
+        "optional": true
+      }
+    },
+    "speaker": "a",
+    "art": "meeting",
+    "text": "苏曼用一截木炭在墙上写了几个大字：「人、口、手、水、火」。\n\n「闲着也是闲着。」她拍了拍手上的灰，「不识字的，过来。识字的，也过来，我教你们认几个不在报纸上的词。」",
+    "lines": [
+      {
+        "who": "b",
+        "text": "……老子不识字，也活了三十多年。"
+      },
+      {
+        "who": "c",
+        "text": "教可以，内容要健康。"
+      }
+    ],
+    "choices": [
+      {
+        "label": "坐到最前面",
+        "effects": [
+          {
+            "op": "need",
+            "who": "everyone",
+            "need": "stress",
+            "add": -5
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "respect": 5,
+            "affection": 3
+          },
+          {
+            "op": "rel",
+            "from": "all",
+            "to": "player",
+            "respect": 2
+          },
+          {
+            "op": "fact",
+            "key": "story.su_class",
+            "value": true
+          }
+        ],
+        "result": "那天下午，墙上的字越来越多。赵铁军蹲在最后面，嘴里念叨着「水」，用手指在地上一遍一遍地描。"
+      },
+      {
+        "label": "「写点有用的。地图、配给、规矩。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "respect": 2
+          },
+          {
+            "op": "need",
+            "who": "everyone",
+            "need": "stress",
+            "add": -2
+          },
+          {
+            "op": "fact",
+            "key": "story.su_class",
+            "value": true
+          }
+        ],
+        "result": "苏曼看了你一眼，在墙上写下了「配给」两个字，又在旁边写了「公平」。「这两个词，」她说，「要放在一起学。」"
+      },
+      {
+        "label": "「把墙擦了。写在墙上，谁都看得见。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "resentment": 8,
+            "respect": -4
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 6
+          }
+        ],
+        "result": "苏曼沉默地擦掉了那些字。墙上留下一片灰黑色的印子，比原来的字还显眼。"
+      }
+    ]
+  }
+]

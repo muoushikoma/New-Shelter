@@ -1,0 +1,1424 @@
+[
+  {
+    "id": "ns_lin_nightshift",
+    "title": "夜班",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        1,
+        4
+      ],
+      "chance": 0.12,
+      "once": true,
+      "minDay": 3
+    },
+    "cast": {
+      "a": {
+        "who": "lin",
+        "when": {
+          "rel.trust.gte": 35
+        }
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "凌晨，医务室的马灯还亮着。林秋坐在病床边，把药柜里剩下的药片一粒一粒倒在纱布上数，数完了又倒回去，再数一遍。\n\n她看见你，手停了一下。「……睡不着。我一闭眼，就听见走廊里有人喊护士。」",
+    "choices": [
+      {
+        "label": "坐下来，陪她一起数",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 5,
+            "affection": 4
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -10
+          },
+          {
+            "op": "need",
+            "who": "player",
+            "need": "energy",
+            "add": -5
+          }
+        ],
+        "result": "你们数了三遍。四十一片，不多不少。林秋把药片收好，靠在墙上，第一次露出一点困意。"
+      },
+      {
+        "label": "「你丈夫的事……我听说了。」",
+        "when": {
+          "a.rel.trust.gte": 55
+        },
+        "why": "她还没那么信你",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 6,
+            "affection": 3
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -6
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": 20,
+            "text": "我跟{player.name}说了我丈夫的事。"
+          },
+          {
+            "op": "fact",
+            "key": "story.lin_husband_told",
+            "value": true
+          }
+        ],
+        "result": "「是半夜来的。」她说，「穿便衣，很客气，说只是去谈谈。他走的时候还穿着拖鞋。」\n\n她把纱布叠成很小的方块。「我后来才知道，那份名单上有个签名，是我们院长的。」"
+      },
+      {
+        "label": "握住她的手",
+        "hide": true,
+        "tags": [
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "player.gender": "male",
+          "a.rel.desire.gte": 40,
+          "a.rel.affection.gte": 40
+        },
+        "effects": [
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "willing",
+            "motive": [
+              "慰藉"
+            ]
+          }
+        ],
+        "result": ""
+      },
+      {
+        "label": "「去睡吧，明天还有病人。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": -2
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 3
+          }
+        ],
+        "result": "林秋点点头，却没有动。你走的时候，身后又传来药片落在纱布上的细碎声音。"
+      }
+    ]
+  },
+  {
+    "id": "ns_ana_song",
+    "title": "河那边的歌",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        19,
+        22
+      ],
+      "chance": 0.12,
+      "once": true,
+      "minDay": 2
+    },
+    "cast": {
+      "a": {
+        "who": "ana"
+      },
+      "b": {
+        "who": "zhou",
+        "optional": true
+      }
+    },
+    "speaker": "a",
+    "text": "炉子边上，阿娜忽然低声唱了起来。是她家乡的话，调子很长，像风从河面上刮过去。\n\n所有人都停下了手里的事。有人闭上眼睛，有人望着天花板上那盏晃动的灯泡。",
+    "lines": [
+      {
+        "who": "b",
+        "text": "唱的什么？听着不像我们的歌。"
+      }
+    ],
+    "choices": [
+      {
+        "label": "跟着她轻轻地哼",
+        "effects": [
+          {
+            "op": "need",
+            "who": "everyone",
+            "need": "stress",
+            "add": -6
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": 4,
+            "trust": 2
+          }
+        ],
+        "result": "你不会词，只能跟着调子。阿娜冲你笑了笑，唱完了最后一段。那天晚上，避难所里很少有人做噩梦。"
+      },
+      {
+        "label": "「小点声。门外说不定有巡逻。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": -3
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 4
+          }
+        ],
+        "result": "歌声断了。阿娜耸耸肩，把烟别回耳朵上。「在这个国家，」她说，「连唱歌都要先看看门。」"
+      },
+      {
+        "label": "递给她一支烟，请她再唱一首",
+        "when": {
+          "player.items.cigs.gte": 1
+        },
+        "why": "你没有烟",
+        "tags": [
+          [
+            "香烟 -1",
+            "#a8a080"
+          ]
+        ],
+        "effects": [
+          {
+            "op": "item",
+            "who": "player",
+            "item": "cigs",
+            "qty": -1
+          },
+          {
+            "op": "item",
+            "who": "a",
+            "item": "cigs",
+            "qty": 1
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": 6,
+            "debt": 2
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -8
+          }
+        ],
+        "result": "她接过烟，没点，夹在指间，又唱了一首。这一首很短，很轻。唱完她说：「这是我妈妈在河边洗衣服时唱的。」"
+      },
+      {
+        "label": "等大家睡了，跟她去下层",
+        "hide": true,
+        "tags": [
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "a.rel.desire.gte": 45,
+          "a.rel.affection.gte": 40
+        },
+        "effects": [
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "willing",
+            "motive": [
+              "爱慕",
+              "好奇"
+            ]
+          }
+        ],
+        "result": ""
+      }
+    ]
+  },
+  {
+    "id": "ns_zhao_bottle",
+    "title": "酒",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        21,
+        2
+      ],
+      "chance": 0.1,
+      "once": true,
+      "minDay": 4
+    },
+    "cast": {
+      "a": {
+        "who": "zhao"
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "油桶后面，赵铁军一个人坐在地上，手里攥着半瓶酒。他没开灯，只有发电机的指示灯照着他半张脸，那道疤一明一暗。\n\n「看什么？」他头也不抬，「没见过人喝酒？」",
+    "choices": [
+      {
+        "label": "在他旁边坐下",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 5,
+            "respect": 3
+          },
+          {
+            "op": "need",
+            "who": "player",
+            "need": "stress",
+            "add": -4
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -6
+          }
+        ],
+        "result": "他把瓶子递给你，你喝了一口，辣得直咳。他笑了，第一次笑。\n\n「我坐过牢，你知道吧？」他看着手里的瓶子，「打死了一个工头。井下透水，他锁着闸不让人上来，说要先保设备。底下有十一个人。」",
+        "next": "ns_zhao_bottle_2"
+      },
+      {
+        "label": "「把酒给我。你明天还要去搬瓦砾。」",
+        "check": {
+          "skill": "persuade",
+          "bonus": 0
+        },
+        "effects": [
+          {
+            "op": "item",
+            "who": "a",
+            "item": "alcohol",
+            "qty": -1
+          },
+          {
+            "op": "item",
+            "who": "storage",
+            "item": "alcohol",
+            "qty": 1
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "respect": 5
+          }
+        ],
+        "result": "他瞪了你半天，最后骂了一句，把瓶子往你怀里一塞。「拿走。拿走！」",
+        "fail": {
+          "effects": [
+            {
+              "op": "rel",
+              "from": "a",
+              "to": "player",
+              "resentment": 8,
+              "affection": -3
+            },
+            {
+              "op": "bark",
+              "who": "a",
+              "text": "滚。"
+            }
+          ],
+          "result": "他把瓶子攥得更紧了，指节发白。「你算老几？」"
+        }
+      },
+      {
+        "label": "「别一个人喝。」",
+        "hide": true,
+        "tags": [
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "player.gender": "female",
+          "a.rel.desire.gte": 50,
+          "a.rel.trust.gte": 30
+        },
+        "effects": [
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "willing",
+            "motive": [
+              "逃避",
+              "慰藉"
+            ]
+          }
+        ],
+        "result": ""
+      },
+      {
+        "label": "走开",
+        "effects": [],
+        "result": "你走开的时候，听见身后瓶子磕在水泥地上的声音。"
+      }
+    ]
+  },
+  {
+    "id": "ns_zhao_bottle_2",
+    "title": "酒",
+    "trigger": {
+      "on": "manual"
+    },
+    "cast": {
+      "a": {}
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "「我拿撬棍砸开闸，把人放上来了。」赵铁军说，「然后那个工头说要告我破坏生产。我就……」他没说完，把剩下的酒一口喝干了。\n\n「判了两年。人家说我运气好。死的那个，是阵线的人。」",
+    "choices": [
+      {
+        "label": "「换了我，也会砸那个闸。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 8,
+            "affection": 4
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": 30,
+            "text": "{player.name}知道了工头的事，没有看不起我。"
+          },
+          {
+            "op": "fact",
+            "key": "story.zhao_told",
+            "value": true
+          }
+        ],
+        "result": "他没说话，只是用肩膀撞了一下你的肩膀。很重，撞得你差点歪倒。"
+      },
+      {
+        "label": "「人命就是人命。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "respect": 4,
+            "affection": -2
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 5
+          }
+        ],
+        "result": "「对。」他点点头，「所以我每天晚上都喝。」"
+      },
+      {
+        "label": "「这事别再跟别人说了。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 4
+          },
+          {
+            "op": "fact",
+            "key": "story.zhao_told",
+            "value": true
+          }
+        ],
+        "result": "「你当我傻？」他把空瓶子扔进油桶后面，「我就跟你说了。」"
+      }
+    ]
+  },
+  {
+    "id": "ns_liu_confession",
+    "title": "发电机房",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        10,
+        18
+      ],
+      "chance": 0.12,
+      "once": true,
+      "minDay": 4,
+      "when": {
+        "player.gender": "female"
+      }
+    },
+    "cast": {
+      "a": {
+        "who": "liu",
+        "when": {
+          "rel.affection.gte": 55
+        }
+      }
+    },
+    "speaker": "a",
+    "text": "刘小川蹲在发电机旁边，拧了半天同一颗螺丝。你走近了，他手一抖，扳手掉在地上，咣当一声。\n\n「我……」他捡起扳手，又放下，帽子摘了又戴上。「我有件事。你要是不爱听，就当我放了个屁。我……我一直，从第一天起……」",
+    "choices": [
+      {
+        "label": "吻他一下",
+        "effects": [
+          {
+            "op": "relState",
+            "from": "a",
+            "to": "player",
+            "state": "flirting"
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": 8,
+            "desire": 6
+          },
+          {
+            "op": "rel",
+            "from": "player",
+            "to": "a",
+            "affection": 4
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -12
+          }
+        ],
+        "result": "他整个人都僵住了，耳朵红得发紫。过了好一会儿，他才傻傻地笑出来，手上的油蹭了你一脸。"
+      },
+      {
+        "label": "「今晚，下层没人。」",
+        "hide": true,
+        "tags": [
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "a.rel.desire.gte": 35
+        },
+        "effects": [
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "eager",
+            "motive": [
+              "爱慕"
+            ]
+          }
+        ],
+        "result": ""
+      },
+      {
+        "label": "「小川，你是个好人。可是……」",
+        "effects": [
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 10
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": -2,
+            "respect": 3
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": -10,
+            "text": "我跟{player.name}说了。{player.name}很客气。"
+          }
+        ],
+        "result": "「我知道，我知道。」他赶紧说，低头去拧那颗螺丝，「没事。真的没事。你……你别因为这个就不来找我修东西。」"
+      },
+      {
+        "label": "笑出声来",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "resentment": 10,
+            "affection": -10
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 15
+          }
+        ],
+        "result": "他的脸一下子白了。那天下午，发电机房的门一直关着。"
+      }
+    ]
+  },
+  {
+    "id": "ns_wang_pact",
+    "title": "买卖",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        20,
+        23
+      ],
+      "chance": 0.1,
+      "once": true,
+      "minDay": 5
+    },
+    "cast": {
+      "a": {
+        "who": "wang",
+        "when": {
+          "rel.trust.gte": 30
+        }
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "王翠把你拉进角落，大衣下摆一掀，露出里面密密的针脚。\n\n「有人在打我这些东西的主意，我睡觉都得睁一只眼。」她拍拍内衬，「我想找个人夜里挨着我睡，有事替我挡一挡。我不白用人，你开个价。」",
+    "choices": [
+      {
+        "label": "「我替你看着。挨着睡，也行。」",
+        "hide": true,
+        "tags": [
+          [
+            "交易",
+            "#c08040"
+          ],
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "player.gender": "male"
+        },
+        "effects": [
+          {
+            "op": "item",
+            "who": "a",
+            "item": "cigs",
+            "qty": -4
+          },
+          {
+            "op": "item",
+            "who": "player",
+            "item": "cigs",
+            "qty": 4
+          },
+          {
+            "op": "fact",
+            "key": "story.wang_pact",
+            "value": true
+          },
+          {
+            "op": "tag",
+            "who": "player",
+            "tag": "交易",
+            "n": 1
+          },
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "willing",
+            "motive": [
+              "交易",
+              "取暖"
+            ]
+          }
+        ],
+        "result": ""
+      },
+      {
+        "label": "「只替你看着。别的不用。」",
+        "effects": [
+          {
+            "op": "item",
+            "who": "a",
+            "item": "cigs",
+            "qty": -2
+          },
+          {
+            "op": "item",
+            "who": "player",
+            "item": "cigs",
+            "qty": 2
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 6,
+            "respect": 4
+          },
+          {
+            "op": "fact",
+            "key": "story.wang_guard",
+            "value": true
+          }
+        ],
+        "result": "「怪人。」她把两支烟塞进你口袋，「行，那就先这么着。」"
+      },
+      {
+        "label": "「你藏的那些东西，迟早该交公。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "resentment": 8,
+            "trust": -6
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 6
+          }
+        ],
+        "result": "王翠冷笑一声，把大衣裹紧了。「交公？交给谁？交给拿钥匙的那个？你当我第一天活在这个国家？」"
+      }
+    ]
+  },
+  {
+    "id": "ns_ye_nightmare",
+    "title": "噩梦",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        1,
+        5
+      ],
+      "chance": 0.1,
+      "cooldown": 6,
+      "minDay": 2
+    },
+    "cast": {
+      "a": {
+        "who": "ye",
+        "when": {
+          "rel.trust.gte": 30
+        }
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "一声闷叫。叶琳从铺上弹起来，手已经握住了刀柄，眼睛瞪着黑暗里不存在的东西。\n\n过了好几秒，她才认出你，慢慢松开手。她的背心全湿透了，在这么冷的夜里。",
+    "choices": [
+      {
+        "label": "递给她一杯水，在旁边坐着",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 5
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -8
+          }
+        ],
+        "result": "她把水喝完，杯子攥在手里。你们谁也没说话。天快亮的时候，她又睡着了，刀还压在枕头底下。"
+      },
+      {
+        "label": "「是部队的事？」",
+        "when": {
+          "a.rel.trust.gte": 55
+        },
+        "why": "她不会跟你说",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 6
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": 15,
+            "text": "我跟{player.name}说了那条战壕的事。"
+          },
+          {
+            "op": "fact",
+            "key": "story.ye_told",
+            "value": true
+          }
+        ],
+        "result": "「我们排守一个路口。」她说，「命令是死守。凌晨电台断了，我爬出去接线，回来的时候……」她停了很久。「我没回去。我往回走了。我是逃兵。」"
+      },
+      {
+        "label": "抱住她",
+        "hide": true,
+        "tags": [
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "player.gender": "female",
+          "a.rel.desire.gte": 40
+        },
+        "effects": [
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "willing",
+            "motive": [
+              "慰藉",
+              "逃避"
+            ]
+          }
+        ],
+        "result": ""
+      },
+      {
+        "label": "「小点声。大家都在睡。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": -4
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 5
+          }
+        ],
+        "result": "叶琳看了你一眼，翻身对着墙。她剩下的半夜都没有再闭眼。"
+      }
+    ]
+  },
+  {
+    "id": "ns_marina_night",
+    "title": "记号",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        22,
+        2
+      ],
+      "chance": 0.1,
+      "once": true,
+      "minDay": 6,
+      "when": {
+        "facts.story.film_hidden": "vent"
+      }
+    },
+    "cast": {
+      "a": {
+        "who": "marina",
+        "when": {
+          "rel.trust.gte": 55
+        }
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "玛丽娜坐在通风井下面，仰头看着那块划了记号的砖。看见你，她拍了拍身边的位置。\n\n「我写了三年你们国家的稿子，」她说，「每一篇都被删了一半。可我从来没像现在这样，觉得自己在做一件真的事。」",
+    "choices": [
+      {
+        "label": "坐下，听她说首都的事",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 4,
+            "affection": 4
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -8
+          }
+        ],
+        "result": "她讲了很久：广场，摄影师，那个被他们没收的相机。讲到后来，她把头靠在你肩上。"
+      },
+      {
+        "label": "吻她",
+        "hide": true,
+        "tags": [
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "player.gender": "male",
+          "a.rel.desire.gte": 45
+        },
+        "effects": [
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "willing",
+            "motive": [
+              "好奇",
+              "慰藉"
+            ]
+          }
+        ],
+        "result": ""
+      },
+      {
+        "label": "「早点睡吧。」",
+        "effects": [],
+        "result": "「嗯。」她没有动，仍旧仰着头，看着那块砖。"
+      }
+    ]
+  },
+  {
+    "id": "ns_jiang_night",
+    "title": "不想一个人",
+    "trigger": {
+      "on": "manual"
+    },
+    "cast": {
+      "a": {
+        "who": "jiang"
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "半夜，蒋小舟摸到你的铺位边。他没戴眼镜，眯着眼，好像看不清你在哪儿。\n\n「我睡不着。」他说，「我一直在想，要是明天他们来了，我这辈子……什么都还没做过。」",
+    "choices": [
+      {
+        "label": "让他在旁边躺下，说说话",
+        "effects": [
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -10
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 5,
+            "affection": 4
+          }
+        ],
+        "result": "他讲他的学校，讲图书馆里那排被锁起来的书架，讲他想象中战争结束后的样子。讲着讲着，他睡着了。"
+      },
+      {
+        "label": "掀开毯子",
+        "hide": true,
+        "tags": [
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "player.gender": "female",
+          "a.age.gte": 20,
+          "a.rel.desire.gte": 40
+        },
+        "effects": [
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "willing",
+            "motive": [
+              "慰藉"
+            ]
+          }
+        ],
+        "result": ""
+      },
+      {
+        "label": "「回去睡吧。会过去的。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": -1
+          }
+        ],
+        "result": "他点点头，摸着黑回去了。你听见他在铺上翻来覆去，一直到天亮。"
+      }
+    ]
+  },
+  {
+    "id": "ns_su_letter",
+    "title": "寄不出去的信",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        20,
+        23
+      ],
+      "chance": 0.1,
+      "once": true,
+      "minDay": 4
+    },
+    "cast": {
+      "a": {
+        "who": "su",
+        "when": {
+          "rel.trust.gte": 40
+        }
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "苏曼借着半截蜡烛在写字。她的字一笔一画，工整得像字帖。\n\n「写给一个学生的。」她没抬头，「去年秋天被带走的。他在作文里写了一句『我们的父辈都在说谎』。我给他打了满分。」",
+    "choices": [
+      {
+        "label": "「念给我听听。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 6,
+            "affection": 5
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": -6
+          },
+          {
+            "op": "need",
+            "who": "player",
+            "need": "stress",
+            "add": -3
+          }
+        ],
+        "result": "她念了。信很短，没有一个字提到政治，全是些琐事：学校门口的杨树，食堂的白菜汤，冬天该穿厚一点。念完，她把信折好，「他们会拆开的。所以只能写这些。」"
+      },
+      {
+        "label": "「写这种东西，被搜到会害死所有人。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "resentment": 6,
+            "respect": -3
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 6
+          },
+          {
+            "op": "memory",
+            "who": "a",
+            "about": "player",
+            "kind": "story",
+            "weight": -15,
+            "text": "{player.name}说我的信会害死所有人。"
+          }
+        ],
+        "result": "苏曼慢慢放下笔。「你说得对。」她把信凑到蜡烛上，看着它烧完，「我教了二十年书，教会了学生怎么闭嘴。现在轮到我自己。」"
+      },
+      {
+        "label": "「我帮你藏进档案柜。那里纸最多。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 8
+          },
+          {
+            "op": "fact",
+            "key": "story.su_letter_hidden",
+            "value": true
+          }
+        ],
+        "result": "「好主意。」她第一次笑了，「把真话藏在一堆假话里。这才是这个国家最安全的地方。」"
+      },
+      {
+        "label": "轻轻按住她握笔的手",
+        "hide": true,
+        "tags": [
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "player.gender": "male",
+          "a.rel.affection.gte": 60,
+          "a.rel.desire.gte": 35
+        },
+        "effects": [
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "willing",
+            "motive": [
+              "慰藉"
+            ]
+          }
+        ],
+        "result": ""
+      }
+    ]
+  },
+  {
+    "id": "ns_zhou_patron",
+    "title": "组织上的照顾",
+    "trigger": {
+      "on": "daily",
+      "hour": 21,
+      "chance": 0.3,
+      "once": true,
+      "minDay": 6,
+      "when": {
+        "leader": "npc",
+        "settings.adult": true,
+        "player.gender": "female"
+      }
+    },
+    "cast": {
+      "a": {
+        "who": "zhou",
+        "when": {
+          "isLeader": true
+        }
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "周建国把你叫进档案室，门在身后轻轻带上。桌上摆着两个罐头，标签朝外。\n\n「最近外面风声紧，名单上的事，你也听说了。」他擦着眼镜，「我这个人念旧，也讲规矩。组织上照顾谁，总要有个说法。你懂事，我就有说法。」",
+    "choices": [
+      {
+        "label": "答应（换他的庇护和 2 份口粮）",
+        "tags": [
+          [
+            "交易",
+            "#c08040"
+          ],
+          [
+            "亲密",
+            "#c05a9a"
+          ],
+          [
+            "依附",
+            "#8a6ac0"
+          ]
+        ],
+        "effects": [
+          {
+            "op": "item",
+            "who": "player",
+            "item": "food",
+            "qty": 2
+          },
+          {
+            "op": "item",
+            "who": "storage",
+            "item": "food",
+            "qty": -2
+          },
+          {
+            "op": "tag",
+            "who": "player",
+            "tag": "依附",
+            "n": 1
+          },
+          {
+            "op": "fact",
+            "key": "story.zhou_patron",
+            "value": true
+          },
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "reluctant",
+            "motive": [
+              "交易",
+              "支配"
+            ]
+          }
+        ],
+        "result": ""
+      },
+      {
+        "label": "「我不需要照顾。」",
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "resentment": 10,
+            "respect": 2
+          },
+          {
+            "op": "fact",
+            "key": "story.zhou_refused",
+            "value": true
+          }
+        ],
+        "result": "「年轻人有骨气，好。」他把罐头收进抽屉，锁上，「不过骨气这东西，冬天里不经烧。」"
+      },
+      {
+        "label": "「你那封举报信的复写件，我看过。」",
+        "when": {
+          "facts.story.zhou_letter_found": true
+        },
+        "why": "你手里没有他的把柄",
+        "check": {
+          "skill": "persuade",
+          "bonus": 15
+        },
+        "effects": [
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "fear": 20,
+            "resentment": 15
+          },
+          {
+            "op": "tag",
+            "who": "player",
+            "tag": "勒索",
+            "n": 1
+          },
+          {
+            "op": "fact",
+            "key": "story.zhou_blackmailed",
+            "value": true
+          }
+        ],
+        "result": "他擦眼镜的手停住了。很久，他把眼镜戴上，脸上又堆起了笑。「同志，我们都是明白人。今天的话，就当没说过。」",
+        "fail": {
+          "effects": [
+            {
+              "op": "rel",
+              "from": "a",
+              "to": "player",
+              "resentment": 25,
+              "fear": 5
+            }
+          ],
+          "result": "「复写件？」他笑了，「这屋里的纸，哪一张不能是伪造的？倒是你，记性这么好，不太安全。」"
+        }
+      }
+    ]
+  },
+  {
+    "id": "ns_han_blanket",
+    "title": "军毯",
+    "trigger": {
+      "on": "hourly",
+      "hours": [
+        22,
+        3
+      ],
+      "chance": 0.12,
+      "once": true,
+      "minDay": 3,
+      "when": {
+        "player.needs.warmth.lt": 40
+      }
+    },
+    "cast": {
+      "a": {
+        "who": "han"
+      }
+    },
+    "speaker": "a",
+    "art": "dark",
+    "text": "你冷得睡不着，牙齿咯咯直响。老韩从对面铺上坐起来，把他那条打着补丁的旧军毯抖开，搭在你身上。\n\n「我儿子当兵前留下的。」他说，「暖和着呢。我皮糙，冻不坏。」",
+    "choices": [
+      {
+        "label": "接过毯子，谢谢他",
+        "effects": [
+          {
+            "op": "need",
+            "who": "player",
+            "need": "warmth",
+            "add": 20
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "warmth",
+            "add": -15
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "affection": 5
+          },
+          {
+            "op": "rel",
+            "from": "player",
+            "to": "a",
+            "affection": 4,
+            "debt": 5
+          }
+        ],
+        "result": "毯子上有旱烟和土的味道。你很快就睡着了。半夜醒来，看见老韩缩在自己铺上，把大衣领子竖得高高的。"
+      },
+      {
+        "label": "「一起盖吧，一个人盖着我睡不踏实。」",
+        "effects": [
+          {
+            "op": "need",
+            "who": "player",
+            "need": "warmth",
+            "add": 15
+          },
+          {
+            "op": "need",
+            "who": "a",
+            "need": "warmth",
+            "add": 10
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 5,
+            "affection": 4
+          }
+        ],
+        "result": "你们背靠背躺着。老韩很快就打起了呼噜，呼噜声里夹着咳嗽。你在他的体温里慢慢暖和过来。"
+      },
+      {
+        "label": "「你儿子……还有消息吗？」",
+        "effects": [
+          {
+            "op": "need",
+            "who": "a",
+            "need": "stress",
+            "add": 6
+          },
+          {
+            "op": "rel",
+            "from": "a",
+            "to": "player",
+            "trust": 6
+          },
+          {
+            "op": "fact",
+            "key": "story.han_son_talked",
+            "value": true
+          }
+        ],
+        "result": "「没有。」他说，「上个月寄来一封信，就一句话：爸，我好着呢。」他把信从怀里摸出来，没打开，又揣回去。「我识字不多。他知道。」"
+      },
+      {
+        "label": "拉住他的手",
+        "hide": true,
+        "tags": [
+          [
+            "亲密",
+            "#c05a9a"
+          ]
+        ],
+        "when": {
+          "settings.adult": true,
+          "player.gender": "female",
+          "a.rel.desire.gte": 35,
+          "a.rel.affection.gte": 45
+        },
+        "effects": [
+          {
+            "op": "intimacy",
+            "initiator": "a",
+            "partner": "player",
+            "consent": "willing",
+            "motive": [
+              "取暖",
+              "慰藉"
+            ]
+          }
+        ],
+        "result": ""
+      }
+    ]
+  }
+]

@@ -3,12 +3,17 @@
   "version": "1",
   "author": "",
   "events": [
-    "events/example.json"
+    "events/example.json",
+    "events/ns_plot.json",
+    "events/ns_people.json"
   ],
-  "text": [],
+  "text": [
+    "text/ns_lines.json"
+  ],
   "people": [],
   "images": [],
   "dialogue": [
-    "dialogue/base.json"
+    "dialogue/base.json",
+    "dialogue/ns_people.json"
   ]
 }

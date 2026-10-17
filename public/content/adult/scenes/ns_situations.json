@@ -1,0 +1,1041 @@
+[
+  {
+    "id": "ns.zhou.patronage.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "zhou"
+      ],
+      "partner.isPlayer": true,
+      "consent.in": [
+        "reluctant"
+      ],
+      "motive.any": [
+        "交易",
+        "支配",
+        "讨好"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "power",
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "档案室里只有一盏马灯。周建国把两个罐头摆在桌角，摆正，标签朝外，像在会上摆铭牌。他摘下眼镜，用衣角慢慢地擦。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「我这个人讲规矩。」他说，「组织上照顾谁，不照顾谁，都要有个说法。你懂事，我就有说法。」"
+      },
+      {
+        "speaker": null,
+        "text": "他没有急。他让你自己走过去，自己解开扣子，好像这样一来，就是你提出的申请，他只是批准。"
+      },
+      {
+        "speaker": null,
+        "text": "他的手很软，没干过活的那种软，带着烟油味。他喘得很厉害，几次停下来按住胸口吃药，然后接着来。你盯着墙上那块领袖像留下的白印。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「这件事，」他重新戴上眼镜，系好皮带，「对你对我都没有坏处。出去以后，谁问起来，你就说是我保护了你。」"
+      },
+      {
+        "speaker": null,
+        "text": "你拿着那两个罐头走出档案室。罐头是冰的，在手里沉甸甸的。你忽然很清楚地知道，他会把这件事记进他心里的那本账。"
+      }
+    ],
+    "aftertaste": [
+      "bitter",
+      "shame"
+    ]
+  },
+  {
+    "id": "ns.zhou.player.court.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "initiator.gender.in": [
+        "female"
+      ],
+      "partner.id.in": [
+        "zhou"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "power",
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "周建国听你说完，没有立刻回答。他把钢笔帽拧上，又拧开，又拧上。三十年的会议教会了他：先答应的人，就输了一半。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「同志，」他终于说，嘴角有一点笑意，「你是个明白人。这里的人都不明白，只有你明白。」"
+      },
+      {
+        "speaker": null,
+        "text": "他让你脱衣服，自己却只解开了皮带。他看你的眼神像在看一份表格，评估，打分，然后满意地在某一栏签下名字。"
+      },
+      {
+        "speaker": null,
+        "text": "他压上来的时候很沉，喘得像拉风箱。你配合着他，听他在你耳边说一些空洞的话：觉悟，信任，前途。你数着他喘息的次数。"
+      },
+      {
+        "speaker": null,
+        "text": "他结束得很快，躺着平复心跳，过了一会儿伸手拍了拍你的脸。「以后，仓库那边我打个招呼。」"
+      },
+      {
+        "speaker": null,
+        "text": "你穿好衣服走出去。这是一笔你自己算过的账。只是账算得再清楚，你也闻得到身上那股烟油和樟脑的味道。"
+      }
+    ],
+    "aftertaste": [
+      "shame"
+    ]
+  },
+  {
+    "id": "ns.zhou.coerced.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "zhou"
+      ],
+      "partner.isPlayer": true,
+      "consent.in": [
+        "coerced"
+      ]
+    },
+    "weight": 30,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "「你那件事，我写个条子，宪兵队明天就会来。」周建国说这话的时候，声音很平，像在宣读一份通知。档案室的门在你身后关上了。"
+      },
+      {
+        "speaker": null,
+        "text": "后来的事，你记不清顺序。只记得马灯的玻璃罩上有一道裂纹，记得他的眼镜放在桌角，镜片里映着一小团火。你一直盯着那团火。"
+      },
+      {
+        "speaker": null,
+        "text": "他走了以后，你在冰冷的水泥地上坐了很久。手在抖，停不下来。你把扣子扣错了，又解开，又扣错了。"
+      },
+      {
+        "speaker": null,
+        "text": "回到宿舍，有人问你去哪儿了。你说去仓库搬东西。你听见自己的声音，平得不像自己的。那天夜里，你一直睁着眼睛，听他在帘子外面打呼。"
+      }
+    ],
+    "aftertaste": [
+      "bitter",
+      "shame"
+    ]
+  },
+  {
+    "id": "ns.gen.lower.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "partner.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "下层小间，{temperature} 度。墙上渗着水，结成一道一道的冰溜子。床垫是从塌方区拖出来的，有一股霉味和陈年的烟味。"
+      },
+      {
+        "speaker": null,
+        "text": "两个人都没有脱干净，只把要紧的地方露出来。冷让一切都变得很急：急着贴近，急着找到对方身上热的地方。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……冷。」{partner.name}的牙齿在打战，却把对方抱得更紧了，「别停，停下来就更冷了。」"
+      },
+      {
+        "speaker": null,
+        "text": "呼吸在黑暗里化成白汽。身体相连的地方热得发烫，背后却贴着冰冷的墙。到了最后，谁也分不清颤抖是因为冷，还是因为别的。"
+      },
+      {
+        "speaker": null,
+        "text": "之后他们裹着同一件大衣躺着，听着头顶上远远的炮声，像听另一个世界的雷。"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "relief"
+    ]
+  },
+  {
+    "id": "ns.gen.dorm.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "partner.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "宿舍的帘子是用旧军毯改的，挡得住视线，挡不住声音。帘子外有人在说梦话，有人在咳嗽，还有人醒着，假装睡着。"
+      },
+      {
+        "speaker": null,
+        "text": "所以一切都必须很慢、很轻。吻是无声的，手是无声的，连床板都要算着力气，不让它响。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「嘘——」{initiator.name}捂住对方的嘴，自己却先忍不住笑了，又赶紧把笑咽回去。"
+      },
+      {
+        "speaker": null,
+        "text": "压着声音反而让一切更强烈。每一次动作都像偷来的，每一声喘息都要咬在对方肩膀上。帘子外，咳嗽声停了一下，又响起来。"
+      },
+      {
+        "speaker": null,
+        "text": "结束后两个人一动也不敢动，贴着，听着彼此的心跳慢慢平下来。第二天早上，谁也没有提，可有几个人看他们的眼神不一样了。"
+      }
+    ],
+    "aftertaste": [
+      "tender",
+      "noisy"
+    ]
+  },
+  {
+    "id": "ns.gen.archive.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "partner.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ],
+      "motive.none": [
+        "交易",
+        "胁迫",
+        "支配"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "档案室里堆满了落灰的卷宗，每一份都是某个人的一生：出身、历史问题、检举材料。地上散落着几张被撕下来的照片。"
+      },
+      {
+        "speaker": null,
+        "text": "他们把一摞卷宗推到地上当床垫。纸是凉的，带着灰尘和霉味。{initiator.name}笑了一声：「这些人要是知道……」"
+      },
+      {
+        "speaker": "partner",
+        "text": "「他们不会知道了。」{partner.name}把对方拉下来，「谁也不会知道了。」"
+      },
+      {
+        "speaker": null,
+        "text": "在这间存放了半个世纪恐惧的屋子里，他们做了一件不需要向任何人汇报的事。纸张在身下哗哗作响，像有人在翻阅他们。"
+      },
+      {
+        "speaker": null,
+        "text": "结束后，有一份卷宗被压皱了，封面上写着一个陌生人的名字和「已处理」三个字。没有人去把它抚平。"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "tender"
+    ]
+  },
+  {
+    "id": "ns.gen.warmth.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "partner.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.any": [
+        "取暖"
+      ],
+      "temperature.lt": 5
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{temperature} 度。停电的第几个晚上了，没人记得。毯子不够，衣服不够，两个人挤在一起是唯一的办法。"
+      },
+      {
+        "speaker": null,
+        "text": "起初真的只是取暖。背贴着胸口，膝盖顶着膝盖，呼吸喷在后颈上。然后有一只手动了，没有人把它推开。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……这样更暖和。」{partner.name}说，像是在替两个人找一个理由。"
+      },
+      {
+        "speaker": null,
+        "text": "没有脱衣服，太冷了。只是在毯子底下摸索、解开、贴近。动作很小，很慢，热量一点一点从相连的地方蔓延开去。"
+      },
+      {
+        "speaker": null,
+        "text": "后半夜他们终于都不发抖了。天亮时，霜在毯子外面结了一层，毯子里面是潮湿的、温热的、属于两个人的味道。"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "bond"
+    ]
+  },
+  {
+    "id": "ns.gen.comfort.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "partner.id.not": [
+        "lin",
+        "ana",
+        "zhao",
+        "su",
+        "liu",
+        "wang",
+        "jiang",
+        "ye",
+        "marina",
+        "han",
+        "zhou",
+        "he"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "motive.any": [
+        "慰藉",
+        "逃避"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "那天又死了人，或者又传来了谁的死讯。避难所里每个人都有一个这样的晚上。今晚是{initiator.name}的。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「抱着我。」声音是哑的，「我不想想事情。让我什么都别想。」"
+      },
+      {
+        "speaker": null,
+        "text": "这不是温柔的。它很急，很用力，像溺水的人抓住岸边的石头。牙齿磕到了嘴唇，指甲在背上留下了印子，谁也没喊疼。"
+      },
+      {
+        "speaker": null,
+        "text": "高潮来的时候，{initiator.name}哭了出来，哭得像个被打碎的东西。{partner.name}没有说话，只是一直抱着。"
+      },
+      {
+        "speaker": null,
+        "text": "后来两个人都睡着了。睡着之前，那只手还紧紧攥着对方的衣角，像怕一松手，就会被黑暗卷走。"
+      }
+    ],
+    "aftertaste": [
+      "relief",
+      "bond"
+    ]
+  },
+  {
+    "id": "ns.gen.deal.player_sells.01",
+    "hook": "scene",
+    "when": {
+      "partner.isPlayer": true,
+      "deal.exists": true,
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "willing",
+        "reluctant"
+      ],
+      "initiator.id.not": [
+        "zhou",
+        "wang"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{initiator.name}先把{deal.item}拿出来给你看，数清楚，然后揣回自己兜里。「完事给你。」这就是规矩，没什么好商量的。"
+      },
+      {
+        "speaker": null,
+        "text": "你脱衣服的时候，{initiator.name}一直看着，眼神像在掂量一袋面粉的分量。{temperature} 度，你的皮肤上起了一层鸡皮疙瘩。"
+      },
+      {
+        "speaker": null,
+        "text": "你闭着眼，算着时间，想着那些{deal.item}能撑几天。对方的呼吸越来越重，你只是等着，等它结束。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「拿着。」{initiator.name}把{deal.item}塞进你手里，系着裤子，不看你，「下回还要，你知道找谁。」"
+      },
+      {
+        "speaker": null,
+        "text": "你把东西藏进铺位底下。它们很轻，又很重。你告诉自己，这只是一笔交易，跟用香烟换绷带没有什么不同。"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "ns.gen.deal.player_buys.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "deal.exists": true,
+      "consent.in": [
+        "reluctant"
+      ],
+      "partner.id.not": [
+        "lin",
+        "wang"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{partner.name}接过{deal.item}，没有道谢，也没有看你。{他|她|TA:partner}把东西塞进衣服最里层，贴着肉，像怕被谁抢走。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……快点。」{他|她|TA:partner}说，「完了我还得回去，别让人看见。」"
+      },
+      {
+        "speaker": null,
+        "text": "{他|她|TA:partner}躺下，侧过脸，眼睛睁着，一直看着墙角。{他|她|TA:partner}的身体是冷的，不躲，也不迎合。整个过程，{他|她|TA:partner}一声都没出。"
+      },
+      {
+        "speaker": null,
+        "text": "结束后{他|她|TA:partner}很快穿好衣服，手按在藏着{deal.item}的地方，按了好几次，确认它还在。"
+      },
+      {
+        "speaker": null,
+        "text": "走之前{他|她|TA:partner}停了一下，好像想说什么，最后什么都没说。你忽然觉得，自己用{deal.item}换来的东西，比{deal.item}本身还要冷。"
+      }
+    ],
+    "aftertaste": [
+      "bitter",
+      "distant"
+    ]
+  },
+  {
+    "id": "ns.gen.deal.player_buys.willing.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "deal.exists": true,
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "partner.id.not": [
+        "lin",
+        "wang"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{partner.name}看了看{deal.item}，又看了看你，笑了一下，有点自嘲。「在外面，这点东西连顿饭都换不来。在这儿……行吧。」"
+      },
+      {
+        "speaker": "partner",
+        "text": "「不过先说清楚，」{他|她|TA:partner}把东西收好，「是我自己愿意的。不是因为这个。这个只是……顺便。」"
+      },
+      {
+        "speaker": null,
+        "text": "既然说清楚了，剩下的就简单了。{他|她|TA:partner}拉着你躺下，动作大方，甚至有点急，像也憋了很久。"
+      },
+      {
+        "speaker": null,
+        "text": "黑暗里只剩下喘息和毯子摩擦的声音。{他|她|TA:partner}在你身下扭动、抓紧，最后发出一声很长的、松弛下来的叹息。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「这笔买卖，」{partner.name}喘匀了气说，「算你占便宜了。」"
+      }
+    ],
+    "aftertaste": [
+      "relief"
+    ]
+  },
+  {
+    "id": "ns.gen.leader.demand.01",
+    "hook": "scene",
+    "when": {
+      "partner.isPlayer": true,
+      "isLeader.initiator.in": [
+        true
+      ],
+      "motive.all": [
+        "交易",
+        "支配"
+      ],
+      "consent.in": [
+        "reluctant",
+        "willing"
+      ],
+      "initiator.id.not": [
+        "zhou"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "power",
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "仓库的铁笼边，{initiator.name}把两罐吃的放在你脚边。领导者的位置让{他|她|TA:initiator}说话不必大声，大家都听得见。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「我不会逼你。」{initiator.name}说，「我从来不逼人。你自己选。」可是你们俩都知道，这句话本身就是逼。"
+      },
+      {
+        "speaker": null,
+        "text": "铁笼里码着全避难所的口粮，你被按在那些货架上的时候，眼睛正对着一箱罐头的编号。你把那串数字念了一遍又一遍。"
+      },
+      {
+        "speaker": null,
+        "text": "{initiator.name}结束后拍了拍你的肩，像拍一个表现不错的下属。「以后你的那份，我会多留一点。」"
+      },
+      {
+        "speaker": null,
+        "text": "你抱着两个罐头走回宿舍。有人看见了，又低下头去。没有人说话。在这里，沉默也是一种配给。"
+      }
+    ],
+    "aftertaste": [
+      "bitter",
+      "shame"
+    ]
+  },
+  {
+    "id": "ns.gen.coerced.victim.01",
+    "hook": "scene",
+    "when": {
+      "partner.isPlayer": true,
+      "consent.in": [
+        "coerced"
+      ],
+      "initiator.id.not": [
+        "zhou",
+        "external"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{initiator.name}挡在门口。你看了一眼其他人的铺位：有人翻过身去，有人把毯子拉过了头顶。没有人起来。"
+      },
+      {
+        "speaker": null,
+        "text": "之后的事，你的脑子拒绝记住。它只留下了一些碎片：墙上的水渍，通风机咯吱咯吱的声音，自己数到了三百多，然后忘了往下数。"
+      },
+      {
+        "speaker": null,
+        "text": "你在水房里用冰水洗了很久，洗到手指发白、失去知觉。镜子里那个人的眼睛很陌生。"
+      },
+      {
+        "speaker": null,
+        "text": "从那天起，你开始注意{initiator.name}什么时候睡觉，钥匙挂在哪里，刀放在哪里。你还不知道自己要做什么，但你开始记了。"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "ns.gen.coerced.perpetrator.01",
+    "hook": "scene",
+    "when": {
+      "initiator.isPlayer": true,
+      "consent.in": [
+        "coerced"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{partner.name}没有反抗。{他|她|TA:partner}只是不动了，像一件被搬来搬去的东西。你以为这就是你想要的。"
+      },
+      {
+        "speaker": null,
+        "text": "{他|她|TA:partner}的眼睛一直睁着，看着你身后的某个地方，没有眼泪，什么都没有。你后来常常想起那双眼睛。"
+      },
+      {
+        "speaker": null,
+        "text": "结束后{他|她|TA:partner}自己穿好衣服，走了，一句话也没说。走路的样子很怪，很慢，一只手扶着墙。"
+      },
+      {
+        "speaker": null,
+        "text": "第二天，{partner.name}不再和任何人说话。吃饭的时候，{他|她|TA:partner}坐得离你最远。有几个人在看你，你知道他们在想什么。"
+      },
+      {
+        "speaker": null,
+        "text": "你发现自己夜里睡不着了。每一点声响都让你惊醒，摸一摸枕头底下的东西。你开始害怕门口的影子。"
+      }
+    ],
+    "aftertaste": [
+      "shame",
+      "bitter"
+    ]
+  },
+  {
+    "id": "ns.ext.guard.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "external"
+      ],
+      "partner.isPlayer": true,
+      "motive.any": [
+        "依附"
+      ]
+    },
+    "weight": 20,
+    "tags": [
+      "power",
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "看守的岗亭里生着一个铁皮炉子，是这几天你见过的最暖的地方。他把门关上，把枪靠在墙角，枪口朝着你。"
+      },
+      {
+        "speaker": null,
+        "text": "他没有问你的名字。点名册摊在桌上，你的名字下面有一道铅笔划的横线，还没有划完。他用指甲敲了敲那道线。"
+      },
+      {
+        "speaker": null,
+        "text": "你脱下大衣的时候，炉火映在他的脸上。他很年轻，脸上有冻疮，眼神却已经和那些坐办公室的人一模一样了。"
+      },
+      {
+        "speaker": null,
+        "text": "后来你被送回关押的地方。手腕上被他攥出的印子过了三天才消。你一直在想那道铅笔线，不知道它到底划完了没有。"
+      }
+    ],
+    "aftertaste": [
+      "bitter",
+      "shame"
+    ]
+  },
+  {
+    "id": "ns.ext.deal.01",
+    "hook": "scene",
+    "when": {
+      "initiator.id.in": [
+        "external"
+      ],
+      "partner.isPlayer": true,
+      "motive.any": [
+        "交易"
+      ],
+      "motive.none": [
+        "依附"
+      ]
+    },
+    "weight": 20,
+    "tags": [
+      "power",
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{initiator.name}的屋子里有煤炉，有热茶，有一瓶外国酒。墙上的地图被红蓝铅笔画满了，画的是你从来没见过的那一面的边境。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「我见过很多像你这样的人，」{initiator.name}说，「拿着一点东西，想换一条路。东西不够。不过，你本人也可以算。」"
+      },
+      {
+        "speaker": null,
+        "text": "他给你倒了一杯酒。你喝了，是因为接下来的事清醒着会更难。酒很烈，从喉咙一路烧到胃里。"
+      },
+      {
+        "speaker": null,
+        "text": "他的床很软，软得陌生。窗外有探照灯扫过，一下，又一下，每一次都把天花板照得惨白。你数着探照灯，等着天亮。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「东西会有的。」临走时{initiator.name}说，「至于能不能用上，那就看你的命了。」"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "ns.disc.willing.01",
+    "hook": "discovered",
+    "when": {
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "deal.exists": false
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "你推开门，一股热气扑面而来。昏暗里，{initiator.name}和{partner.name}缠在一起，衣服堆在地上，毯子滑落了一半。"
+      },
+      {
+        "speaker": null,
+        "text": "{partner.name}先看见了你，猛地抓起毯子。{initiator.name}回过头，脸上的表情从惊慌变成了恼怒，又变成了恳求。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……出去。」{partner.name}的声音在发抖，「求你了，先出去。」"
+      },
+      {
+        "speaker": null,
+        "text": "你退了出去，带上门。门后安静了很久。你知道，从这一刻起，你手里多了一样东西。用不用，怎么用，是你的事。"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "ns.disc.deal.01",
+    "hook": "discovered",
+    "when": {
+      "deal.exists": true,
+      "consent.not": "coerced"
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "你看见了。{partner.name}背对着门，衣服褪到腰间；{initiator.name}的手边放着{deal.item}，数得整整齐齐。"
+      },
+      {
+        "speaker": null,
+        "text": "没有人说话。{partner.name}慢慢拉上衣服，手伸过去，把{deal.item}拢进怀里，好像那是现在唯一要紧的事。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「你看什么看？」{partner.name}终于开口，声音很硬，「饿过吗？真饿过吗？」"
+      },
+      {
+        "speaker": null,
+        "text": "你关上门。走廊里很冷。你想起了自己藏在铺位底下的那点东西，想起了还剩几天的口粮。"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "ns.disc.coerced.01",
+    "hook": "discovered",
+    "when": {
+      "consent.in": [
+        "coerced"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "你推开门的那一刻，{initiator.name}正把{partner.name}按在墙上。{partner.name}转过头来看你，那个眼神你一辈子也忘不了。"
+      },
+      {
+        "speaker": null,
+        "text": "{initiator.name}也看见了你。{他|她|TA:initiator}没有停，也没有慌，只是盯着你，好像在问：你打算怎么办？"
+      },
+      {
+        "speaker": null,
+        "text": "你可以喊，可以冲上去，可以转身走开。你的手在门框上攥得发白。不管你做什么，这个夜晚都已经发生了。"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "ns.preg.player.01",
+    "hook": "pregnancy",
+    "when": {
+      "initiator.isPlayer": true
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "你蹲在水房的便桶边，吐得只剩下酸水。你算了算日子，又算了一遍，手撑着冰冷的墙，半天站不起来。"
+      },
+      {
+        "speaker": null,
+        "text": "在这里，多一张嘴就意味着少一份口粮。外面在打仗，药柜里没有几片药，没有接生的地方，也没有退路。"
+      },
+      {
+        "speaker": null,
+        "text": "{?partner.isPlayer.eq:false ? 你想起了{partner.name}。你不知道该不该告诉对方，也不知道对方听了会是什么表情。 | 你不知道该告诉谁。}你用手捂着小腹，那里还什么都感觉不到。"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "ns.preg.npc_father_player.01",
+    "hook": "pregnancy",
+    "when": {
+      "initiator.isPlayer": false,
+      "partner.isPlayer": true
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{initiator.name}从水房出来，脸色苍白，扶着门框站了一会儿。然后{她|她|TA:initiator}抬起头，看见了你。"
+      },
+      {
+        "speaker": "initiator",
+        "text": "「……你别这么看着我。」{她|她|TA:initiator}低声说，「我还没想好。你也先别想。」"
+      },
+      {
+        "speaker": null,
+        "text": "你们俩都知道是谁的。在这间地下室里，有些事情瞒不了太久。"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "ns.preg.npc.01",
+    "hook": "pregnancy",
+    "when": {
+      "initiator.isPlayer": false,
+      "partner.isPlayer.not": true
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "{initiator.name}早上又吐了。{她|她|TA:initiator}用袖子擦了擦嘴，假装什么都没发生，可是好几个人都看见了。"
+      },
+      {
+        "speaker": null,
+        "text": "有人开始偷偷数日子，猜是谁的。在一个口粮按份计算的地方，这件事很快就不只是两个人的事了。"
+      }
+    ],
+    "aftertaste": []
+  }
+]
