@@ -1,0 +1,1324 @@
+[
+  {
+    "id": "ns_lin_sleep",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「你又一夜没睡？」",
+    "npc": {
+      "who": "lin"
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.rel.trust.gt": 55
+            },
+            "text": "睡不着。闭上眼就是那条走廊。……你别跟别人说，我有时候想，要是那天我也没爬出来就好了。"
+          },
+          {
+            "text": "习惯了。值了八年夜班，身体忘了怎么在晚上睡觉。"
+          }
+        ],
+        "options": [
+          {
+            "label": "「我陪你坐到天亮。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": 4,
+                "affection": 3
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": -8
+              },
+              {
+                "op": "need",
+                "who": "player",
+                "need": "energy",
+                "add": -6
+              }
+            ],
+            "reply": "（她愣了一下，然后往旁边挪了挪，给你让出半张床沿）",
+            "end": true
+          },
+          {
+            "label": "「你那支吗啡，可别自己用了。」",
+            "when": {
+              "npc.rel.trust.gt": 60
+            },
+            "hide": true,
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": -2,
+                "respect": 4
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": 4
+              }
+            ],
+            "reply": "（她的脸色变了一下）……你怎么知道的？算了。我不会的。我是护士。",
+            "end": true
+          },
+          {
+            "label": "「睡不着就干点活。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": -2
+              }
+            ],
+            "reply": "……嗯。你说得对。",
+            "end": true
+          }
+        ]
+      }
+    },
+    "cooldown": 24
+  },
+  {
+    "id": "ns_ana_home",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「河那边是什么样的？」",
+    "npc": {
+      "who": "ana"
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.rel.affection.gt": 50
+            },
+            "text": "冬天会结很厚的冰，我们在冰上跳舞。我妈妈的店在桥头，卖羊肉汤。你过去了，我请你喝。"
+          },
+          {
+            "text": "跟这边差不多。也穷，也冷。只是没人逼你在墙上挂一张脸。"
+          }
+        ],
+        "options": [
+          {
+            "label": "「你为什么来这边？」",
+            "next": "why"
+          },
+          {
+            "label": "「我想去看看。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 4,
+                "trust": 2
+              }
+            ],
+            "reply": "（笑）那你得先活到开春。",
+            "end": true
+          },
+          {
+            "label": "「那边也会打过来的。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": -2
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": 4
+              }
+            ],
+            "reply": "……我知道。你不用提醒我。",
+            "end": true
+          }
+        ]
+      },
+      "why": {
+        "npc": "俱乐部的老板说这边给的钱多。确实多。他没说的是，你的护照要押在他那儿。",
+        "options": [
+          {
+            "label": "「护照现在呢？」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": 3
+              }
+            ],
+            "reply": "在他保险柜里。他的俱乐部昨天被炸平了。所以……我现在是个没有名字的人。",
+            "end": true
+          },
+          {
+            "label": "「至少你活着。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 2
+              }
+            ],
+            "reply": "嗯。至少。",
+            "end": true
+          }
+        ]
+      }
+    },
+    "once": true
+  },
+  {
+    "id": "ns_zhao_hands",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「你这手，以前干什么的？」",
+    "npc": {
+      "who": "zhao"
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.rel.trust.gt": 50
+            },
+            "text": "挖煤。十六年……下井那年我刚满二十，我爹也在那口井里，后来砸死了。煤灰洗不掉的，进了肉里。"
+          },
+          {
+            "text": "关你屁事。"
+          }
+        ],
+        "options": [
+          {
+            "label": "「挖煤的手，修避难所正好。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "respect": 4,
+                "affection": 2
+              }
+            ],
+            "reply": "（哼了一声，嘴角却动了动）……那你倒说说，先修哪儿。",
+            "end": true
+          },
+          {
+            "label": "「听说你坐过牢。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "resentment": 5,
+                "trust": -3
+              }
+            ],
+            "reply": "谁说的？（站起来）你让他来跟我说。",
+            "end": true
+          },
+          {
+            "label": "（递一支烟）",
+            "when": {
+              "player.items.cigs.gte": 1
+            },
+            "why": "你没有烟",
+            "effects": [
+              {
+                "op": "item",
+                "who": "player",
+                "item": "cigs",
+                "qty": -1
+              },
+              {
+                "op": "item",
+                "who": "npc",
+                "item": "cigs",
+                "qty": 1
+              },
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": 3,
+                "affection": 3
+              }
+            ],
+            "reply": "……谢了。",
+            "end": true
+          }
+        ]
+      }
+    },
+    "cooldown": 48
+  },
+  {
+    "id": "ns_su_teach",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「你教了多少年书？」",
+    "npc": {
+      "who": "su"
+    },
+    "nodes": {
+      "start": {
+        "npc": "二十二年。教他们背领袖语录，教他们写检讨书的格式。我教得很好，我的学生检讨书写得全区第一。",
+        "options": [
+          {
+            "label": "「你后悔吗？」",
+            "next": "regret"
+          },
+          {
+            "label": "「那也是为了活下去。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "respect": -2
+              }
+            ],
+            "reply": "（冷冷地）活下去。对。所有人都是这么说的。",
+            "end": true
+          },
+          {
+            "label": "「教我写几个字吧。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 4,
+                "respect": 3
+              },
+              {
+                "op": "skill",
+                "who": "player",
+                "skill": "forgery",
+                "add": 2
+              }
+            ],
+            "reply": "（她拿起木炭，在地上写了一个「人」字）先学这个。最难写。",
+            "end": true
+          }
+        ]
+      },
+      "regret": {
+        "npc": [
+          {
+            "when": {
+              "npc.rel.trust.gt": 50
+            },
+            "text": "后悔的是，我知道那些都是假的，还是一个字一个字教下去了。我抄禁书，是想给自己赎一点罪。"
+          },
+          {
+            "text": "后悔有什么用。"
+          }
+        ],
+        "options": [
+          {
+            "label": "「你现在还可以教真的。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": 5,
+                "affection": 3
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": -6
+              }
+            ],
+            "reply": "……在这儿？（看了看四周）也许吧。也许这儿是全国唯一可以说真话的地方。",
+            "end": true
+          },
+          {
+            "label": "（沉默）",
+            "end": true
+          }
+        ]
+      }
+    },
+    "once": true
+  },
+  {
+    "id": "ns_liu_fix",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「有什么你修不好的东西吗？」",
+    "npc": {
+      "who": "liu"
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.partnerIsPlayer": true
+            },
+            "text": "有啊。你皱眉头的时候，我就不知道该拧哪颗螺丝了。（自己先笑了）"
+          },
+          {
+            "text": "多着呢。人就修不好。我爸喝酒，我修了十年也没修好。"
+          }
+        ],
+        "options": [
+          {
+            "label": "「你太老实了，别人让你干什么你都干。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "respect": 2
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": 3
+              }
+            ],
+            "reply": "……我知道。可是我一拒绝，心里就难受。好像欠了人家什么。",
+            "end": true
+          },
+          {
+            "label": "「发电机还能撑多久？」",
+            "reply": [
+              {
+                "when": {
+                  "power": false
+                },
+                "text": "它现在就歇着呢。给我零件，我能让它再转一个月。"
+              },
+              {
+                "text": "看燃料，也看运气。轴承快磨没了，再有两个零件就好了。"
+              }
+            ],
+            "end": true
+          },
+          {
+            "label": "「谢谢你，小川。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 4
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": -5
+              }
+            ],
+            "reply": "（挠头）谢什么，应该的。",
+            "end": true
+          }
+        ]
+      }
+    },
+    "cooldown": 24
+  },
+  {
+    "id": "ns_wang_price",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「这避难所里，什么最值钱？」",
+    "npc": {
+      "who": "wang"
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "warPhase.gte": 3
+            },
+            "text": "现在？干净的身份。一张没有阵线印章的证明，能换我大衣里一半的东西。"
+          },
+          {
+            "text": "药，第一。烟，第二。第三嘛……（上下打量你）人情。人情最贵，因为不知道什么时候要还。"
+          }
+        ],
+        "options": [
+          {
+            "label": "「那你欠我的人情呢？」",
+            "when": {
+              "npc.rel.debt.gt": 10
+            },
+            "hide": true,
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "debt": -10
+              },
+              {
+                "op": "item",
+                "who": "npc",
+                "item": "cigs",
+                "qty": -3
+              },
+              {
+                "op": "item",
+                "who": "player",
+                "item": "cigs",
+                "qty": 3
+              }
+            ],
+            "reply": "（啧了一声，数出三支烟拍在你手里）两清。别说我王翠赖账。",
+            "end": true
+          },
+          {
+            "label": "「你能弄到通行证吗？」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "respect": 2
+              }
+            ],
+            "reply": "能弄到的东西都有价钱。通行证？那得看你拿什么来换。别拿口粮糊弄我。",
+            "end": true
+          },
+          {
+            "label": "「看看你的货。」",
+            "action": "trade"
+          }
+        ]
+      }
+    },
+    "cooldown": 24
+  },
+  {
+    "id": "ns_jiang_after",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「战争结束以后，你想干什么？」",
+    "npc": {
+      "who": "jiang"
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "warPhase.gte": 3
+            },
+            "text": "……我以前觉得，结束以后一切都会不一样。现在外面换了旗，可是喊口号的还是那些声音。"
+          },
+          {
+            "text": "回学校。把图书馆那排锁着的书架打开，一本一本读完。然后办一份报纸，什么都能登的报纸。"
+          }
+        ],
+        "options": [
+          {
+            "label": "「我陪你办。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 5,
+                "trust": 3
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": -6
+              }
+            ],
+            "reply": "真的？（眼睛亮了）那你得会写字。……你会写字吧？",
+            "end": true
+          },
+          {
+            "label": "「先活下来再说。」",
+            "effects": [
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": 3
+              }
+            ],
+            "reply": "嗯。可是只为了活下来而活着，那跟他们要我们做的有什么区别？",
+            "end": true
+          },
+          {
+            "label": "「你太天真了。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": -3,
+                "respect": -2
+              }
+            ],
+            "reply": "（推了推眼镜）也许吧。总得有人天真。",
+            "end": true
+          }
+        ]
+      }
+    },
+    "once": true
+  },
+  {
+    "id": "ns_ye_front",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「前线是什么样的？」",
+    "npc": {
+      "who": "ye"
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.rel.trust.gt": 60
+            },
+            "text": "冷。吵。然后突然很安静。安静的时候，你会听见电话线里只剩下嘶嘶声，那就是说，那头没人了。"
+          },
+          {
+            "text": "……"
+          }
+        ],
+        "options": [
+          {
+            "label": "「你不想说就别说。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": 4
+              }
+            ],
+            "reply": "（点了一下头）谢谢。",
+            "end": true
+          },
+          {
+            "label": "「你也是逃兵，对吧？」",
+            "when": {
+              "npc.rel.trust.gt": 60
+            },
+            "hide": true,
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "fear": 8,
+                "trust": -4
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": 8
+              }
+            ],
+            "reply": "（手按住了刀柄，又松开）……你想怎么样？",
+            "end": true
+          },
+          {
+            "label": "（递给她一杯热水）",
+            "effects": [
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "warmth",
+                "add": 5
+              },
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 2
+              }
+            ],
+            "reply": "（接过去，捧着，没喝）",
+            "end": true
+          }
+        ]
+      }
+    },
+    "cooldown": 48
+  },
+  {
+    "id": "ns_marina_why",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「你为什么还不走？」",
+    "npc": {
+      "who": "marina"
+    },
+    "nodes": {
+      "start": {
+        "npc": "走？去哪儿？大使馆关了，边境封了。而且……（看了一眼通风井）有些东西我得带出去。没带出去之前，我不能死，也不能走。",
+        "options": [
+          {
+            "label": "「是什么东西？」",
+            "when": {
+              "npc.rel.trust.lt": 45
+            },
+            "hide": true,
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": -2
+              }
+            ],
+            "reply": "（笑）你问得太快了。在这个国家，问得太快的人活不长。",
+            "end": true
+          },
+          {
+            "label": "「我帮你。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": 5,
+                "affection": 3
+              }
+            ],
+            "reply": "别轻易答应。你还不知道代价。……不过，谢谢。",
+            "end": true
+          },
+          {
+            "label": "「你写的东西，真有人看吗？」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "respect": -2
+              }
+            ],
+            "reply": "有人看。看完说『真惨』，然后去吃晚饭。可是如果没人写，他们连『真惨』都不会说。",
+            "end": true
+          }
+        ]
+      }
+    },
+    "cooldown": 48
+  },
+  {
+    "id": "ns_zhou_past",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「你在粮站干了多少年？」",
+    "npc": {
+      "who": "zhou"
+    },
+    "nodes": {
+      "start": {
+        "npc": "二十六年，从记账员干到副站长。你们年轻人不懂，那时候一斤粮票就是一条命，我签的每一个字都要对组织负责。",
+        "options": [
+          {
+            "label": "「那你签过多少条命？」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "resentment": 8,
+                "respect": 2
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": 6
+              }
+            ],
+            "reply": "（眼镜后面的眼睛眯了起来）同志，说话要讲证据。",
+            "end": true
+          },
+          {
+            "label": "「那你一定很懂分配。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 4,
+                "respect": -1
+              }
+            ],
+            "reply": "（满意地点头）对嘛。这里缺的就是一个懂规矩的人。",
+            "end": true
+          },
+          {
+            "label": "「档案室后面那些罐头，也是组织的？」",
+            "when": {
+              "npc.rel.fear.gt": 30
+            },
+            "hide": true,
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "fear": 8,
+                "resentment": 10
+              }
+            ],
+            "reply": "（脸色一沉，压低声音）……有些话，说出来对谁都不好。",
+            "end": true
+          }
+        ]
+      }
+    },
+    "cooldown": 48
+  },
+  {
+    "id": "ns_he_god",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「神父，你还信吗？」",
+    "npc": {
+      "who": "he"
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.grief.exists": true
+            },
+            "text": "我刚埋了一个人。我念完祷词，手在抖。……信。正因为这样才更要信，不然这些就都没有意义了。"
+          },
+          {
+            "text": "教堂被封了二十年，我每天在家里对着墙做弥撒。墙都没有动摇，我怎么会。"
+          }
+        ],
+        "options": [
+          {
+            "label": "「替我也祷告一下吧。」",
+            "effects": [
+              {
+                "op": "need",
+                "who": "player",
+                "need": "stress",
+                "add": -6
+              },
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 3
+              }
+            ],
+            "reply": "（他握住你的手，闭上眼睛，嘴唇动了很久）好了。主听见了。",
+            "end": true
+          },
+          {
+            "label": "「神要是在，就不会有这场仗。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "respect": 1
+              }
+            ],
+            "reply": "仗是人打的，孩……年轻人。神只是不肯替我们收拾。",
+            "end": true
+          },
+          {
+            "label": "（陪他坐一会儿）",
+            "effects": [
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": -5
+              },
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": 2
+              }
+            ],
+            "end": true
+          }
+        ]
+      }
+    },
+    "cooldown": 48
+  },
+  {
+    "id": "ns_han_soil",
+    "kind": "topic",
+    "group": "chat",
+    "label": "「你口袋里装的是什么？」",
+    "npc": {
+      "who": "han"
+    },
+    "nodes": {
+      "start": {
+        "npc": "种子。豆子、萝卜、一点麦子。在农场干了三十年，口袋里不装点种子，心里发慌。",
+        "options": [
+          {
+            "label": "「在这地底下也能种？」",
+            "reply": [
+              {
+                "when": {
+                  "facts.story.han_farm": true
+                },
+                "text": "你去下层看看，豆芽已经冒头了。（笑得满脸褶子）土是活的，只要人别先死。"
+              },
+              {
+                "text": "能。有水，有一点暖和气，就能。缺的是肯弯腰的人。"
+              }
+            ],
+            "end": true
+          },
+          {
+            "label": "「你儿子会回来的。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 4
+              },
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "stress",
+                "add": -4
+              }
+            ],
+            "reply": "（把手伸进口袋，攥住了那些种子）……嗯。等他回来，地里得有东西。",
+            "end": true
+          },
+          {
+            "label": "「种子能吃吗？」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "resentment": 4
+              }
+            ],
+            "reply": "能。吃了就没了。（他把口袋捂紧了）",
+            "end": true
+          }
+        ]
+      }
+    },
+    "cooldown": 48
+  },
+  {
+    "id": "ns_ask_name",
+    "kind": "ask",
+    "chance": 0.25,
+    "once": true,
+    "when": {
+      "npc.rel.trust.gte": 40
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.origin": "cadre"
+            },
+            "text": "你的真名叫什么？我是说，户口本上的那个。现在这个年月，名字很重要。"
+          },
+          {
+            "when": {
+              "npc.origin": "foreigner"
+            },
+            "text": "我一直想问——你叫什么？我的意思是，如果我写下这里的事，我该怎么称呼你？"
+          },
+          {
+            "text": "说起来……我还不知道你叫什么。真名。"
+          }
+        ],
+        "options": [
+          {
+            "label": "「{player.realName}。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": 4
+              }
+            ],
+            "reply": "{player.realName}……好。我记住了。要是哪天只剩一个人出去，总得有人记得别人的名字。",
+            "end": true
+          },
+          {
+            "label": "（说一个假名字）",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": -1
+              }
+            ],
+            "reply": "（看了你一眼，像是不信，又没追问）……好吧。",
+            "end": true
+          },
+          {
+            "label": "「名字在这里没用。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": -2
+              }
+            ],
+            "reply": "……也是。",
+            "end": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "ns_ask_after_war",
+    "kind": "ask",
+    "chance": 0.2,
+    "cooldown": 96,
+    "when": {
+      "warPhase.gte": 2,
+      "npc.rel.trust.gte": 30
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.regime": "loyal"
+            },
+            "text": "你说，等政府军打回来，他们会怎么看我们这些躲起来的人？会不会说我们是逃跑分子？"
+          },
+          {
+            "when": {
+              "npc.regime": "rebel"
+            },
+            "text": "如果……我是说如果，阵线真的完了。你会高兴吗？"
+          },
+          {
+            "text": "你觉得这场仗谁会赢？……算了，谁赢都一样，对吧？"
+          }
+        ],
+        "options": [
+          {
+            "label": "「我只关心我们能不能活着出去。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "respect": 2
+              }
+            ],
+            "reply": "嗯。这话最实在。",
+            "end": true
+          },
+          {
+            "label": "「谁赢都比现在强。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": 3
+              },
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "fear": 2
+              }
+            ],
+            "reply": [
+              {
+                "when": {
+                  "npc.regime": "loyal"
+                },
+                "text": "（脸色一变）这话可不能乱说。"
+              },
+              {
+                "text": "（低声）……我也这么想。"
+              }
+            ],
+            "end": true
+          },
+          {
+            "label": "「领袖会带我们赢的。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "trust": -2
+              }
+            ],
+            "reply": [
+              {
+                "when": {
+                  "npc.regime": "loyal"
+                },
+                "text": "对！对。（像松了口气）"
+              },
+              {
+                "text": "（看着你，分辨不出你是认真的还是在说给别人听）"
+              }
+            ],
+            "end": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "ns_ask_hold",
+    "kind": "ask",
+    "chance": 0.3,
+    "cooldown": 48,
+    "when": {
+      "npc.rel.state.in": [
+        "lovers",
+        "affair",
+        "flirting"
+      ],
+      "night": true
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.needs.warmth.lt": 40
+            },
+            "text": "……我冷。你能不能过来一点？就一点。"
+          },
+          {
+            "text": "今晚能挨着你睡吗？不做别的。就是挨着。"
+          }
+        ],
+        "options": [
+          {
+            "label": "（挪过去，把毯子分一半）",
+            "effects": [
+              {
+                "op": "need",
+                "who": "npc",
+                "need": "warmth",
+                "add": 10
+              },
+              {
+                "op": "need",
+                "who": "player",
+                "need": "warmth",
+                "add": 8
+              },
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 4,
+                "trust": 2
+              }
+            ],
+            "reply": "（靠过来，冰凉的额头抵在你肩上）……嗯。这样好多了。",
+            "end": true
+          },
+          {
+            "label": "「今晚过来吧。」",
+            "when": {
+              "settings.adult": true
+            },
+            "hide": true,
+            "action": "talk:intim"
+          },
+          {
+            "label": "「别让人看见。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": -2
+              }
+            ],
+            "reply": "……好。我知道了。",
+            "end": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "ns_after_flirt",
+    "kind": "after",
+    "after": "flirt",
+    "chance": 0.4,
+    "when": {
+      "npc.rel.desire.gt": 50
+    },
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.traits.any": [
+                "乐观"
+              ]
+            },
+            "text": "（笑）你跟谁学的这些话？外面打着仗，你还有心思说这个。"
+          },
+          {
+            "text": "……你是认真的，还是太冷了？"
+          }
+        ],
+        "options": [
+          {
+            "label": "「认真的。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "desire": 3,
+                "trust": 2
+              }
+            ],
+            "reply": "（看了你很久）……那我记住了。",
+            "end": true
+          },
+          {
+            "label": "「都有。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "affection": 2
+              }
+            ],
+            "reply": "（笑出了声）至少你老实。",
+            "end": true
+          },
+          {
+            "label": "「开玩笑的。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "desire": -4,
+                "affection": -1
+              }
+            ],
+            "reply": "哦。（别过头去）",
+            "end": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "ns_after_dealintim_refused",
+    "kind": "after",
+    "after": "dealintim:refused",
+    "chance": 0.8,
+    "nodes": {
+      "start": {
+        "npc": [
+          {
+            "when": {
+              "npc.origin": "teacher"
+            },
+            "text": "你以为饿了的人就没有脸了？我教过的学生里，饿死的也没有一个去干这种事。"
+          },
+          {
+            "when": {
+              "npc.traits.any": [
+                "暴躁"
+              ]
+            },
+            "text": "再让我听见一次，我把你那点东西塞进你嗓子里。"
+          },
+          {
+            "text": "……你把我当什么了？"
+          }
+        ],
+        "options": [
+          {
+            "label": "「对不起。我饿昏头了。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "resentment": -4
+              }
+            ],
+            "reply": "（不看你）……你走吧。",
+            "end": true
+          },
+          {
+            "label": "「在这儿，谁不是在卖点什么。」",
+            "effects": [
+              {
+                "op": "rel",
+                "from": "npc",
+                "to": "player",
+                "resentment": 5,
+                "respect": -3
+              }
+            ],
+            "reply": "那是你。",
+            "end": true
+          },
+          {
+            "label": "（转身离开）",
+            "end": true
+          }
+        ]
+      }
+    }
+  }
+]
