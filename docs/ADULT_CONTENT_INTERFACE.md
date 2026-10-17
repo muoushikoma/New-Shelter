@@ -12,20 +12,18 @@
 ## 1. 文件位置与加载
 
 ```
-content/adult/
-├─ manifest.json          内容包信息、版本、作者
-├─ scenes/                场景定义（每个文件可包含多个场景）
-│   ├─ intimacy.json
-│   ├─ transaction.json
-│   ├─ power.json
-│   └─ ...
-├─ fragments/             可复用的短句片段（调情、拒绝、事后对白）
-│   └─ flirt.json
-└─ cg/                    CG 图像（PNG，像素风，建议 480×270 或 240×135，整数倍）
+public/content/adult/          （打包后位于游戏目录的 content/adult/）
+├─ manifest.json               内容包信息；files 列出要加载的 JSON 文件
+├─ scenes/
+│   ├─ _template.json          自动生成的空白模板（只有占位符，游戏不会加载）
+│   ├─ example.json            一个可运行的示例条目
+│   └─ 你的文件.json            复制模板条目到这里填写，并加进 manifest 的 files
+└─ cg/                         CG 图像（PNG，像素风，建议 480×270 或 240×135，整数倍）
 ```
 
 - 内容包不存在时，游戏以「默认淡出文本」代替（例："灯灭了。"），所有系统后果照常发生。
 - 游戏设置中的开关会过滤场景（见 §6）。
+- 只有占位符（整段都是「【……】」）的条目不会加载，所以模板文件可以一直留在 files 里。
 
 ---
 
@@ -208,7 +206,7 @@ content/adult/
 
 ## 7. 交给 Grok 的工作流
 
-1. 复制 `content/adult/_template/` 中的示例文件（M3 阶段会生成完整的空白模板，每个 hook × 动机 × 意愿度组合都有占位条目）。
+1. 运行 `npm run template:adult`，生成 `public/content/adult/scenes/_template.json`：每个 hook × 动机 × 意愿度 × 地点组合都有一个占位条目（共约 200 条）。挑一批复制到新文件，例如 `scenes/batch1.json`，并把文件名加进 `manifest.json` 的 `files`。
 2. 把下面的提示词连同空白 JSON 一起发给 Grok：
 
 ```
@@ -225,8 +223,10 @@ content/adult/
 [粘贴 JSON]
 ```
 
-3. 把返回的 JSON 放回 `content/adult/scenes/`，运行 `npm run validate:content`（M3 提供）检查格式、变量、黑名单。
-4. 游戏内「开发者 → 成人内容预览」可以用任意构造的上下文测试场景。
+3. 把返回的 JSON 存回 `public/content/adult/scenes/`，运行 `npm run validate:content` 检查格式、变量、余韵白名单和未成年关键词黑名单。只有占位符的条目会被自动跳过。
+4. 开始新游戏时勾选「成人内容」，新游戏界面会显示已加载的条目数。场景在对应的时机（亲密、撞见、交易、被抓时讨好看守等）弹出；没有匹配条目时显示省略文字。
+
+> 补充：`initiator` 也可能是避难所之外的人（军官、走私头子、看守），此时只有 `name` 字段有意义，其余为默认值。
 
 ---
 

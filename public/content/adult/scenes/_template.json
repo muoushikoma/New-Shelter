@@ -1,0 +1,7282 @@
+[
+  {
+    "id": "flirt.generic.01",
+    "hook": "flirt",
+    "when": {},
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "lines": [
+      "【flirt 的一句话，可用 {initiator.name} {partner.name}】",
+      "【再写 5~10 条变体】"
+    ]
+  },
+  {
+    "id": "proposal.generic.01",
+    "hook": "proposal",
+    "when": {},
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "lines": [
+      "【proposal 的一句话，可用 {initiator.name} {partner.name}】",
+      "【再写 5~10 条变体】"
+    ]
+  },
+  {
+    "id": "refusal.generic.01",
+    "hook": "refusal",
+    "when": {},
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "lines": [
+      "【refusal 的一句话，可用 {initiator.name} {partner.name}】",
+      "【再写 5~10 条变体】"
+    ]
+  },
+  {
+    "id": "scene.dormitory.爱慕.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.爱慕.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.爱慕.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.爱慕.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.爱慕.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.慰藉.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.慰藉.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.慰藉.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.慰藉.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.慰藉.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.取暖.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.取暖.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.取暖.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.取暖.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.取暖.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.交易.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.交易.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.交易.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.交易.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.交易.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.讨好.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.讨好.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.讨好.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.讨好.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.讨好.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.依附.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.依附.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.依附.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.依附.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.依附.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.支配.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.支配.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.支配.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.支配.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.支配.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.报复.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.报复.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.报复.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.报复.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.报复.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.好奇.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.好奇.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.好奇.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.好奇.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.好奇.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.逃避.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.逃避.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.逃避.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.逃避.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.逃避.eager.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "eager"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 eager】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.爱慕.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.爱慕.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.爱慕.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.爱慕.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.爱慕.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.慰藉.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.慰藉.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.慰藉.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.慰藉.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.慰藉.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.取暖.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.取暖.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.取暖.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.取暖.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.取暖.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.交易.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.交易.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.交易.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.交易.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.交易.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.讨好.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.讨好.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.讨好.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.讨好.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.讨好.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.依附.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.依附.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.依附.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.依附.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.依附.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.支配.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.支配.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.支配.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.支配.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.支配.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.报复.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.报复.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.报复.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.报复.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.报复.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.好奇.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.好奇.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.好奇.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.好奇.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.好奇.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.逃避.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.lower.逃避.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.archive.逃避.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.storage.逃避.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.outside.逃避.willing.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "willing"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 willing】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "scene.dormitory.爱慕.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.爱慕.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.爱慕.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.爱慕.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.爱慕.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「爱慕」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.慰藉.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.慰藉.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.慰藉.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.慰藉.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.慰藉.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「慰藉」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.取暖.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.取暖.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.取暖.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.取暖.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.取暖.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「取暖」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.交易.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.交易.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.交易.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.交易.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.交易.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「交易」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.讨好.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.讨好.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.讨好.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.讨好.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.讨好.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「讨好」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.依附.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.依附.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.依附.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.依附.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.依附.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「依附」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.支配.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.支配.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.支配.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.支配.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.支配.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.报复.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.报复.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.报复.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.报复.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.报复.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「报复」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.好奇.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.好奇.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.好奇.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.好奇.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.好奇.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「好奇」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.逃避.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.lower.逃避.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.archive.逃避.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.storage.逃避.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.outside.逃避.reluctant.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "reluctant"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「逃避」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 reluctant】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "scene.dormitory.支配.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "scene.lower.支配.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "scene.archive.支配.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "scene.storage.支配.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "scene.outside.支配.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「支配」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "scene.dormitory.胁迫.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "胁迫"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「胁迫」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "scene.lower.胁迫.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "胁迫"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "lower"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「胁迫」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "scene.archive.胁迫.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "胁迫"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "archive"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「胁迫」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "scene.storage.胁迫.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "胁迫"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "storage"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：{location}，{temperature}°C。写环境与身体感受，体现动机「胁迫」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "scene.outside.胁迫.coerced.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "胁迫"
+      ],
+      "consent.in": [
+        "coerced"
+      ],
+      "location.in": [
+        "outside"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【旁白：外面某处，{temperature}°C。写环境与身体感受，体现动机「胁迫」】"
+      },
+      {
+        "speaker": "partner",
+        "text": "【{partner.name} 的话或反应，体现意愿度 coerced】"
+      },
+      {
+        "speaker": "initiator",
+        "text": "【{initiator.name} 的话或动作】"
+      },
+      {
+        "speaker": null,
+        "text": "【主体内容（由内容作者决定写到什么程度）】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "aftermath.any.爱慕.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.慰藉.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.取暖.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.交易.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.讨好.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.依附.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.支配.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.报复.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.好奇.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.逃避.eager.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "eager"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.爱慕.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.慰藉.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.取暖.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.交易.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.讨好.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.依附.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.支配.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.报复.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.好奇.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.逃避.willing.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "willing"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  },
+  {
+    "id": "aftermath.any.爱慕.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "爱慕"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.慰藉.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "慰藉"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.取暖.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "取暖"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.交易.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "交易"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "transaction"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.讨好.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "讨好"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.依附.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "依附"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.支配.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.报复.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "报复"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.好奇.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "好奇"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.逃避.reluctant.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "逃避"
+      ],
+      "consent.in": [
+        "reluctant"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": [
+      "bitter"
+    ]
+  },
+  {
+    "id": "aftermath.any.支配.coerced.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "支配"
+      ],
+      "consent.in": [
+        "coerced"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "aftermath.any.胁迫.coerced.01",
+    "hook": "aftermath",
+    "when": {
+      "motive.any": [
+        "胁迫"
+      ],
+      "consent.in": [
+        "coerced"
+      ]
+    },
+    "weight": 10,
+    "tags": [
+      "coercion"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "【事后：两人的状态、沉默或对白】"
+      }
+    ],
+    "aftertaste": []
+  },
+  {
+    "id": "discovered.generic.01",
+    "hook": "discovered",
+    "when": {},
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "lines": [
+      "【discovered 的一句话，可用 {initiator.name} {partner.name}】",
+      "【再写 5~10 条变体】"
+    ]
+  },
+  {
+    "id": "rumor.generic.01",
+    "hook": "rumor",
+    "when": {},
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "lines": [
+      "【rumor 的一句话，可用 {initiator.name} {partner.name}】",
+      "【再写 5~10 条变体】"
+    ]
+  },
+  {
+    "id": "memory.generic.01",
+    "hook": "memory",
+    "when": {},
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "lines": [
+      "【memory 的一句话，可用 {initiator.name} {partner.name}】",
+      "【再写 5~10 条变体】"
+    ]
+  },
+  {
+    "id": "jealousy.generic.01",
+    "hook": "jealousy",
+    "when": {},
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "lines": [
+      "【jealousy 的一句话，可用 {initiator.name} {partner.name}】",
+      "【再写 5~10 条变体】"
+    ]
+  },
+  {
+    "id": "pregnancy.generic.01",
+    "hook": "pregnancy",
+    "when": {},
+    "weight": 10,
+    "tags": [
+      "vanilla"
+    ],
+    "lines": [
+      "【pregnancy 的一句话，可用 {initiator.name} {partner.name}】",
+      "【再写 5~10 条变体】"
+    ]
+  }
+]

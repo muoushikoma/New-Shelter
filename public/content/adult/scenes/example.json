@@ -1,0 +1,40 @@
+[
+  {
+    "id": "example.dorm.warmth.01",
+    "hook": "scene",
+    "when": {
+      "motive.any": [
+        "取暖",
+        "慰藉"
+      ],
+      "consent.in": [
+        "eager",
+        "willing"
+      ],
+      "location.in": [
+        "dorm"
+      ]
+    },
+    "weight": 1,
+    "tags": [
+      "vanilla"
+    ],
+    "pages": [
+      {
+        "speaker": null,
+        "text": "帘子后面，{temperature} 度。毯子很薄，两个人挤在一起才不那么冷。"
+      },
+      {
+        "speaker": "partner",
+        "text": "「……别动。就这样待一会儿。」"
+      },
+      {
+        "speaker": null,
+        "text": "发电机在楼上嗡嗡地响。{partner.name}的呼吸慢慢平了下来。"
+      }
+    ],
+    "aftertaste": [
+      "tender"
+    ]
+  }
+]

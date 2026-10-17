@@ -1,0 +1,4 @@
+Fusion Pixel Font (缝合像素字体)
+Copyright (c) TakWolf and contributors. https://github.com/TakWolf/fusion-pixel-font
+Licensed under the SIL Open Font License, Version 1.1 (https://openfontlicense.org).
+This font is bundled unmodified except for conversion to WOFF2 for web delivery.

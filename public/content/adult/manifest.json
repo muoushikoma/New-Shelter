@@ -1,0 +1,7 @@
+{
+  "name": "避难所 · 成人内容包",
+  "version": "0.0.0",
+  "author": "",
+  "note": "files 中列出要加载的 JSON。_template.json 只有占位符，不会被加载；复制条目到新文件后填写即可。",
+  "files": ["scenes/_template.json", "scenes/example.json"]
+}
