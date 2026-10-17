@@ -3,6 +3,7 @@
 本格生存 × 涌现式社会模拟 × 成人向叙事 · 精致像素风
 
 - 策划案：[docs/GDD.md](docs/GDD.md)
+- 目标节点网络与开放式结局（叙事骨架）：[docs/GOAL_NETWORK.md](docs/GOAL_NETWORK.md)
 - 成人内容接口规范（供内容作者 / Grok 填写）：[docs/ADULT_CONTENT_INTERFACE.md](docs/ADULT_CONTENT_INTERFACE.md)
 - 概念图：`concept/out/*.png`
 
