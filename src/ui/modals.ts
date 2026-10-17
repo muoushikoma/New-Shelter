@@ -618,7 +618,8 @@ export class PauseMenu implements Modal {
       btn(`生育：${s.pregnancy ? '开' : '关'}`, () => { s.pregnancy = !s.pregnancy; });
       btn(`自动照顾自己：${s.autoNeeds !== false ? '开' : '关'}`, () => { s.autoNeeds = s.autoNeeds === false; }, { tip: '空闲时自己去喝水、吃饭、睡觉、取暖。' });
       btn(`需求告急时暂停：${s.autoPause !== false ? '开' : '关'}`, () => { s.autoPause = s.autoPause === false; });
-      btn(`音效：${app.audio.on ? '开' : '关'}`, () => { app.audio.toggle(); });
+      btn(`音效：${app.audio.on ? '开' : '关'}　音乐：${app.audio.music.on ? '开' : '关'}`, () => { if (app.audio.on && app.audio.music.on) app.audio.music.toggle(); else if (app.audio.on) { app.audio.toggle(); } else { app.audio.toggle(); app.audio.music.toggle(); } }, { tip: '依次切换：都开 → 关音乐 → 都关 → 都开' });
+      btn(`字体：${ui.fontMode === 'clear' ? '清晰' : '像素'}`, () => ui.setFontMode(ui.fontMode === 'clear' ? 'pixel' : 'clear'));
       btn('返回', () => { this.sub = 'main'; });
     }
     if (this.msg) ui.text(this.msg, x + 210, y + 356, '#a0d890', { align: 'center' });

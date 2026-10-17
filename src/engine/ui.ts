@@ -1,6 +1,8 @@
-// 即时模式 UI：在 960×540 画布上绘制（显示时 2× 放大），每帧重新登记可点击区域
+// 即时模式 UI：逻辑坐标 960×540，按屏幕实际像素（k 倍）绘制，每帧重新登记可点击区域
 export const UI_W = 960, UI_H = 540;
-export const FONT = '"Fusion Pixel", "WenQuanYi Zen Hei Sharp", "WenQuanYi Zen Hei", "Microsoft YaHei", monospace';
+export const PIXEL_FONT = '"Fusion Pixel", "WenQuanYi Zen Hei Sharp", "WenQuanYi Zen Hei", "Microsoft YaHei", monospace';
+export const CLEAR_FONT = '"Microsoft YaHei UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "WenQuanYi Zen Hei", sans-serif';
+export type FontMode = 'pixel' | 'clear';
 
 type Hit = { x: number; y: number; w: number; h: number; fn: () => void; layer: number; cursor?: boolean };
 
@@ -15,14 +17,30 @@ export class UI {
   private measureCtx: CanvasRenderingContext2D;
   wheel = 0;
 
+  k = 1;                      // 每个逻辑像素对应的屏幕像素
+  fontMode: FontMode = 'pixel';
+
   constructor() {
     this.cv = document.createElement('canvas');
-    this.cv.width = UI_W; this.cv.height = UI_H;
     this.ctx = this.cv.getContext('2d')!;
-    this.ctx.imageSmoothingEnabled = false;
     const m = document.createElement('canvas');
     this.measureCtx = m.getContext('2d')!;
+    try { if (localStorage.getItem('shelter.font') === 'clear') this.fontMode = 'clear'; } catch { /* 无痕模式 */ }
+    this.setScale(1);
   }
+  get font() { return this.fontMode === 'clear' ? CLEAR_FONT : PIXEL_FONT; }
+  setFontMode(m: FontMode) { this.fontMode = m; this.textCache.clear(); try { localStorage.setItem('shelter.font', m); } catch { /* */ } }
+  // 画布按屏幕实际像素重建；逻辑坐标不变
+  setScale(k: number) {
+    if (k === this.k && this.cv.width) return;
+    this.k = k;
+    this.cv.width = Math.round(UI_W * k); this.cv.height = Math.round(UI_H * k);
+    this.ctx.setTransform(k, 0, 0, k, 0, 0);
+    this.ctx.imageSmoothingEnabled = false;
+    this.textCache.clear();
+  }
+  // 逻辑坐标 → 对齐到屏幕像素格的逻辑坐标（避免边缘发虚）
+  private snap(v: number) { return Math.round(v * this.k) / this.k; }
   begin() {
     this.ctx.clearRect(0, 0, UI_W, UI_H);
     this.hits = [];
@@ -58,7 +76,10 @@ export class UI {
     this.hits.push({ x: 0, y: 0, w: UI_W, h: UI_H, fn: () => {}, layer: this.layer });
   }
 
-  rect(x: number, y: number, w: number, h: number, col: string) { this.ctx.fillStyle = col; this.ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h)); }
+  rect(x: number, y: number, w: number, h: number, col: string) {
+    const x0 = this.snap(Math.round(x)), y0 = this.snap(Math.round(y)), x1 = this.snap(Math.round(x) + Math.round(w)), y1 = this.snap(Math.round(y) + Math.round(h));
+    this.ctx.fillStyle = col; this.ctx.fillRect(x0, y0, Math.max(x1 - x0, 1 / this.k), Math.max(y1 - y0, 1 / this.k));
+  }
   frame(x: number, y: number, w: number, h: number, col: string) {
     this.rect(x, y, w, 1, col); this.rect(x, y + h - 1, w, 1, col); this.rect(x, y, 1, h, col); this.rect(x + w - 1, y, 1, h, col);
   }
@@ -83,25 +104,30 @@ export class UI {
     for (let i = 1; i < 5; i++) this.rect(x + 1 + Math.round((w - 2) * i / 5), y + 1, 1, h - 2, 'rgba(0,0,0,0.35)');
   }
   measure(s: string): number {
-    this.measureCtx.font = `12px ${FONT}`;
+    this.measureCtx.font = `12px ${this.font}`;
     return Math.ceil(this.measureCtx.measureText(s).width);
   }
+  // 文字直接按屏幕分辨率渲染（字号 = 12 × k），不再从小图放大
   private glyphs(s: string, col: string): HTMLCanvasElement {
     const key = col + '\u0000' + s;
     let c = this.textCache.get(key);
     if (c) return c;
+    const k = this.k;
     const w = this.measure(s) + 4;
     c = document.createElement('canvas');
-    c.width = Math.max(1, w); c.height = 18;
+    c.width = Math.max(1, Math.ceil(w * k)); c.height = Math.ceil(18 * k);
     const t = c.getContext('2d')!;
-    t.font = `12px ${FONT}`;
+    const px = Math.round(12 * k);
+    t.font = `${this.fontMode === 'clear' ? Math.round(px * 0.96) : px}px ${this.font}`;
     t.textBaseline = 'top';
     t.fillStyle = col;
-    t.fillText(s, 1, 2);
-    // 阈值化成硬边像素
-    const id = t.getImageData(0, 0, c.width, c.height);
-    for (let i = 3; i < id.data.length; i += 4) id.data[i] = id.data[i] > 100 ? 255 : 0;
-    t.putImageData(id, 0, 0);
+    t.fillText(s, Math.round(k), Math.round((this.fontMode === 'clear' ? 2.5 : 2) * k));
+    // 原生分辨率（k = 1）时仍阈值化成硬边像素，保持像素感
+    if (k === 1 && this.fontMode === 'pixel') {
+      const id = t.getImageData(0, 0, c.width, c.height);
+      for (let i = 3; i < id.data.length; i += 4) id.data[i] = id.data[i] > 100 ? 255 : 0;
+      t.putImageData(id, 0, 0);
+    }
     if (this.textCache.size > 4000) this.textCache.clear();
     this.textCache.set(key, c);
     return c;
@@ -109,13 +135,14 @@ export class UI {
   text(s: string, x: number, y: number, col = '#d8d0c0', opt: { align?: 'left' | 'right' | 'center'; shadow?: string } = {}): number {
     if (!s) return 0;
     const g = this.glyphs(s, col);
-    const w = g.width - 4;
+    const w = this.measure(s);
     let ox = x;
     if (opt.align === 'right') ox = x - w;
     else if (opt.align === 'center') ox = x - (w >> 1);
-    ox = Math.round(ox) - 1; const oy = Math.round(y) - 1;
-    if (opt.shadow) this.ctx.drawImage(this.glyphs(s, opt.shadow), ox, oy + 1);
-    this.ctx.drawImage(g, ox, oy);
+    ox = this.snap(Math.round(ox) - 1); const oy = this.snap(Math.round(y) - 1);
+    const gw = g.width / this.k, gh = g.height / this.k;
+    if (opt.shadow) this.ctx.drawImage(this.glyphs(s, opt.shadow), ox, oy + 1, gw, gh);
+    this.ctx.drawImage(g, ox, oy, gw, gh);
     return w;
   }
   // 自动换行，返回结束 y
@@ -188,7 +215,8 @@ export class UI {
   }
   image(src: CanvasImageSource, x: number, y: number, w: number, h: number) {
     this.ctx.imageSmoothingEnabled = false;
-    this.ctx.drawImage(src, Math.round(x), Math.round(y), w, h);
+    const x0 = this.snap(Math.round(x)), y0 = this.snap(Math.round(y));
+    this.ctx.drawImage(src, x0, y0, this.snap(x0 + w) - x0, this.snap(y0 + h) - y0);
   }
 }
 

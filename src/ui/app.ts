@@ -1,5 +1,6 @@
 // 应用主体：主循环、输入、HUD、上下文菜单
 import { UI, UI_W, UI_H } from '../engine/ui';
+import type { Mood } from './music';
 import { WorldView, drawOverlays, WW, WH } from './worldview';
 import type { World, Person } from '../sim/types';
 import { stepMinute, nextEvent } from '../sim/tick';
@@ -69,6 +70,14 @@ export class App {
     canvas.addEventListener('wheel', (e) => { this.ui.wheel += Math.sign(e.deltaY); e.preventDefault(); }, { passive: false });
     window.addEventListener('keydown', (e) => this.onKey(e));
   }
+  // 画布按屏幕实际像素重建：主画布用 1920×1080 的逻辑坐标，界面层用 960×540
+  resize(pw: number, ph: number) {
+    if (this.canvas.width === pw && this.canvas.height === ph) return;
+    this.canvas.width = pw; this.canvas.height = ph;
+    this.ctx.setTransform(pw / 1920, 0, 0, ph / 1080, 0, 0);
+    this.ctx.imageSmoothingEnabled = false;
+    this.ui.setScale(pw / UI_W);
+  }
   toUI(e: MouseEvent): [number, number] {
     const r = this.canvas.getBoundingClientRect();
     return [((e.clientX - r.left) / r.width) * UI_W, ((e.clientY - r.top) / r.height) * UI_H];
@@ -83,7 +92,18 @@ export class App {
   frame(now: number) {
     const dt = Math.min(0.1, (now - this.lastT) / 1000); this.lastT = now;
     if (this.screen === 'play' && this.w) this.updateSim(dt);
+    this.audio.music.setMood(this.musicMood());
     this.draw();
+  }
+  // 配乐情绪：标题 / 结局 / 战局后期或快断粮时紧张 / 夜晚 / 白天
+  musicMood(): Mood {
+    if (this.screen === 'ending') return 'ending';
+    if (this.screen !== 'play' || !this.w) return 'title';
+    const w = this.w;
+    if (!this.me.alive) return 'ending';
+    const food = cnt(w.storage, 'food'), n = present(w).length;
+    if (w.war.phase >= 3 || food < n * 2 || hasCond(this.me, 'captive')) return 'tension';
+    return isNight(w) ? 'night' : 'day';
   }
   updateSim(dt: number) {
     const w = this.w!;
@@ -235,7 +255,7 @@ export class App {
     ui.maxLayerUnderMouse = ui.topLayerAt(ui.mx, ui.my);
     ui.begin();
     const c = this.ctx;
-    c.fillStyle = '#050506'; c.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    c.fillStyle = '#050506'; c.fillRect(0, 0, 1920, 1080);
     if (this.screen === 'title') S.drawTitle(this);
     else if (this.screen === 'newgame') S.drawNewGame(this);
     else if (this.screen === 'settings') S.drawSettings(this);

@@ -42,6 +42,11 @@ export function availableProposals(w: World, proposer: Person): Proposal[] {
   return L;
 }
 
+// 两个人一起生活了多久（0..1，满 4 天算熟）
+export function familiarity(w: World, a: Person, b: Person): number {
+  return Math.max(0, Math.min(1, (day(w) - Math.max(a.joinedDay || 1, b.joinedDay || 1)) / 4));
+}
+
 // 一个人对一项提议的支持度（-100..100）
 export function support(w: World, v: Person, pr: Proposal, proposer: Person): number {
   let s = opinion(w, v.id, proposer.id) * 0.25 - 5;
@@ -52,10 +57,16 @@ export function support(w: World, v: Person, pr: Proposal, proposer: Person): nu
     case 'leader':
       if (!t) break;
       if (t === v) return 100;
-      s = opinion(w, v.id, t.id) * 0.6 + rel(w, v.id, t.id).respect * 0.3 - 20;
+      // 把权力交给一个人，要看：熟不熟、服不服、这人有没有本事；才认识几天的人，没人愿意听他的
+      s = opinion(w, v.id, t.id) * 0.5 + rel(w, v.id, t.id).respect * 0.4 - 28;
+      s -= (1 - familiarity(w, v, t)) * 30;
+      s += (Math.max(t.skills.combat, t.skills.persuade, t.skills.medic, t.skills.mechanic) - 45) * 0.2;
+      if (proposer === t) s -= 8; // 自己推举自己，让人起疑
+      if (cnt(w.storage, 'food') < present(w).length * 6) s += 6; // 吃的不够时，人们更想要秩序
       if (t.origin === 'cadre' && v.pers.regime === 'rebel') s -= 20;
       if (t.origin === 'cadre' && v.pers.regime === 'loyal') s += 10;
       if (v.pers.power > 70) s -= 15;
+      if (v.pers.agree > 65) s += 4;
       s += rel(w, v.id, t.id).fear * 0.2 + rel(w, v.id, t.id).debt * 0.2;
       if (leader && leader !== t) s -= rel(w, v.id, leader.id).fear * 0.2;
       break;
@@ -133,7 +144,9 @@ export function holdVote(w: World, pr: Proposal, proposer: Person, playerVote: '
     const s = support(w, p, pr, proposer) + (rnd(w.rng) - 0.5) * 20;
     if (s > 8) yes.push(p.id); else if (s < -8) no.push(p.id); else abstain.push(p.id);
   }
-  let passed = yes.length > no.length;
+  // 选领导要过半数（弃权也算在总数里）；其他事项赞成多于反对即可
+  const total = yes.length + no.length + abstain.length;
+  let passed = pr.kind === 'leader' ? yes.length * 2 > total : yes.length > no.length;
   let decidedBy: VoteResult['decidedBy'] = 'vote';
   const leader = P(w, w.politics.leader);
   // 领导者说了算的制度下，领导者可以否决（罢免除外）

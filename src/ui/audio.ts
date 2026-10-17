@@ -1,5 +1,8 @@
 // 程序化环境音：通风机的嗡嗡声、风声、滴水、远处的炮声。不依赖任何音频文件
+import { Music } from './music';
+
 export class Audio {
+  music = new Music();
   ctx: AudioContext | null = null;
   on = true;
   master: GainNode | null = null;
@@ -7,11 +10,11 @@ export class Audio {
   wind: GainNode | null = null;
   constructor() { try { this.on = localStorage.getItem('shelter.audio') !== 'off'; } catch { /* 无痕模式 */ } }
   unlock() {
-    if (this.ctx || !this.on) return;
+    if (this.ctx) { if (this.ctx.state === 'suspended') this.ctx.resume(); return; }
     try {
       const C = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       this.ctx = new C();
-      this.master = this.ctx.createGain(); this.master.gain.value = 0.35; this.master.connect(this.ctx.destination);
+      this.master = this.ctx.createGain(); this.master.gain.value = this.on ? 0.35 : 0; this.master.connect(this.ctx.destination);
       // 发电机嗡嗡声
       this.hum = this.ctx.createOscillator(); this.hum.type = 'sawtooth'; this.hum.frequency.value = 49;
       const lp = this.ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 160;
@@ -25,6 +28,7 @@ export class Audio {
       this.wind = this.ctx.createGain(); this.wind.gain.value = 0.03;
       src.connect(bp); bp.connect(this.wind); this.wind.connect(this.master); src.start();
       setInterval(() => this.drip(), 5200);
+      this.music.attach(this.ctx);
     } catch { this.ctx = null; }
   }
   toggle() { this.on = !this.on; try { localStorage.setItem('shelter.audio', this.on ? 'on' : 'off'); } catch { /* */ } if (this.master) this.master.gain.value = this.on ? 0.35 : 0; if (this.on) this.unlock(); }

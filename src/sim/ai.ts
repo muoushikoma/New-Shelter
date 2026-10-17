@@ -182,7 +182,7 @@ function jobAction(w: World, p: Person, job: string): Action | null {
     case 'guard': return mk('guard', 'storage', { obj: 'post', dur: 120, who: p });
     case 'repair': return mk('repair', 'generator', { obj: 'gen', dur: 60, who: p });
     case 'farm': return w.shelter.farmBuilt ? mk('farm', 'lower', { obj: 'farmbed', dur: 40, who: p }) : null;
-    case 'melt': return mk('melt', 'kitchen', { obj: 'stove', dur: 40, who: p });
+    case 'melt': return w.shelter.water < 150 ? mk('melt', 'kitchen', { obj: 'stove', dur: 40, who: p }) : null;
     case 'treat': { const sick = anyoneSick(w)[0]; return sick ? mk('treat', roomOf(sick), { x: sick.x, target: sick.id, dur: 25 }) : null; }
   }
   return null;

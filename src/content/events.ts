@@ -3,7 +3,7 @@ import { defEvent, EventView, Choice } from '../sim/events';
 import type { Person, World, ItemKey } from '../sim/types';
 import { P, player, present, alive, rel, relAdd, opinion, nm, log, day, cnt, addItem, takeItem, addMem, bark, clamp, hasCond, knowFact, tagMethod, isNight, roomOf, pron } from '../sim/util';
 import { rnd, chance, pick, rint } from '../engine/rng';
-import { holdVote, support, Proposal, punish, coup, applyManualRations, setLeader, RULE_TEXT, giveKey } from '../sim/politics';
+import { holdVote, support, familiarity, Proposal, punish, coup, applyManualRations, setLeader, RULE_TEXT, giveKey } from '../sim/politics';
 import { makeStranger } from '../sim/world';
 import { leaveForever, milName, PHASE_NAMES } from '../sim/war';
 import { addCond, die } from '../sim/env';
@@ -20,6 +20,8 @@ const others = (w: World) => present(w).filter((p) => !p.isPlayer && !hasCond(p,
 function opinionsOn(w: World, pr: Proposal, proposer: Person) {
   return others(w).filter((p) => p !== proposer).map((p) => {
     const s = support(w, p, pr, proposer);
+    const cand = P(w, pr.target || null);
+    if (pr.kind === 'leader' && cand && s < -8 && familiarity(w, p, cand) < 0.5) return say(w, p.id, pick(w.rng, [`我们才认识${day(w) <= 1 ? '一天' : '几天'}。`, `凭什么是${cand.isPlayer ? '你' : cand.name}？`, '先看看再说吧。', '谁知道你以前是干什么的。', '我不把命交给陌生人。']));
     const t = s > 30 ? pick(w.rng, ['我同意。', '早该这样了。', '行。', '就这么办。']) : s > 8 ? pick(w.rng, ['……也行吧。', '先这样试试。', '我没意见。']) : s < -30 ? pick(w.rng, ['我反对。', '凭什么？', '你们疯了。', '想都别想。']) : s < -8 ? pick(w.rng, ['我觉得不妥。', '再想想吧。', '……我不同意。']) : pick(w.rng, ['……', '（低头不说话）', '你们定吧。']);
     return say(w, p.id, t);
   });

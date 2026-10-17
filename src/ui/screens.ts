@@ -126,13 +126,17 @@ export function drawSettings(app: App) {
   const ui = app.ui;
   app.ctx.drawImage(titleBackground(), 0, 0, 1920, 1080);
   ui.rect(0, 0, UI_W, UI_H, 'rgba(4,4,6,0.75)');
-  ui.panel(280, 100, 400, 300, { title: '设置' });
-  let y = 140;
+  ui.panel(280, 90, 400, 364, { title: '设置' });
+  let y = 124;
   ui.button(320, y, 320, 24, `音效：${app.audio.on ? '开' : '关'}`, () => app.audio.toggle()); y += 32;
+  const mu = app.audio.music;
+  ui.button(320, y, 200, 24, `音乐：${mu.on ? '开' : '关'}`, () => { mu.toggle(); app.audio.unlock(); });
+  ui.button(528, y, 112, 24, `音量 ${Math.round(mu.volume * 10)}`, () => mu.setVolume(mu.volume >= 0.95 ? 0.2 : mu.volume + 0.2)); y += 32;
+  ui.button(320, y, 320, 24, `字体：${ui.fontMode === 'clear' ? '清晰（系统黑体）' : '像素'}`, () => ui.setFontMode(ui.fontMode === 'clear' ? 'pixel' : 'clear')); y += 32;
   ui.button(320, y, 320, 24, '全屏（F11 或点这里）', () => { document.documentElement.requestFullscreen?.(); }); y += 32;
   ui.button(320, y, 320, 24, '清除所有存档', () => { if (confirm('确定删除所有存档？')) for (const s of ['1', '2', '3', 'auto']) { localStorage.removeItem('shelter.save.' + s); localStorage.removeItem('shelter.save.' + s + '.meta'); } }); y += 32;
-  ui.para('成人内容、胁迫主题等在开始新的一局时设置，游戏中也可以从菜单修改。', 320, y + 10, 320, '#8a9098', 16);
-  ui.button(320, 360, 320, 24, '返回', () => { app.screen = 'title'; }, { hot: true });
+  ui.para('成人内容、胁迫主题等在开始新的一局时设置，游戏中也可以从菜单修改。', 320, y + 6, 320, '#8a9098', 16);
+  ui.button(320, 418, 320, 24, '返回', () => { app.screen = 'title'; }, { hot: true });
 }
 
 export function drawEnding(app: App) {

@@ -56,7 +56,13 @@ t('2 掌权：推举自己', () => {
   const w = mkw(12, 'cadre'); const me = player(w);
   run(w, 60 * 30);
   const pr = availableProposals(w, me).find((p) => p.kind === 'leader' && p.target === me.id)!;
-  console.log('2 推举自己:', holdVote(w, pr, me, 'yes').text, '领导者=', w.politics.leader);
+  console.log('2 第二天推举自己（应当失败）:', holdVote(w, pr, me, 'yes').text, '领导者=', w.politics.leader);
+  // 一周后，假设玩家这几天一直在出力、分东西、帮人（关系与威望上升）
+  run(w, 60 * 24 * 6);
+  if (w.politics.leader) { console.log('  这期间已有人当了领导：', w.politics.leader); return; }
+  for (const p of present(w)) if (!p.isPlayer) { const r = rel(w, p.id, me.id); r.respect += 30; r.trust += 25; r.affection += 15; }
+  const pr2 = availableProposals(w, me).find((p) => p.kind === 'leader' && p.target === me.id)!;
+  console.log('  一周后、赢得信任再推举:', holdVote(w, pr2, me, 'yes').text, '领导者=', w.politics.leader);
 });
 t('3 爱情：示好 + 求欢', () => {
   const w = mkw(13); const me = player(w);

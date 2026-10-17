@@ -172,7 +172,7 @@ function complete(w: World, p: Person, a: Action) {
     }
     case 'repair': if (!s.power && s.genHealth > 20 && s.genFuel > 0 && !w.facts.powerOffByRule) { s.power = true; log(w, `${nm(w, p.id)}修好了发电机，灯又亮了。`, { col: '#a0d890' }); } social.gainRespect(w, p, 4); break;
     case 'cook': takeItem(w.storage, 'fuel', 0.3); w.facts.meals = ((w.facts.meals as number) || 0) + 3 + Math.floor(p.skills.cook / 30); social.gainRespect(w, p, 2); break;
-    case 'melt': if (a.data?.fuel) { takeItem(w.storage, 'fuel', 0.5); s.water += 10; } else s.water += 4; break;
+    case 'melt': if (a.data?.fuel) { takeItem(w.storage, 'fuel', 0.5); s.water += 10; } else s.water += 4; s.water = Math.min(s.water, 300); break; // 水箱最多装 300 升
     case 'smoke': takeItem(p.inv, 'cigs', 1); n.stress = clamp(n.stress - 9); break;
     case 'booze': takeItem(p.inv, 'alcohol', 0.5); n.stress = clamp(n.stress - 16); addCond(w, p, 'drunk', 60); if (p.traits.includes('暴躁') && chance(w.rng, 0.3)) social.drunkTrouble(w, p); break;
     case 'pray': n.stress = clamp(n.stress - (p.traits.includes('虔诚') ? 14 : 6)); break;
