@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>避难所 · 概念图</title>
+<style>
+  html, body { margin: 0; background: #050506; }
+  canvas { display: block; image-rendering: pixelated; max-width: 100%; height: auto; margin: 0 auto; }
+</style>
+</head>
+<body>
+<canvas id="cv" width="1920" height="1080"></canvas>
+<script src="pixel.js"></script>
+<script src="actors.js"></script>
+<script src="scene_main.js"></script>
+<script src="scene_meeting.js"></script>
+<script src="scene_dossier.js"></script>
+<script src="scene_surface.js"></script>
+<script>
+  const name = new URLSearchParams(location.search).get('scene') || 'main';
+  const fn = { main: sceneMain, meeting: window.sceneMeeting, dossier: window.sceneDossier, surface: window.sceneSurface }[name];
+  document.fonts.ready.then(() => { fn(document.getElementById('cv')); document.title += ' · done'; window.__done = true; });
+</script>
+</body>
+</html>
