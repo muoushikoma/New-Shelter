@@ -73,6 +73,7 @@ export class App {
       if (w.trip && w.t >= w.trip.until) { M.tripTick(this); }
       this.alpha = 1; return;
     }
+    if (!w.facts.helpShown && !this.modals.length && w.t > 2) { w.facts.helpShown = true; this.push(new M.HelpModal()); }
     if (this.modals.some((m) => m.pausesSim !== false) || this.menu || this.speed === 0) { this.alpha = 1; return; }
     this.acc += dt * SPEEDS[this.speed];
     let steps = 0;

@@ -197,7 +197,7 @@ function complete(w: World, p: Person, a: Action) {
     }
     case 'farm':
       if (!s.farmBuilt) { if (!takeItem(p.inv, 'seeds', 1)) takeItem(w.storage, 'seeds', 1); s.farmBuilt = true; s.farm = 5; log(w, `${nm(w, p.id)}在下层小间搭了一个种植床，种下了蘑菇菌种和豆子。`, { col: '#a0d890', important: true }); }
-      else { s.farm = clamp(s.farm + 6); if (s.farm >= 100) { s.farm = 15; addItem(w.storage, 'food', 14); log(w, `种植床收获了。仓库里多了 14 份食物。`, { col: '#a0d890', important: true }); w.facts.harvests = ((w.facts.harvests as number) || 0) + 1; } }
+      else { s.farm = clamp(s.farm + 6); if (s.farm >= 100) { s.farm = 15; addItem(w.storage, 'food', 11); log(w, `种植床收获了。仓库里多了 11 份食物。`, { col: '#a0d890', important: true }); w.facts.harvests = ((w.facts.harvests as number) || 0) + 1; } }
       p.work += 10; social.gainRespect(w, p, 2);
       break;
     case 'buildfilter': if (!takeItem(p.inv, 'filter', 1)) takeItem(w.storage, 'filter', 1); s.filterBuilt = true; log(w, `${nm(w, p.id)}在渗水的墙角装好了滤水器。以后不用再化雪了。`, { col: '#a0d890', important: true }); social.gainRespect(w, p, 6); break;

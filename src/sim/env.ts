@@ -49,7 +49,7 @@ export function updateEnvironment(w: World) {
   // 种植
   if (s.farmBuilt && w.t % 60 === 0) {
     const lit = s.power || s.candles > 0;
-    s.farm = clamp(s.farm + (lit ? 1.3 : 0.45) * (s.water > 10 ? 1 : 0), 0, 100);
+    s.farm = clamp(s.farm + (lit ? 1.1 : 0.4) * (s.water > 10 ? 1 : 0), 0, 100);
     if (s.water > 10) s.water -= 0.15;
   }
 }
@@ -153,9 +153,9 @@ export function die(w: World, p: Person, cause: string) {
   if (w.shelter.keyHolder === p.id) w.shelter.keyHolder = null;
   if (w.politics.leader === p.id) { w.politics.leader = null; w.politics.legitimacy = 0; log(w, '避难所又没有了领头的人。', { col: '#d8b080' }); }
   // 遗物留在原地 → 进公共库存（被发现时）
-  if (p.present) for (const [k, v] of Object.entries(p.inv)) { if (k === 'storageKey' || k === 'archiveKey') continue; w.storage[k as keyof typeof w.storage] = (w.storage[k as keyof typeof w.storage] || 0) + (v || 0); }
   if (p.present && (p.inv.storageKey || p.inv.archiveKey)) { /* 钥匙掉在地上，谁先捡到算谁的 */ w.facts['keyOnFloor'] = p.inv.storageKey ? 1 : 0; w.facts['archiveKeyOnFloor'] = p.inv.archiveKey ? 1 : 0; }
-  p.inv = {};
+  if (p.present && (p.inv.storageKey || p.inv.archiveKey)) { const finder = alive(w).filter((q) => q.present && q !== p && !q.isPlayer).sort((a, b) => b.pers.power - a.pers.power)[0]; if (finder) { if (p.inv.storageKey) { finder.inv.storageKey = 1; w.shelter.keyHolder = finder.id; } if (p.inv.archiveKey) finder.inv.archiveKey = 1; } delete p.inv.storageKey; delete p.inv.archiveKey; }
+  if (p.present && !p.isPlayer) w.pending.push({ id: 'body', t: w.t + 20, ctx: { id: p.id, room: roomOf(p) } });
   for (const q of alive(w)) {
     if (q === p) continue;
     const r = rel(w, q.id, p.id);

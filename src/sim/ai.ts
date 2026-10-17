@@ -99,7 +99,8 @@ export function decide(w: World, p: Person): Action | null {
     if (sick) add((60 - sick.health / 2) * duty + p.skills.medic / 4, `${sick.name}病了`, () => { w.facts[`treated:${sick.id}`] = w.t; return mk('treat', roomOf(sick), { x: sick.x, target: sick.id, dur: 25 }); });
   }
   if (p.role === 'guard' && (night || w.politics.rules.nightWatch)) add(45, '站岗', () => mk('guard', 'storage', { obj: 'post', dur: 120, who: p }));
-  if (s.farmBuilt && s.farm < 100 && !present(w).some((q) => q.action?.type === 'farm') && (w.facts[`farmT`] as number || 0) < w.t - 600) add(25 * duty + (p.origin === 'farmer' ? 25 : 0), '去看看种植床', () => { w.facts.farmT = w.t; return mk('farm', 'lower', { obj: 'farmbed', dur: 30, who: p }); });
+  if (s.farmBuilt && s.farm >= 100 && !present(w).some((q) => q.action?.type === 'farm')) add(60, '种植床可以收了', () => mk('farm', 'lower', { obj: 'farmbed', dur: 30, who: p }));
+  else if (s.farmBuilt && !present(w).some((q) => q.action?.type === 'farm') && (w.facts[`farmT`] as number || 0) < w.t - 600) add(25 * duty + (p.origin === 'farmer' ? 25 : 0), '去看看种植床', () => { w.facts.farmT = w.t; return mk('farm', 'lower', { obj: 'farmbed', dur: 30, who: p }); });
   if (!s.farmBuilt && cnt(w.storage, 'seeds') + cnt(p.inv, 'seeds') > 0) add(30 + (p.origin === 'farmer' || p.goals.some((g) => g.startsWith('S_')) ? 25 : 0), '把种子种下去', () => mk('farm', 'lower', { obj: 'farmbed', dur: 60, who: p }));
   if (!s.filterBuilt && cnt(w.storage, 'filter') + cnt(p.inv, 'filter') > 0 && p.skills.mechanic >= 30) add(50, '装滤水器', () => mk('buildfilter', 'vent', { obj: 'tank', dur: 90, who: p }));
   if (!s.radioFixed && p.skills.mechanic >= 40 && (cnt(w.storage, 'radioParts') + cnt(p.inv, 'radioParts') > 0 || s.radioWork > 0)) add(30 + (p.goals.includes('R_RADIO') ? 25 : 0), '修电台', () => mk('fixradio', 'kitchen', { obj: 'radio', dur: 60, who: p }));

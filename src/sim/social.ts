@@ -96,11 +96,39 @@ export function chat(w: World, a: Person, b: Person, data?: Record<string, unkno
   if (ra.affection > 60 && ra.trust > 55 && ra.state === 'acquainted') ra.state = 'friend';
   if (rb.affection > 60 && rb.trust > 55 && rb.state === 'acquainted') rb.state = 'friend';
   a.needs.stress = clamp(a.needs.stress - 3); b.needs.stress = clamp(b.needs.stress - 3);
+  if (!a.isPlayer && !b.isPlayer && rnd(w.rng) < 0.6) { bark(a, w, smallTalk(w, a, b), 50); if (rnd(w.rng) < 0.6) bark(b, w, reply(w, b, a), 60); }
   spreadRumor(w, a, b); spreadRumor(w, b, a);
   // 交换知识（信任足够时）
   shareKnowledge(w, a, b); shareKnowledge(w, b, a);
   // 吵起来
   if (ra.resentment > 55 && chance(w.rng, 0.25)) { relAdd(w, a.id, b.id, { resentment: 3 }); relAdd(w, b.id, a.id, { resentment: 3, affection: -3 }); bark(a, w, pick(w.rng, ['你什么意思？', '别跟我来这套。', '我早就看你不顺眼。'])); }
+}
+
+// NPC 之间的闲聊（头顶对白），让玩家看得到他们在交往
+function smallTalk(w: World, a: Person, b: Person): string {
+  const r = rel(w, a.id, b.id);
+  const n = a.needs;
+  const lead = P(w, w.politics.leader);
+  const pool: string[] = [];
+  if (n.hunger < 35) pool.push('饿死了……', '你还有吃的吗？');
+  if (n.warmth < 35) pool.push('冷……', '今晚挤一挤吧。');
+  if (n.stress > 65) pool.push('我睡不着。', '炮声又近了。', '我们会死在这儿吗？');
+  if (r.state === 'lovers' || r.state === 'flirting') pool.push('（凑近耳边说了什么）', '……晚上来找我。', '你冷不冷？');
+  if (r.resentment > 45) pool.push('你什么意思？', '别跟我装。');
+  if (lead && lead !== a && lead !== b) pool.push(opinion(w, a.id, lead.id) < 15 ? `${lead.name}那个人……（压低声音）` : `${lead.name}还算靠得住。`);
+  if (w.rumors.some((x) => a.knows['rumor:' + x.id] && !x.about.includes(b.id))) pool.push('（压低声音）你听说了吗……');
+  if (w.war.phase === 2) pool.push('镇子西边全炸平了。');
+  if (w.war.phase === 3) pool.push('外面说的是另一种话了。');
+  if (a.goals[0] === 'E_CROSS') pool.push('要是能过河就好了。');
+  if (a.goals[0] === 'S_SELF' || a.goals[0] === 'S_REBUILD') pool.push('得想办法自己种点东西。');
+  if (!pool.length) pool.push('……', '你以前是干什么的？', '天什么时候才亮。', '有烟吗？');
+  return pick(w.rng, pool);
+}
+function reply(w: World, b: Person, a: Person): string {
+  const o = opinion(w, b.id, a.id);
+  if (o < 0) return pick(w.rng, ['关你什么事。', '……', '离我远点。']);
+  if (o > 50) return pick(w.rng, ['嗯。', '我也是。', '（点头）', '会好的。', '别想太多。']);
+  return pick(w.rng, ['……', '谁知道呢。', '是吗。', '嗯。']);
 }
 
 const SHAREABLE = ['K_MIL', 'K_SMUG', 'K_REDCROSS', 'K_MARKET', 'K_DRAIN', 'K_ARCHIVE_FILES'];

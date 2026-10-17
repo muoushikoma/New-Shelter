@@ -587,3 +587,126 @@ defEvent({
 
 export const PHASE_EVENT = true;
 export { isNight, roomOf, willingness, giveKey, setLeader };
+
+// ---------- 广播里的名单 ----------
+defEvent({
+  id: 'radio_list', needsPlayer: false,
+  build: (w, ctx) => {
+    const d = P(w, ctx.id as string); const me = player(w);
+    if (!d || !d.present) return null;
+    const listeners = present(w).filter((p) => roomOf(p) === 'kitchen' && !p.isPlayer && p !== d);
+    const realName = d.name.length > 1 ? d.name : d.name + '某';
+    return {
+      id: 'radio_list', title: '广播', art: 'dark',
+      text: `晚上七点，「阵线之声」开始念名单。\n\n「……以下逃兵、动摇分子，任何公民发现其下落，须立即向最近的宪兵或民防岗位报告：王德顺，二营……孙立新，四营……${realName}……」\n\n公共区里一下子安静了。${listeners.length ? listeners.map((p) => p.name).join('、') + '都听见了。' : ''}${d.name}的脸白得像墙。`,
+      choices: [
+        { label: '「同名同姓的多了。」（替' + pron(d) + '打圆场）', tags: [[`说服 ${me.skills.persuade}`, '#d8b060']], run: (wd) => { relAdd(wd, d.id, me.id, { trust: 15, affection: 10, debt: 15 }); if (rnd(wd.rng) * 100 < me.skills.persuade + 20) return '有人干笑了一声。话题被岔开了。但大家都记住了这个名字。'; for (const q of listeners) { const s = d.secrets.find((x) => x.id.includes('deserter')); if (s && !s.known.includes(q.id)) s.known.push(q.id); } return '没人接话。所有人都知道了。'; } },
+        { label: '把收音机关掉', run: (wd) => { relAdd(wd, d.id, me.id, { trust: 8 }); for (const q of listeners) relAdd(wd, q.id, me.id, { trust: -2 }); return '你走过去拧掉了开关。屋里只剩下发电机的声音。'; } },
+        { label: '看着' + pron(d), run: (wd) => { for (const q of listeners) { const s = d.secrets.find((x) => x.id.includes('deserter')); if (s && !s.known.includes(q.id)) s.known.push(q.id); } const s = d.secrets.find((x) => x.id.includes('deserter')); if (s && !s.known.includes(me.id)) s.known.push(me.id); d.needs.stress = clamp(d.needs.stress + 25); return `${d.name}低下头，起身走开了。今晚，避难所里多了一个所有人都知道、却没人说出口的秘密。`; } },
+      ],
+    };
+  },
+  auto: (w, ctx) => { const d = P(w, ctx.id as string); if (!d) return; for (const q of present(w)) { if (roomOf(q) === 'kitchen' && q !== d) { const s = d.secrets.find((x) => x.id.includes('deserter')); if (s && !s.known.includes(q.id)) s.known.push(q.id); } } d.needs.stress = clamp(d.needs.stress + 20); log(w, `广播念到了一个名字。${d.name}一晚上没说话。`, { col: '#c8b890' }); },
+});
+
+// ---------- 账对不上（可能冤枉人） ----------
+defEvent({
+  id: 'theft_noticed', needsPlayer: false,
+  build: (w) => {
+    const k = P(w, w.shelter.keyHolder); const me = player(w);
+    if (!k || !k.present || k.isPlayer) return null;
+    // 保管人怀疑谁：真偷了的人，或者他最看不顺眼的人
+    const thieves = present(w).filter((p) => p !== k && p.tags['偷窃']);
+    const suspect = present(w).filter((p) => p !== k).sort((a, b) => (opinion(w, k.id, a.id) - (thieves.includes(a) ? 25 : 0)) - (opinion(w, k.id, b.id) - (thieves.includes(b) ? 25 : 0)))[0];
+    if (!suspect) return null;
+    const guilty = thieves.includes(suspect);
+    const pr: Proposal = { kind: 'punish', target: suspect.id, value: 'ration', label: `惩罚${suspect.isPlayer ? '你' : suspect.name}：扣口粮` };
+    return {
+      id: 'theft_noticed', title: '账对不上', speaker: k.id, art: 'meeting',
+      text: `${k.name}把账本摔在桌上：「少了。又少了。」\n\n${pron(k)}的目光在每个人脸上停了一下，最后停在了${suspect.isPlayer ? '你' : suspect.name}身上。「是不是你？」`,
+      lines: [say(w, suspect.id, suspect.isPlayer ? '' : guilty ? pick(w.rng, ['……', '你有证据吗？']) : pick(w.rng, ['不是我！', '你凭什么怀疑我？', '我发誓我没碰过。']))].filter((l) => l.text),
+      choices: suspect.isPlayer
+        ? [{ label: guilty ? '「……是我。」' : '「不是我。」', run: (wd) => { if (guilty) { punish(wd, me, 'ration', k); return '你低下了头。'; } relAdd(wd, k.id, me.id, { trust: -5 }); return holdVote(wd, pr, k, 'no').text; } }, { label: '「你自己就拿着钥匙。」', tags: [['反咬', '#d8b060']], run: (wd) => { for (const q of others(wd)) relAdd(wd, q.id, k.id, { trust: -6 }); relAdd(wd, k.id, me.id, { resentment: 15 }); return '屋里的目光从你身上移到了' + k.name + '身上。'; } }]
+        : [...voteChoices(w, pr, k), { label: `「我看见是谁拿的——不是${pron(suspect)}。」`, ok: thieves.length > 0 && thieves[0] !== suspect && !thieves[0].isPlayer, why: '你不知道是谁', run: (wd) => { const t = thieves.find((x) => x !== suspect && !x.isPlayer)!; relAdd(wd, suspect.id, player(wd).id, { trust: 15, debt: 15 }); relAdd(wd, t.id, player(wd).id, { resentment: 25 }); return holdVote(wd, { kind: 'punish', target: t.id, value: 'ration', label: `惩罚${t.name}：扣口粮` }, player(wd), 'yes').text; } }],
+    };
+  },
+  auto: (w) => { const k = P(w, w.shelter.keyHolder); if (!k) return; const s = present(w).filter((p) => p !== k).sort((a, b) => opinion(w, k.id, a.id) - opinion(w, k.id, b.id))[0]; if (s) holdVote(w, { kind: 'punish', target: s.id, value: 'ration', label: `惩罚${s.name}：扣口粮` }, k, 'abstain'); },
+});
+
+// ---------- 最后一支药 ----------
+defEvent({
+  id: 'last_meds', needsPlayer: true,
+  build: (w, ctx) => {
+    const a = P(w, ctx.a as string), b = P(w, ctx.b as string); const me = player(w);
+    if (!a || !b || cnt(w.storage, 'meds') < 1) return null;
+    const give = (t: Person) => (wd: World) => { takeItem(wd.storage, 'meds', 1); const c = t.conds.find((x) => ['infection', 'fever'].includes(x.type)); if (c) c.sev = clamp(c.sev - 60); t.health = clamp(t.health + 10); relAdd(wd, t.id, me.id, { trust: 15, debt: 25 }); const o = t === a ? b : a; relAdd(wd, o.id, me.id, { resentment: 15 }); for (const q of others(wd)) if (q !== a && q !== b && q.partner === o.id) relAdd(wd, q.id, me.id, { resentment: 20 }); tagMethod(me, '牺牲他人'); return `你把药给了${t.isPlayer ? '自己' : t.name}。${o.isPlayer ? '你' : o.name}看着你，什么也没说。`; };
+    return { id: 'last_meds', title: '最后一支药', art: 'dark', text: `药柜里只剩一支抗生素。\n\n${a.isPlayer ? '你' : a.name}在发烧，伤口在化脓。${b.isPlayer ? '你' : b.name}也是。\n\n两个人都在看着你。`, choices: [
+      { label: `给${a.isPlayer ? '自己' : a.name}`, run: give(a) },
+      { label: `给${b.isPlayer ? '自己' : b.name}`, run: give(b) },
+      { label: '抽签', run: (wd) => (rnd(wd.rng) < 0.5 ? give(a) : give(b))(wd) + '\n（抽签决定的。没人怪你——表面上。）' },
+      { label: '开会让大家决定', run: (wd) => { const pick2 = opinion(wd, a.id, me.id) + others(wd).reduce((s, q) => s + opinion(wd, q.id, a.id), 0) > others(wd).reduce((s, q) => s + opinion(wd, q.id, b.id), 0) ? a : b; takeItem(wd.storage, 'meds', 1); const c = pick2.conds.find((x) => ['infection', 'fever'].includes(x.type)); if (c) c.sev = clamp(c.sev - 60); wd.politics.meetings++; return `大家选了${pick2.isPlayer ? '你' : pick2.name}。少数服从多数——这次，是另一个人的命。`; } },
+    ] };
+  },
+});
+
+// ---------- 冷夜 ----------
+defEvent({
+  id: 'cold_night', needsPlayer: false,
+  build: (w) => {
+    const me = player(w);
+    const ppl = present(w);
+    const fuel = cnt(w.storage, 'fuel');
+    return { id: 'cold_night', title: '冷夜', art: 'dark', text: `停电了。外面零下${Math.abs(Math.round(w.shelter.tempOut))}度，墙上结了霜。\n\n炉子边只够三四个人。${fuel > 2 ? '仓库里还有一点燃料。' : '燃料已经烧完了。'}`, choices: [
+      { label: '所有人挤到宿舍，盖上所有的毯子', run: (wd) => { for (const p of present(wd)) { p.needs.warmth = clamp(p.needs.warmth + 20); p.action = null; } for (const a of present(wd)) for (const b of present(wd)) if (a !== b) relAdd(wd, a.id, b.id, { affection: 2, desire: a.partner === b.id ? 0 : 1 }); return '十几只脚挤在一起。有人在黑暗里笑了一声，又有人在哭。天亮的时候，所有人都还活着。'; } },
+      { label: '把炉子边的位置留给病人和最冷的人', run: (wd) => { const weak = present(wd).sort((a, b) => a.needs.warmth + a.health - b.needs.warmth - b.health).slice(0, 3); for (const p of weak) p.needs.warmth = clamp(p.needs.warmth + 35); for (const q of present(wd)) if (!weak.includes(q)) q.needs.warmth = clamp(q.needs.warmth - 5); for (const p of weak) relAdd(wd, p.id, me.id, { trust: 6 }); return `${weak.map((p) => (p.isPlayer ? '你' : p.name)).join('、')}守着炉子。其他人缩在角落里。`; } },
+      { label: '自己先占一个炉子边的位置', run: (wd) => { me.needs.warmth = clamp(me.needs.warmth + 40); for (const q of others(wd)) relAdd(wd, q.id, me.id, { respect: -4, resentment: 3 }); tagMethod(me, '特权'); return '你挤到了炉子边。没人说什么。'; } },
+      { label: '烧掉最后的燃料', ok: fuel > 1, why: '没有燃料了', run: (wd) => { takeItem(wd.storage, 'fuel', Math.min(4, fuel)); for (const p of present(wd)) p.needs.warmth = clamp(p.needs.warmth + 30); return '火苗蹿起来的时候，所有人都把手伸了过去。明天的事，明天再说。'; } },
+    ] };
+  },
+  auto: (w) => { for (const p of present(w)) p.needs.warmth = clamp(p.needs.warmth + 12); log(w, '停电的冷夜。所有人挤在宿舍里熬到了天亮。', { col: '#a0c0d8' }); },
+});
+
+// ---------- 推心置腹 ----------
+defEvent({
+  id: 'confide', needsPlayer: true,
+  build: (w, ctx) => {
+    const p = P(w, ctx.id as string); const me = player(w);
+    if (!p || !p.present) return null;
+    const sec = p.secrets.find((s) => s.id === ctx.sec);
+    if (!sec) return null;
+    return { id: 'confide', title: '夜谈', speaker: p.id, art: 'dark', text: `夜里，${p.name}坐到你旁边，很久没说话。\n\n「……有件事，我从来没跟别人说过。」\n\n${sec.text.replace(p.name, '我').replace(/^他|^她/, '我')}`, choices: [
+      { label: '「我不会说出去。」', run: (wd) => { if (!sec.known.includes(me.id)) sec.known.push(me.id); relAdd(wd, p.id, me.id, { trust: 8, affection: 6 }); p.needs.stress = clamp(p.needs.stress - 15); return `${p.name}靠在你肩上，像是终于放下了什么。`; } },
+      { label: '「你为什么要告诉我？」', run: (wd) => { if (!sec.known.includes(me.id)) sec.known.push(me.id); relAdd(wd, p.id, me.id, { trust: 3 }); return '「因为……这里只有你了。」'; } },
+    ] };
+  },
+});
+
+// ---------- 线索 ----------
+defEvent({
+  id: 'hint', needsPlayer: true,
+  build: (w) => {
+    const me = player(w);
+    const facts = ['K_MIL', 'K_SMUG', 'K_REDCROSS', 'K_DRAIN'].filter((f) => !me.knows[f] && (f !== 'K_REDCROSS' || w.war.phase >= 3));
+    const teller = present(w).filter((p) => !p.isPlayer).sort((a, b) => rel(w, b.id, me.id).trust - rel(w, a.id, me.id).trust)[0];
+    if (!facts.length || !teller) return null;
+    const f = facts[0];
+    const t: Record<string, string> = { K_MIL: '我听说火车站那边有军队设的交换点，探照灯整夜开着。', K_SMUG: '老电影院的地下室……有人在那儿做过河的生意。', K_REDCROSS: '有人看见教堂后面搭了白帐篷，上面画着红十字。', K_DRAIN: '坍塌区那边，你注意到没有——瓦砾后面有风吹出来。' };
+    return { id: 'hint', title: '闲话', speaker: teller.id, text: `${teller.name}一边烤火一边说：「${t[f]}」`, choices: [{ label: '记下了', run: (wd) => { if (f !== 'K_DRAIN') { me.knows[f] = true; wd.discovered[f] = true; if (f === 'K_MIL') wd.locs.camp.known = true; if (f === 'K_SMUG') { wd.locs.market.known = true; wd.discovered.C_SMUG = true; } if (f === 'K_REDCROSS') wd.locs.redcross.known = true; } else wd.discovered.K_DRAIN = true; return ''; } }] };
+  },
+});
+
+// ---------- 尸体 ----------
+defEvent({
+  id: 'body', needsPlayer: false,
+  build: (w, ctx) => {
+    const d = P(w, ctx.id as string); const me = player(w);
+    if (!d || d.alive) return null;
+    return { id: 'body', title: '尸体', art: 'dark', text: `${d.name}的身体躺在${ctx.room === 'infirmary' ? '病床上' : '地上'}，已经开始变冷。\n\n避难所里没有地方放死人。`, choices: [
+      { label: '抬到外面，埋进雪里（要出去一趟）', run: (wd) => { me.needs.warmth = clamp(me.needs.warmth - 15); for (const q of others(wd)) { q.needs.stress = clamp(q.needs.stress - 4); relAdd(wd, q.id, me.id, { respect: 3 }); } return '你们在掩体后面挖了一个浅坑。雪落进去，很快就看不出来了。'; } },
+      { label: '放进坍塌区', run: (wd) => { wd.facts.bodiesInCollapse = Number(wd.facts.bodiesInCollapse || 0) + 1; for (const q of present(wd)) q.needs.stress = clamp(q.needs.stress + 4); return '坍塌区很冷，暂时不会有味道。暂时。'; } },
+      { label: '大家围着说几句话', run: (wd) => { for (const q of present(wd)) { q.needs.stress = clamp(q.needs.stress - 8); for (const r of present(wd)) if (q !== r) relAdd(wd, q.id, r.id, { affection: 1.5 }); } const he = present(wd).find((p) => p.traits.includes('虔诚')); return he ? `${he.name}念了一段很久没人念过的经文。` : '没有人会念经。有人说了句「走好」，就没人再说话了。'; } },
+      { label: '先翻一翻' + pron(d) + '的口袋', run: (wd) => { const got = Object.entries(d.inv).filter(([, v]) => v); for (const [k, v] of got) addItem(me.inv, k as ItemKey, v || 0); d.inv = {}; for (const q of others(wd)) relAdd(wd, q.id, me.id, { respect: -5, trust: -3 }); return got.length ? '你在口袋里摸到了些东西。有人看见了。' : '口袋是空的。有人看见了你在翻。'; } },
+    ] };
+  },
+  auto: (w, ctx) => { const d = P(w, ctx.id as string); if (d) { for (const [k, v] of Object.entries(d.inv)) addItem(w.storage, k as ItemKey, v || 0); d.inv = {}; } for (const q of present(w)) q.needs.stress = clamp(q.needs.stress + 2); },
+});
