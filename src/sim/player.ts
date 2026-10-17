@@ -12,7 +12,7 @@ import { giveKey } from './politics';
 import { hasMil } from './goals';
 
 export interface Opt { id: string; label: string; ok?: boolean; why?: string; tip?: string; tags?: [string, string][]; sub?: boolean }
-export interface Result { text?: string; action?: Action; ui?: string; arg?: unknown; who?: string; next?: Opt[]; nextFor?: string }
+export interface Result { text?: string; action?: Action; ui?: string; arg?: unknown; who?: string; next?: Opt[]; nextFor?: string; tag?: string } // tag：行动的结果，对话里接追问用（如 beg:no）
 
 const near = (a: Person, b: Person) => a.present && b.present && a.floor === b.floor && Math.abs(a.x - b.x) < 40;
 const kk = (k: ItemKey) => ITEMS[k].name;
@@ -251,15 +251,15 @@ export function doTalk(w: World, t: Person, id: string): Result {
     case 'comfort': social.comfort(w, me, t); tagMethod(me, '合作'); return say(pick(w.rng, ['……谢谢你。', '（靠在你肩上，很久没说话）', '我没事。……其实有事。', '你也不容易。']));
     case 'give': { const k = a1 as ItemKey; social.giveItem(w, me, t, k, 1); tagMethod(me, '合作'); return say(t.needs.hunger < 40 && k === 'food' ? '（几乎是抢过去的）……谢谢。我记住了。' : pick(w.rng, ['谢谢。', '……你要什么？', '我记着。'])); }
     case 'trade': return { ui: 'trade', arg: t.id };
-    case 'beg': { const before = cnt(me.inv, 'food'); social.beg(w, me, t, 'food'); return say(cnt(me.inv, 'food') > before ? '拿去吧。' : pick(w.rng, ['不行。', '大家都一样饿。', '我自己都不够。'])); }
+    case 'beg': { const before = cnt(me.inv, 'food'); social.beg(w, me, t, 'food'); const got = cnt(me.inv, 'food') > before; return { ...say(got ? '拿去吧。' : pick(w.rng, ['不行。', '大家都一样饿。', '我自己都不够。'])), tag: got ? 'beg:ok' : 'beg:no' }; }
     case 'flirt': social.chat(w, me, t); { const before = rel(w, t.id, me.id).desire; const intim = require_intim(); intim.flirt(w, me, t); return say(rel(w, t.id, me.id).desire > before ? pick(w.rng, ['……你真会说话。', '（笑了一下，没有躲开）', '冷吗？过来点。']) : pick(w.rng, ['别这样。', '我没心情。', '……']));}
     case 'intim': case 'dealintim': case 'coerce': {
       const deal: [ItemKey, number] | null = head === 'dealintim' ? [a1 as ItemKey, Number(a2 || 1)] : null;
       const res = propose(w, me, t, { motive: [], deal, coerce: head === 'coerce' });
-      if (res.consent === 'refused') return say(head === 'dealintim' ? pick(w.rng, ['你把我当什么人了？', '……不。', '拿着你的东西走开。']) : head === 'coerce' ? '「你敢。」' : pick(w.rng, ['……不了。', '我们还没到那一步。', '别。', '你误会了。']) + (res.why ? `（${res.why}）` : ''));
+      if (res.consent === 'refused') return { tag: `${head}:refused`, ...say(head === 'dealintim' ? pick(w.rng, ['你把我当什么人了？', '……不。', '拿着你的东西走开。']) : head === 'coerce' ? '「你敢。」' : pick(w.rng, ['……不了。', '我们还没到那一步。', '别。', '你误会了。']) + (res.why ? `（${res.why}）` : '')) };
       if (head === 'coerce') { w.politics.abuses += 2; tagMethod(me, '胁迫'); }
       const how = { eager: '握住了你的手。', willing: '点了点头。', reluctant: '沉默了很久，然后低下了头。', coerced: '没有说话。', refused: '' }[res.consent];
-      return { text: `${t.name}${how}（${CONSENT_NAMES[res.consent]}）`, who: t.id };
+      return { text: `${t.name}${how}（${CONSENT_NAMES[res.consent]}）`, who: t.id, tag: `${head}:yes` };
     }
     case 'help': return help(w, t, a1);
     case 'plan': {
@@ -348,7 +348,7 @@ function chatLine(w: World, t: Person): string {
   if (op < 0) return pick(w.rng, lines('chat.hostile', ['有话快说。', '我跟你没什么好聊的。', '……']));
   if (t.partner === me.id) return pick(w.rng, lines('chat.partner', ['你今天还好吗？', '晚上……一起睡吧，暖和。', '等这一切结束了，你想去哪儿？']));
   const lead = P(w, w.politics.leader);
-  const pool = [t.bio, t.thought ? `（${t.thought}）` : '', lead && lead !== t ? (opinion(w, t.id, lead.id) < 20 ? `${lead.name}？哼。` : `${lead.name}还算靠得住。`) : '', w.war.phase >= 2 ? '你听说了吗？镇子西边全炸平了。' : '你觉得战争什么时候结束？', t.traits.includes('烟瘾') ? '有烟吗？' : '', ...lines('chat.general', [])].filter(Boolean);
+  const pool = [t.thought ? `（${t.thought}）` : '', lead && lead !== t ? (opinion(w, t.id, lead.id) < 20 ? `${lead.name}？哼。` : `${lead.name}还算靠得住。`) : '', w.war.phase >= 2 ? '你听说了吗？镇子西边全炸平了。' : '你觉得战争什么时候结束？', t.traits.includes('烟瘾') ? '有烟吗？' : '', ...lines('chat.general', [])].filter(Boolean);
   return pick(w.rng, pool);
 }
 
@@ -365,7 +365,7 @@ function answer(w: World, t: Person, what: string, arg?: string): string {
       if (what === 'K_SMUG') { w.locs.market.known = true; return '老电影院的地下室。那儿有人做过河的生意。要付得起。'; }
       w.locs.redcross.known = true; return '我听说红十字的人会在教堂那边设救助站。';
     }
-    case 'self': return t.bio;
+    case 'self': return r.trust < 25 ? `${t.originText}。……问这个干什么？` : pick(w.rng, [`我以前是${t.originText}。`, `${t.originText}。现在说这个也没什么用了。`, `我？${t.originText}。`]);
     case 'want': {
       if (!open) return '活着。还能想要什么？';
       const g = t.goals[0] || '';

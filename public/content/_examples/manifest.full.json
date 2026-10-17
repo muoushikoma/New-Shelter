@@ -3,8 +3,21 @@
   "name": "我的内容包",
   "version": "1",
   "author": "",
-  "events": ["events/example.json", "events/my_story.json"],
-  "text": ["text/override.json"],
-  "people": ["people/new_people.json"],
-  "images": ["images/images.json"]
+  "events": [
+    "events/example.json",
+    "events/my_story.json"
+  ],
+  "text": [
+    "text/override.json"
+  ],
+  "people": [
+    "people/new_people.json"
+  ],
+  "images": [
+    "images/images.json"
+  ],
+  "dialogue": [
+    "dialogue/base.json",
+    "dialogue/my_talks.json"
+  ]
 }

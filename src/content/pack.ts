@@ -1,13 +1,14 @@
 // 内容包加载：content/manifest.json 列出的剧情、文本、人物、图片。规范见 docs/CONTENT_GUIDE.md
 import { registerStory, validateStory, StoryEvent, STORY } from './story';
+import { registerTopic, validateDialogue, DTopic } from './dialogue';
 import { applyText, TextPack, validateText, PeoplePack, addPeople, validatePeople } from './textpack';
 import { EVENTS } from '../sim/events';
 import { setImage } from '../art/overrides';
 import { clearPortraitCache } from '../art/actors';
 
-export interface ContentManifest { name?: string; version?: string; author?: string; events?: string[]; text?: string[]; people?: string[]; images?: string[] }
+export interface ContentManifest { name?: string; version?: string; author?: string; events?: string[]; dialogue?: string[]; text?: string[]; people?: string[]; images?: string[] }
 
-const stats = { loaded: false, events: 0, text: 0, people: 0, images: 0, errors: [] as string[] };
+const stats = { loaded: false, events: 0, dialogue: 0, text: 0, people: 0, images: 0, errors: [] as string[] };
 export const packStats = () => stats;
 
 async function getJson(url: string): Promise<unknown> {
@@ -41,6 +42,17 @@ export async function loadContentPacks(base = 'content/') {
     e.forEach(err);
     const bad = new Set(e.map((x) => x.match(/\[([^\]]+)\]/)?.[1]));
     for (const ev of list) if (ev?.id && !bad.has(ev.id)) { registerStory(ev); stats.events++; }
+  }
+  // 对话
+  for (const f of m.dialogue || []) {
+    try {
+      const d = await getJson(base + f);
+      const list = (Array.isArray(d) ? d : [d]) as DTopic[];
+      const e = validateDialogue(list, f, builtIn);
+      e.forEach(err);
+      const bad = new Set(e.map((x) => x.match(/\[([a-z0-9_]+)/)?.[1]));
+      for (const t of list) if (t?.id && !bad.has(t.id)) { registerTopic(t); stats.dialogue++; }
+    } catch (e) { err(`${f}: 读取失败 ${(e as Error).message}`); }
   }
   // 图片
   const waits: Promise<void>[] = [];

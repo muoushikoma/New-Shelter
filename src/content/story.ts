@@ -10,6 +10,8 @@ import { makeStranger } from '../sim/world';
 import { completeIntimacy } from '../sim/intimacy';
 import { ITEMS } from './items';
 import { matchWhen, fillText } from './match';
+import { OBJECTS } from './layout';
+const OBJ_IDS = OBJECTS.map((o) => o.id);
 
 export type Who = string; // 'player' | 'leader' | 'keyholder' | 角色名（cast 里的键）| 'all'
 
@@ -34,6 +36,7 @@ export interface StoryEvent {
   trigger?: { on?: 'hourly' | 'daily' | 'manual'; hour?: number; hours?: [number, number]; chance?: number; once?: boolean; cooldown?: number; minDay?: number; maxDay?: number; when?: Record<string, unknown>; priority?: number };
   cast?: Record<string, CastSpec>;
   speaker?: string; art?: string; cg?: string;
+  object?: string; label?: string;   // 挂在场景物件上：物件菜单里多一个选项（label），条件用 trigger.when
   lines?: { who: string; text: string }[];
   choices: StoryChoice[];
   auto?: Effect[];
@@ -49,11 +52,11 @@ const SHELTER_KEYS = ['water', 'damage', 'genHealth', 'collapseWork', 'farm', 'c
 const REL_KEYS = ['trust', 'affection', 'fear', 'desire', 'respect', 'resentment', 'debt'] as const;
 const LEAVE = ['crossed', 'joined', 'expelled', 'taken', 'fled'] as const;
 const RESERVED = new Set(['player', 'leader', 'keyholder', 'all', 'storage', 'world', 'facts', 'settings', 'day', 'hour']);
-export const PERSON_FIELDS = new Set(['id', 'key', 'name', 'realName', 'age', 'gender', 'origin', 'originText', 'traits', 'isPlayer', 'isLeader', 'keyHolder', 'health', 'needs', 'skills', 'items', 'conds', 'partner', 'hasPartner', 'partnerIsPlayer', 'rel', 'myRel', 'opinion', 'asleep', 'room']);
+export const PERSON_FIELDS = new Set(['id', 'key', 'name', 'realName', 'age', 'gender', 'origin', 'originText', 'traits', 'isPlayer', 'isLeader', 'keyHolder', 'health', 'needs', 'skills', 'items', 'conds', 'partner', 'hasPartner', 'partnerIsPlayer', 'rel', 'myRel', 'opinion', 'asleep', 'room', 'goals', 'regime', 'grudge', 'grief']);
 export const EFFECT_OPS = ['item', 'need', 'health', 'skill', 'rel', 'relState', 'fact', 'log', 'bark', 'memory', 'cond', 'cure', 'shelter', 'tag', 'know', 'event', 'intimacy', 'leave', 'die', 'join'] as const;
 
 // ---------- 上下文（when 条件与 {变量} 都从这里取值） ----------
-function personView(w: World, p: Person) {
+export function personView(w: World, p: Person) {
   const me = player(w);
   const r = p.isPlayer ? null : rel(w, p.id, me.id), m = p.isPlayer ? null : rel(w, me.id, p.id);
   const rr = (x: typeof r) => x ? { trust: Math.round(x.trust), affection: Math.round(x.affection), fear: Math.round(x.fear), desire: Math.round(x.desire), respect: Math.round(x.respect), resentment: Math.round(x.resentment), debt: Math.round(x.debt), state: x.state, times: x.times } : null;
@@ -66,6 +69,10 @@ function personView(w: World, p: Person) {
     conds: p.conds.map((c) => c.type), partner: p.partner || null, hasPartner: !!p.partner, partnerIsPlayer: p.partner === me.id,
     rel: rr(r), myRel: rr(m), opinion: p.isPlayer ? 0 : Math.round(opinion(w, p.id, me.id)),
     asleep: p.action?.type === 'sleep' && p.action.t > 0, room: p.action?.room || '',
+    goals: [...p.goals], regime: p.pers.regime,
+    // 对玩家最耿耿于怀的一件事、最近一次失去的人（对话里用）
+    grudge: p.isPlayer ? '' : (p.mem.filter((m) => m.who === me.id && m.w < -10).sort((a, b) => a.w - b.w)[0]?.text || ''),
+    grief: p.mem.find((m) => m.kind === 'death')?.text || '',
   };
 }
 export function storyContext(w: World, cast: Cast): Record<string, unknown> {
@@ -150,7 +157,13 @@ export function applyEffects(w: World, effects: Effect[] | undefined, cast: Cast
       case 'cure': for (const p of ws()) p.conds = p.conds.filter((c) => c.type !== e.cond); break;
       case 'shelter': { const k = e.key as typeof SHELTER_KEYS[number]; const s = w.shelter as unknown as Record<string, number>; s[k] = Math.max(0, (s[k] || 0) + n); if (k === 'damage' || k === 'genHealth') s[k] = clamp(s[k]); break; }
       case 'tag': for (const p of ws()) tagMethod(p, String(e.tag), Number(e.n ?? 1)); break;
-      case 'know': for (const p of ws()) knowFact(w, p, String(e.fact)); break;
+      case 'know': {
+        for (const p of ws()) knowFact(w, p, String(e.fact));
+        // 知道了门路，地图上就出现对应的地点
+        const loc = ({ K_MIL: 'camp', K_SMUG: 'market', K_REDCROSS: 'redcross' } as Record<string, string>)[String(e.fact)];
+        if (loc && ws().some((p) => p.isPlayer) && (w.locs as Record<string, { known: boolean }>)[loc]) (w.locs as Record<string, { known: boolean }>)[loc].known = true;
+        break;
+      }
       case 'event': {
         const id = String(e.id);
         const c: Record<string, unknown> = {};
@@ -226,9 +239,25 @@ export function registerStory(ev: StoryEvent) {
   STORY[ev.id] = ev;
   defEvent({
     id: ev.id, needsPlayer: true,
-    build: (w, ctx) => { const cast = castFor(w, ev, (ctx.cast as Cast) || {}); return cast ? view(w, ev, cast) : null; },
+    build: (w, ctx) => { const cast = castFor(w, ev, (ctx.cast as Cast) || {}); if (!cast) return null; if (ev.object) { w.facts['story:last:' + ev.id] = w.t; w.firedEvents[ev.id] = (w.firedEvents[ev.id] || 0) + 1; } return view(w, ev, cast); },
     auto: (w, ctx) => { const cast = castFor(w, ev, (ctx.cast as Cast) || {}); if (cast) applyEffects(w, ev.auto, cast); },
   });
+}
+
+// ---------- 物件上的剧情 ----------
+export function storyObjectOptions(w: World, obj: string): { id: string; label: string; ok?: boolean; why?: string; tags?: [string, string][] }[] {
+  const out: { id: string; label: string; ok?: boolean; why?: string; tags?: [string, string][] }[] = [];
+  for (const ev of Object.values(STORY)) {
+    if (ev.object !== obj) continue;
+    const t = ev.trigger || {};
+    if (t.once && w.firedEvents[ev.id]) continue;
+    const last = Number(w.facts['story:last:' + ev.id] ?? -1e9);
+    if (t.cooldown && w.t - last < t.cooldown * 1440) continue;
+    const cast = castFor(w, ev);
+    if (!cast || !matchWhen(t.when, storyContext(w, cast))) continue;
+    out.push({ id: 'story:' + ev.id, label: fillText(ev.label || ev.title, storyContext(w, cast)) });
+  }
+  return out;
 }
 
 // ---------- 触发 ----------
@@ -241,7 +270,7 @@ function storyHourly(w: World) {
   for (const ev of Object.values(STORY)) {
     const t = ev.trigger || {};
     const on = t.on || 'hourly';
-    if (on === 'manual') continue;
+    if (on === 'manual' || ev.object) continue;
     if (on === 'daily' && h !== (t.hour ?? 10)) continue;
     if (t.hours && !(t.hours[0] <= t.hours[1] ? h >= t.hours[0] && h <= t.hours[1] : h >= t.hours[0] || h <= t.hours[1])) continue;
     if (t.minDay && d < t.minDay) continue;
@@ -317,6 +346,7 @@ export function validateStory(list: StoryEvent[], file: string, builtIn: Set<str
     (ev.choices || []).forEach((c, i) => checkWhen(c.when, `choices[${i}].when`));
     checkText(ev.title, 'title'); checkText(ev.text, 'text');
     if (ev.speaker && !roles.has(ev.speaker)) E(id, `speaker ${ev.speaker} 不是角色`);
+    if (ev.object && !OBJ_IDS.includes(ev.object)) E(id, `object ${ev.object} 不存在（可选：${OBJ_IDS.join(' ')}）`);
     for (const l of ev.lines || []) { if (!roles.has(l.who)) E(id, `lines 里的 ${l.who} 不是角色`); checkText(l.text, 'lines'); }
     const checkEffects = (effs: Effect[] | undefined, where: string) => {
       for (const e of effs || []) {

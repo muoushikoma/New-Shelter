@@ -4,11 +4,12 @@
 
 | 类别 | 能做什么 | 文件 | 详见 |
 |---|---|---|---|
-| **剧情事件** | 新增带条件触发、带选项、能改变数值和关系的剧情 | `content/events/*.json` | §4 |
-| **文本** | 改写物品、地点、人物、出身的文字；扩充 NPC 台词 | `content/text/*.json` | §5 |
-| **人物** | 新增可被抽到的 NPC | `content/people/*.json` | §6 |
-| **图片** | 替换头像、物品图标、标题背景；给事件加插图 | `content/images/` | §7 |
-| **成人文本** | 亲密场景的正文（由引擎决定何时、谁、是否情愿） | `content/adult/` | §8 与 [ADULT_CONTENT_INTERFACE.md](ADULT_CONTENT_INTERFACE.md) |
+| **剧情事件** | 新增带条件触发、带选项、能改变数值和关系的剧情；也可以挂在场景物件上（电台、炉子……） | `content/events/*.json` | §4 |
+| **对话** | 和 NPC 一问一答：你开启的话题、对方主动问你的问题、某个行动之后的追问 | `content/dialogue/*.json` | §5 |
+| **文本** | 改写物品、地点、人物、出身的文字；扩充 NPC 台词 | `content/text/*.json` | §6 |
+| **人物** | 新增可被抽到的 NPC | `content/people/*.json` | §7 |
+| **图片** | 替换头像、物品图标、标题背景；给事件加插图 | `content/images/` | §8 |
+| **成人文本** | 亲密场景的正文（由引擎决定何时、谁、是否情愿） | `content/adult/` | §9 与 [ADULT_CONTENT_INTERFACE.md](ADULT_CONTENT_INTERFACE.md) |
 
 所有内容都是 **JSON 文件 + PNG 图片**。写完以后运行一条命令就能检查格式（§2），游戏启动时自动加载。
 
@@ -20,14 +21,15 @@
 2. [工作流程与校验](#2-工作流程与校验)
 3. [通用语法：条件与变量](#3-通用语法条件与变量)
 4. [剧情事件](#4-剧情事件)
-5. [文本覆盖与台词池](#5-文本覆盖与台词池)
-6. [新增人物](#6-新增人物)
-7. [图片](#7-图片)
-8. [成人内容](#8-成人内容)
-9. [修改内置剧情](#9-修改内置剧情)
-10. [交给 AI 批量生产](#10-交给-ai-批量生产)
-11. [提交前检查清单](#11-提交前检查清单)
-12. [附录：参考资料](#12-附录参考资料)
+5. [对话](#5-对话)
+6. [文本覆盖与台词池](#6-文本覆盖与台词池)
+7. [新增人物](#7-新增人物)
+8. [图片](#8-图片)
+9. [成人内容](#9-成人内容)
+10. [修改内置剧情](#10-修改内置剧情)
+11. [交给 AI 批量生产](#11-交给-ai-批量生产)
+12. [提交前检查清单](#12-提交前检查清单)
+13. [附录：参考资料](#13-附录参考资料)
 
 ---
 
@@ -37,13 +39,15 @@
 content/
 ├─ manifest.json        ← 总清单：列出要加载哪些文件（没列出的文件不会加载）
 ├─ events/              剧情事件
-│   └─ example.json     4 个可运行的示例事件
+│   └─ example.json     5 个可运行的示例事件（含 1 个挂在电台上的）
+├─ dialogue/            对话
+│   └─ base.json        游戏内置的对话（也是写对话的范本，不要从 manifest 里删掉）
 ├─ text/                文本覆盖
 ├─ people/              新增人物
 ├─ images/              图片 + 图片映射表 images.json
-├─ adult/               成人内容（有自己的 manifest.json，见 §8）
+├─ adult/               成人内容（有自己的 manifest.json，见 §9）
 ├─ _examples/           各类文件的示例（不会被加载，复制出去用）
-└─ _reference/          游戏现有数据的导出（只读参考，见 §12）
+└─ _reference/          游戏现有数据的导出（只读参考，见 §13）
 ```
 
 `content` 文件夹在不同版本里的位置：
@@ -64,6 +68,7 @@ content/
   "version": "1",
   "author": "你的名字",
   "events": ["events/example.json", "events/my_story.json"],
+  "dialogue": ["dialogue/base.json", "dialogue/my_talks.json"],
   "text":   ["text/override.json"],
   "people": ["people/new_people.json"],
   "images": ["images/images.json"]
@@ -71,7 +76,8 @@ content/
 ```
 
 - 路径都相对于 `content/`。
-- 同一类可以拆成多个文件，按列出的顺序加载。文本覆盖时后加载的会覆盖先加载的。
+- 同一类可以拆成多个文件，按列出的顺序加载。文本覆盖时后加载的会覆盖先加载的；对话话题 id 相同时，后加载的替换先加载的（可以用来改写内置对话）。
+- `dialogue/base.json` 是游戏内置的对话，自己写 manifest 时要保留它，否则游戏里的追问和 NPC 提问会消失。
 - 某个文件出错只会跳过那个文件（或那个事件），不会让游戏崩溃。标题画面右下角会显示「内容包：剧情 N · 文本 N · … · N 个错误」，按 F12 打开控制台能看到具体错误。
 
 ---
@@ -90,7 +96,7 @@ npm run dev                        # 打开游戏实际看看
 - JSON 格式；必填字段；id 是否重复、是否和内置事件重名。
 - 引用是否存在：物品、技能、状态、人物字段、角色名、跳转目标、图片文件。
 - 文本里的 `{变量}` 是否拼对，大括号是否成对。
-- **试跑**：在测试世界里把每个剧情事件的每个选项都实际执行一遍，抓运行时错误和渲染后残留的 `{…}`。
+- **试跑**：在测试世界里把每个剧情事件的每个选项、每段对话的每个节点和回答都实际执行一遍，抓运行时错误和渲染后残留的 `{…}`。
 - 成人内容：禁用词（任何未成年暗示）、胁迫标签、余韵白名单。
 - 目标网络：每个人生目标节点必须至少有一个非成人解法。
 
@@ -209,6 +215,10 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 | `opinion` | 此人对玩家的综合好恶（约 -100–100） |
 | `asleep` | 是否在睡觉 |
 | `room` | 正在去或所在的房间：`entrance` `storage` `kitchen` `vent` `dorm` `generator` `infirmary` `washroom` `archive` `lower` `collapse` |
+| `goals` | 此人追求的人生目标节点数组，第一个最重要（见 `_reference/goals.json`），如 `["E_CROSS"]` 想过河 |
+| `regime` | 对政权的态度：`loyal` 忠诚、`cynic` 犬儒、`rebel` 反感 |
+| `grudge` | 此人记忆里对玩家最耿耿于怀的一件事（一句话，没有则为空） |
+| `grief` | 此人最近一次失去亲近的人的记忆（一句话，没有则为空） |
 
 ---
 
@@ -265,7 +275,7 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 | `speaker` | | 显示谁的头像：角色名或 `player` |
 | `lines` | | 其他人的表态，每条 `{ "who": 角色名, "text": "..." }`，最多显示 7 条 |
 | `art` | | 弹窗色调与音效：`dark` 夜里、私密；`door` 门口、外人；`meeting` 众人；`outside` 外面。不写就是默认 |
-| `cg` | | 插图的图片键（§7），如 `cg.old_photo` |
+| `cg` | | 插图的图片键（§8），如 `cg.old_photo` |
 | `auto` | | 玩家不在场（外出、被关押、睡着且事件被跳过）时直接执行的效果数组。不写则静默跳过 |
 
 ### 4.3 触发与选角
@@ -357,7 +367,7 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 | `tag` | `who`, `tag`, `n` | 给人打「行为标签」，结局评价会统计（如 `依附`、`交易`、`暴力`、`庇护`） |
 | `know` | `who`, `fact` | 让人知道一条情报：`K_MIL` 军方驻点、`K_SMUG` 走私、`K_REDCROSS` 红十字、`K_DRAIN` 暗渠、`K_ARCHIVE` 档案室……（见 `_reference/goals.json`） |
 | `event` | `id`, `delay`, `ctx` | 过 `delay` 分钟后排一个事件。内容包事件会沿用当前角色 |
-| `intimacy` | `initiator`, `partner`（默认 player）, `consent`, `motive` | 发生一次亲密关系，**只在玩家开启成人内容时生效**；`consent: "coerced"` 还要求开启胁迫主题。引擎会处理全部后果（关系、怀孕、流言、违规）并弹出成人场景（§8） |
+| `intimacy` | `initiator`, `partner`（默认 player）, `consent`, `motive` | 发生一次亲密关系，**只在玩家开启成人内容时生效**；`consent: "coerced"` 还要求开启胁迫主题。引擎会处理全部后果（关系、怀孕、流言、违规）并弹出成人场景（§9） |
 | `leave` | `who`, `reason` | NPC 永久离开：`crossed` 过河、`joined` 投靠外面、`expelled` 被赶走、`taken` 被带走、`fled` 逃跑 |
 | `die` | `who`, `cause` | 死亡（会触发收尸事件和所有人的悲伤）。慎用 |
 | `join` | `kind`, `as` | 来了一个新人加入避难所。`kind`：`refugee` `deserter` `wounded`；`as` 给他起个角色名，后面的效果和文字可以用 |
@@ -376,7 +386,26 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 
 - **过几小时**：`{ "op": "event", "id": "后续事件", "delay": 180 }`。
 
-### 4.8 写作规范
+### 4.8 挂在场景物件上
+
+给事件加上 `object` 和 `label`，它就不再自己触发，而是出现在那个物件的点击菜单里，作为一个选项：
+
+```json
+{
+  "id": "ex_radio_dial",
+  "object": "radio",
+  "label": "转动旋钮，在杂音里找台",
+  "title": "电台",
+  "trigger": { "cooldown": 1, "when": { "power": true } },
+  "text": "你把旋钮一点一点往右拧……",
+  "choices": [ ... ]
+}
+```
+
+- `trigger.when` 决定这个选项什么时候出现，`cooldown`（天）和 `once` 照样有效。
+- 可用的物件：`door` 铁门、`hatch` 竖井、`cage` 仓库铁笼、`post` 岗哨、`stove` 炉子、`table` 长桌、`radio` 电台、`crank` 手摇通风机、`tank` 水箱、`bunks` 床铺、`curtain` 帘子、`gen` 发电机、`barrels` 油桶、`cot` 病床、`cabinet` 药柜、`bucket` 便桶、`files` 档案柜、`archdoor` 档案室门、`mattress` 下层床垫、`rubble` 塌方、`farmbed` 种植床。
+
+### 4.9 写作规范
 
 - **基调**：冷、克制、具体。写看得见的细节（冻裂的手、罐头的标签、墙上的领袖像），少写情绪形容词。参考示例 `events/example.json` 和内置事件。
 - **人称**：玩家是「你」。不要替玩家决定内心感受，让选项来表达态度。
@@ -384,12 +413,133 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 - **选项**：2–4 个。要有**真的代价和取舍**，不要出现明显的「正确答案」。至少一个选项不需要任何前提。
 - **数值尺度**：一次事件里关系变化一般 ±3~±10，压力 ±5~±15，物品按实际（一份口粮很珍贵）。
 - **世界观**：一个虚构的独裁国家（「阵线」政权、内务处、宪兵）的边境小镇灰河镇，冬天，零下二十度。河对岸是邻国。不要出现真实国家和政党的名字。
-- **成人**：剧情事件里的亲密只通过 `intimacy` 效果触发，正文里不写露骨内容（露骨内容写在成人内容包里，§8）。带亲密效果的事件，建议在 `trigger.when` 里加 `"settings.adult": true`。
+- **成人**：剧情事件里的亲密只通过 `intimacy` 效果触发，正文里不写露骨内容（露骨内容写在成人内容包里，§9）。带亲密效果的事件，建议在 `trigger.when` 里加 `"settings.adult": true`。
 - **所有角色都是成年人。** 不得出现任何未成年人参与亲密或性暗示的情节，校验会拦截。
 
 ---
 
-## 5. 文本覆盖与台词池
+## 5. 对话
+
+点一个人就会打开对话窗口：左边是对方的头像和关系，右边是对话记录，下面是你可以说的话。你说一句，对方回一句；对方也会主动问你问题。对话由三种「话题」组成：
+
+| kind | 谁开口 | 出现在哪 |
+|---|---|---|
+| `topic`（默认） | 玩家 | 对话窗口的话题列表里（`group: "chat"`），或「打听」下面（`group: "ask"`） |
+| `ask` | 对方 | 刚打开对话时，或者闲聊之后，对方主动问你。每个人每天最多问一次 |
+| `after` | 对方接话 | 某个内置行动（闲聊、讨吃的、求欢被拒……）之后，接着出现的追问 |
+
+### 5.1 示例
+
+```json
+{
+  "id": "after_beg_no",
+  "kind": "after",
+  "after": "beg:no",
+  "when": { "npc.items.food.gte": 1 },
+  "nodes": {
+    "start": {
+      "options": [
+        { "label": "「求你了，就一口。」",
+          "check": { "skill": "persuade", "bonus": -10 },
+          "effects": [{ "op": "item", "who": "npc", "item": "food", "qty": -1 }, { "op": "item", "who": "player", "item": "food", "qty": 1 }],
+          "reply": "（犹豫了很久，掰了一半给你）……就这一次。",
+          "fail": { "reply": "我说了不行。", "effects": [{ "op": "rel", "from": "npc", "to": "player", "affection": -2 }] } },
+        { "label": "「我拿烟跟你换。」", "when": { "player.items.cigs.gte": 2 }, "why": "需要 2 支烟", "action": "trade" },
+        { "label": "「……算了。」", "end": true }
+      ]
+    }
+  }
+}
+```
+
+对话里的那个人固定叫 **`npc`**：文字里写 `{npc.name}`、`{他|她|TA:npc}`，条件里写 `npc.rel.trust.gt`，效果里写 `"who": "npc"`。其余变量、条件、效果与剧情事件完全相同（§3、§4.6）。
+
+### 5.2 话题字段
+
+| 字段 | 说明 |
+|---|---|
+| `id` | ✔ 唯一 id（小写字母开头）。和已有话题同名时会替换它（可以用来改写 `base.json` 里的内置对话） |
+| `kind` | `topic` / `ask` / `after`，默认 `topic` |
+| `label` | `topic` 必填：话题列表里玩家说的第一句，如 `「你觉得我们该怎么办？」` |
+| `group` | `topic` 用：`chat`（默认，放在「聊天」旁边）或 `ask`（放在「打听」里） |
+| `after` | `after` 必填：接在哪个内置行动后面（见 §5.5）。末尾写 `*` 表示前缀匹配，如 `ask:*` |
+| `npc` | 哪些人会有这个话题：`{ "who": "lin", "when": { "traits.any": ["烟瘾"] } }`。`when` 直接写人物字段 |
+| `when` | 整体条件，可以引用 `npc.*`、`player.*` 和世界变量 |
+| `chance` | `ask` / `after` 的出现概率（`ask` 默认 0.3，`after` 默认 1） |
+| `once` | 对每个人只出现一次 |
+| `cooldown` | 对同一个人，两次之间至少隔几个**游戏小时** |
+| `priority` | 同时有多个话题满足时，大的优先 |
+| `start` | 从哪个节点开始，默认第一个 |
+| `nodes` | ✔ 节点表：`{ "节点名": 节点 }` |
+
+### 5.3 节点与回答
+
+**节点**：`{ "npc": 对方说的话, "effects": [进入节点时的效果], "options": [玩家的回答] }`。
+
+`npc` 可以是一句话，也可以是多个变体，游戏按条件挑一个：
+
+```json
+"npc": [
+  { "when": { "npc.grudge.exists": true }, "text": "你自己心里清楚。{npc.grudge}" },
+  { "when": { "npc.origin": "nurse" }, "text": "……", "weight": 2 },
+  { "text": "没有条件的这句作为兜底。" }
+]
+```
+
+**回答**（`options` 里的每一项）：
+
+| 字段 | 说明 |
+|---|---|
+| `label` | ✔ 玩家说的话或做的事，如 `「对不起。」`、`（握住{他|她|TA:npc}的手）` |
+| `when` / `hide` / `why` / `tags` | 同剧情事件的选项（§4.4） |
+| `check` | 检定，同 §4.5；`"who": "npc"` 表示用对方的技能 |
+| `effects` | 效果，同 §4.6 |
+| `reply` | 对方马上的回应：一句话或变体数组（同上面的 `npc`） |
+| `next` | 接着去本话题的哪个节点 |
+| `end` | `true`：这个话题结束，回到话题列表。没有 `next` 和 `action` 时默认就是结束 |
+| `action` | 特殊动作（见下表） |
+| `fail` | 检定失败时：`{ "effects", "reply", "next", "end", "action" }` |
+
+| action | 作用 |
+|---|---|
+| `trade` | 打开和对方的交易窗口 |
+| `observe` | 打开对方的人物档案 |
+| `leave` | 结束对话、关掉窗口 |
+| `talk:<内置选项>` | 执行一个内置行动，如 `talk:give:food`（送一份口粮，走游戏自带的送礼逻辑）、`talk:intim`（求欢，走引擎的意愿判断） |
+| `topic:<话题id>` | 转到另一个话题 |
+
+### 5.4 写作规范
+
+- 对话要短：对方一次说 1–3 句，口语，像真的人在冬天的地下室里说话。
+- 每个节点 2–4 个回答，至少一个没有前提条件。回答之间要有不同的**态度**（坦白、撒谎、回避、示好、强硬），而不是同一个意思换个说法。
+- 回答要有后果：用 `effects` 改关系、需求、物品、记忆。对方会记住，以后的对话（`npc.grudge`）和行为都会受影响。
+- 多写变体。同一个问题，对忠诚的人、反感政权的人、悲伤的人、爱慕你的人，回答应该不一样。
+- `ask` 类问题会打断玩家，频率别太高：`chance` 0.2–0.5，再配合 `once` 或 `cooldown`。
+
+### 5.5 可以接追问的内置行动
+
+`after` 写下面这些 id。行动的结果会体现在 id 里（如讨吃的成功是 `beg:ok`，被拒是 `beg:no`）：
+
+| id | 什么时候 |
+|---|---|
+| `chat` | 闲聊之后 |
+| `comfort` | 安慰之后 |
+| `give:<物品>` | 送了东西之后，如 `give:food`、`give:*` |
+| `beg:ok` / `beg:no` | 讨吃的，给了 / 没给 |
+| `flirt` | 示好之后 |
+| `intim:yes` / `intim:refused` | 求欢，答应 / 拒绝 |
+| `dealintim:yes` / `dealintim:refused` | 用东西换，答应 / 拒绝 |
+| `coerce:yes` / `coerce:refused` | 以领导者身份要求（需要开启胁迫主题） |
+| `ask:self` / `ask:want` | 问对方以前做什么、想要什么 |
+| `ask:K_MIL` / `ask:K_SMUG` / `ask:K_REDCROSS` | 打听军方、过河、救援 |
+| `ask:about:<人物id>` / `ask:key` | 问对方怎么看某人、谁拿着钥匙 |
+| `help:<事>` | 请对方帮忙：`radio` `pick` `forge` `treat` `intro` `trip` `filter` |
+| `plan` / `pledge` / `askkey` / `askarch` | 商量将来、效忠、要仓库钥匙、要档案室钥匙 |
+| `tell:*` / `rumor:*` | 告诉对方别人的秘密 / 流言 |
+| `threat:<要什么>` | 威胁：`food` `pistol` `key` `archiveKey` `quiet` |
+| `wake` | 叫醒睡着的人之后 |
+
+## 6. 文本覆盖与台词池
 
 一个文本文件可以只写要改的部分，其余保持原样：
 
@@ -456,7 +606,7 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 
 ---
 
-## 6. 新增人物
+## 7. 新增人物
 
 新人物会进入每局随机抽取的角色池，也可能作为访客来敲门。
 
@@ -492,7 +642,7 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 | `orientation` | | `straight` / `gay` / `bi`，不写则大多是 straight |
 | `origin` | ✔ | 出身代码：`deserter` 逃兵 `cadre` 干部 `nurse` 医护 `worker` 工人 `teacher` 知识分子 `foreigner` 外国人 `singer` 歌手 `miner` 矿工 `mechanic` 机修工 `priest` 神职 `trader` 商贩 `farmer` 农民 `soldier` 士兵 `student` 学生 |
 | `originText` `bio` | ✔ | 身份文字和一两句简介 |
-| `look` | ✔ | 外观，由程序绘制成像素小人和头像（下表）。也可以用 §7 的图片替换头像 |
+| `look` | ✔ | 外观，由程序绘制成像素小人和头像（下表）。也可以用 §8 的图片替换头像 |
 | `skills` | | 0–100，没写的技能随机 5–25 |
 | `pers` | | 性格 0–100（下表），每局会在 ±10 内浮动 |
 | `traits` | ✔ | 特质数组 |
@@ -529,9 +679,9 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 
 ---
 
-## 7. 图片
+## 8. 图片
 
-### 7.1 映射表
+### 8.1 映射表
 
 在 `content/images/images.json` 里把**图片键**对应到文件（路径相对于这个 json 文件）：
 
@@ -548,7 +698,7 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 
 然后在 `manifest.json` 的 `images` 里写上 `"images/images.json"`。以 `_` 开头的键会被忽略，可以用来写备注。
 
-### 7.2 图片键
+### 8.2 图片键
 
 | 键 | 用在哪 | 尺寸 |
 |---|---|---|
@@ -560,7 +710,7 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 
 随机生成的访客（不是模板人物）没有固定 key，不能单独换头像。
 
-### 7.3 画风规范（与游戏初版画风一致）
+### 8.3 画风规范（与游戏初版画风一致）
 
 - **PNG**，背景可以透明。**不要**模糊、不要抗锯齿边缘，游戏用最近邻放大。
 - **低分辨率像素画**：按上面的原始尺寸画，不要画大图再缩小。
@@ -572,21 +722,21 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 
 ---
 
-## 8. 成人内容
+## 9. 成人内容
 
 成人内容的**完整规范**在 [ADULT_CONTENT_INTERFACE.md](ADULT_CONTENT_INTERFACE.md)，这里只说它和其他内容的关系。
 
 - **分工**：引擎决定是否发生、谁和谁、动机、意愿度、地点、谁看见了，以及全部后果。成人内容包**只负责把它写出来**，不能改变参与者和后果。
 - **文件**：`content/adult/manifest.json` + `content/adult/scenes/*.json`。`npm run template:adult` 会生成约 200 个空白条目（每种时机 × 动机 × 意愿度 × 地点），挑一批填写即可。
 - **匹配**：每个条目用 `hook`（时机）和 `when`（条件，语法同 §3.1）匹配；变量语法同 §3.2，可用的变量是 `initiator.*`、`partner.*`、`relation.*`、`motive`、`consent`、`deal.*`、`location`、`privacy`、`timeOfDay` 等（见该文档 §3）。
-- **插图**：条目或单页的 `cg` 可以写图片键（`cg.xxx`，来自 §7 的映射表），也可以直接写相对于 `content/adult/` 的路径（`cg/dorm_01.png`）。
+- **插图**：条目或单页的 `cg` 可以写图片键（`cg.xxx`，来自 §8 的映射表），也可以直接写相对于 `content/adult/` 的路径（`cg/dorm_01.png`）。
 - **从剧情事件触发**：剧情事件用 `intimacy` 效果（§4.6）发起一次亲密，引擎会走完全部后果，然后按 `hook: "scene"` 去成人内容包里找匹配的条目来显示。所以写一条「冷夜里来借被窝」的剧情，只需要在剧情事件里写前因和选项，正文交给成人内容包。
 - **开关**：成人内容（默认关）、胁迫主题（默认关）、生育。关闭时所有成人条目都不会显示，引擎用一句淡出文字代替；带 `intimacy` 效果的选项也不会生效。
 - **底线**（校验强制）：所有角色是成年人；`coerced` 必须带 `tags: ["coercion"]`，并且以受害者视角和后果为重心。
 
 ---
 
-## 9. 修改内置剧情
+## 10. 修改内置剧情
 
 游戏自带的约 35 个事件（开场、会议、敲门、政变、逮捕、战局推进……）的文字写在代码里，因为它们和数值逻辑交织在一起：
 
@@ -598,7 +748,7 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 
 ---
 
-## 10. 交给 AI 批量生产
+## 11. 交给 AI 批量生产
 
 把这份文档、`_reference/` 里相关的文件，以及 `events/example.json` 一起发给 AI，再加上对应的指令。每批生成后都要跑 `npm run validate:content`，把错误信息原样贴回给 AI 让它修。
 
@@ -609,13 +759,17 @@ app.w.pending.push({ id: '你的事件id', t: app.w.t, ctx: {} })
 > 要求：id 统一以 `〔前缀〕_` 开头；每个事件 2–4 个选项，至少一个选项有真实代价，至少一个选项无前提；正文 60–200 字，冷峻克制；只使用规范里列出的变量、效果和物品 key；不出现真实国家名；所有角色都是成年人；不写露骨内容，亲密只用 `intimacy` 效果表示。
 > 只输出 JSON，不要解释。
 
+**对话**
+
+> 按规范 §5 的格式写 8 个对话话题，放在一个 JSON 数组里：3 个 `kind: "ask"`（对方主动问玩家），3 个 `kind: "after"`（接在 `chat`、`beg:no`、`intim:refused` 之类的行动后面），2 个 `kind: "topic"`。对话里的人固定叫 `npc`。每个节点 2–4 个回答，态度要不同，要有效果和后果；对方的话多写几个按人物特点区分的变体。只输出 JSON。
+
 **台词**
 
-> 按规范 §5 的 `lines` 格式，为台词池 `small.general`、`small.stressed`、`chat.hungry` 各写 15 句。头顶对白 ≤ 12 字，闲聊 ≤ 30 字。冬天、地下避难所、战争、独裁小镇的语境，口语化。只输出 JSON。
+> 按规范 §6 的 `lines` 格式，为台词池 `small.general`、`small.stressed`、`chat.hungry` 各写 15 句。头顶对白 ≤ 12 字，闲聊 ≤ 30 字。冬天、地下避难所、战争、独裁小镇的语境，口语化。只输出 JSON。
 
 **人物**
 
-> 按规范 §6 的格式写 3 个新 NPC，放在 `{ "people": [...] }` 里。年龄 18 岁以上；出身各不相同；每人 1–2 个秘密；`goals` 从 `_reference/goals.json` 里选；`look` 的颜色用低饱和暗色。只输出 JSON。
+> 按规范 §7 的格式写 3 个新 NPC，放在 `{ "people": [...] }` 里。年龄 18 岁以上；出身各不相同；每人 1–2 个秘密；`goals` 从 `_reference/goals.json` 里选；`look` 的颜色用低饱和暗色。只输出 JSON。
 
 **成人场景**
 
@@ -629,18 +783,18 @@ AI 生成的图片通常不是真正的像素画（尺寸大、有模糊）。�
 
 ---
 
-## 11. 提交前检查清单
+## 12. 提交前检查清单
 
-- [ ] 新文件已经加进 `manifest.json`（成人内容加进 `adult/manifest.json`）
+- [ ] 新文件已经加进 `manifest.json`（成人内容加进 `adult/manifest.json`），`dialogue/base.json` 还在
 - [ ] `npm run validate:content` 输出「通过」
-- [ ] 在游戏里实际触发过每个新事件，读一遍文字，看排版有没有被截断
-- [ ] 图片尺寸符合 §7.2，放大后边缘清晰
+- [ ] 在游戏里实际触发过每个新事件、走过每段新对话，读一遍文字，看排版有没有被截断
+- [ ] 图片尺寸符合 §8.2，放大后边缘清晰
 - [ ] 没有真实国家或政党的名字；没有任何未成年人相关的内容
 - [ ] 事件 id 有自己的前缀，不会和别人的内容包冲突
 
 ---
 
-## 12. 附录：参考资料
+## 13. 附录：参考资料
 
 运行 `npm run export:content` 会把游戏现有的数据写到 `content/_reference/`：
 

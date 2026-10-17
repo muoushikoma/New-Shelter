@@ -9,6 +9,7 @@ import { NODES } from '../src/sim/goals';
 import { EVENTS } from '../src/sim/events';
 import '../src/sim/tick';
 import { EFFECT_OPS, PERSON_FIELDS } from '../src/content/story';
+import { OBJECTS } from '../src/content/layout';
 
 const out = 'public/content/_reference/';
 mkdirSync(out, { recursive: true });
@@ -21,5 +22,5 @@ w('names.json', { male: MALE_NAMES, female: FEMALE_NAMES });
 w('lines.json', LINE_KEYS);
 w('goals.json', NODES.map((n) => ({ id: n.id, title: n.title, methods: n.methods.map((m) => ({ id: m.id, label: m.label, adult: !!m.adult })) })));
 w('builtin_events.json', Object.keys(EVENTS).sort());
-w('story_api.json', { effectOps: EFFECT_OPS, personFields: [...PERSON_FIELDS], traitsInUse: [...new Set(POOL.flatMap((p) => p.traits))] });
+w('story_api.json', { effectOps: EFFECT_OPS, personFields: [...PERSON_FIELDS], traitsInUse: [...new Set(POOL.flatMap((p) => p.traits))], objects: Object.fromEntries(OBJECTS.map((o) => [o.id, o.name])) });
 console.log('已导出到 ' + out);

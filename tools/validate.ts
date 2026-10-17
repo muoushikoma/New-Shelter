@@ -7,6 +7,7 @@ import { NODES } from '../src/sim/goals';
 import { EVENTS } from '../src/sim/events';
 import '../src/sim/tick';
 import { validateStory, registerStory, StoryEvent, STORY } from '../src/content/story';
+import { validateDialogue, registerTopic, DIALOGUE, DTopic, enter, choose } from '../src/content/dialogue';
 import { validateText, validatePeople, applyText, addPeople, TextPack, PeoplePack } from '../src/content/textpack';
 import { newWorld } from '../src/sim/world';
 import { present, rel } from '../src/sim/util';
@@ -27,7 +28,7 @@ const readJson = (f: string): unknown => { try { return JSON.parse(readFileSync(
 
 // ---------- 内容包 ----------
 if (existsSync(root + 'manifest.json')) {
-  const m = readJson('manifest.json') as { events?: string[]; text?: string[]; people?: string[]; images?: string[] } | null;
+  const m = readJson('manifest.json') as { events?: string[]; dialogue?: string[]; text?: string[]; people?: string[]; images?: string[] } | null;
   if (m) {
     for (const f of m.people || []) { const d = readJson(f) as PeoplePack; if (!d) continue; const e = validatePeople(d, f); e.forEach(err); if (!e.length) addPeople(d); for (const t of d.people || []) for (const x of [t.bio, ...(t.secrets || []).map((y) => y.text)]) for (const b of BLACK) if (b !== '童' && String(x).includes(b)) warn(`${f} [${t.key}] 出现「${b}」，请确认没有未成年人设定`); }
     for (const f of m.text || []) { const d = readJson(f) as TextPack; if (!d) continue; validateText(d, f).forEach(err); applyText(d); }
@@ -66,6 +67,31 @@ if (existsSync(root + 'manifest.json')) {
       }
       if (ev.choices?.some((c) => c.effects?.some((x) => x.op === 'intimacy'))) for (const t of [ev.text, ...ev.choices.map((c) => c.result || '')]) for (const b of BLACK) if (b !== '童' && t.includes(b)) err(`${ev.id}：含亲密效果的事件出现禁用词「${b}」`);
     }
+    // 对话：校验，然后把每个话题的每个节点、每个选项都在测试世界里走一遍
+    for (const f of m.dialogue || []) {
+      const d = readJson(f); if (!d) continue;
+      const list = (Array.isArray(d) ? d : [d]) as DTopic[];
+      validateDialogue(list, f, new Set(Object.keys(EVENTS))).forEach(err);
+      for (const t of list) if (t?.id && t.nodes) registerTopic(t);
+    }
+    let dlgRuns = 0;
+    for (const t of DIALOGUE) {
+      for (const [nid, n] of Object.entries(t.nodes)) {
+        for (let oi = 0; oi < Math.max(1, (n.options || []).length); oi++) {
+          const w = newWorld({ seed: 7, name: '测试', gender: 'm', origin: 'deserter', settings: { adult: true, coercion: true, pregnancy: true, speed: 1, autoPause: false } });
+          w.t = 1440 * 5 + 600;
+          const npc = w.people.find((p) => !p.isPlayer)!;
+          try {
+            const r = enter(w, npc, t, nid);
+            if (r.line && /\{[^{}]*\}/.test(r.line)) err(`对话 ${t.id} · ${nid}：渲染后仍有未替换的变量：${r.line}`);
+            const so = r.options[oi];
+            if (so) { const c = choose(w, npc, so.opt); if (c.reply && /\{[^{}]*\}/.test(c.reply)) err(`对话 ${t.id} · ${nid}：回应里有未替换的变量：${c.reply}`); if (/\{[^{}]*\}/.test(so.label)) err(`对话 ${t.id} · ${nid}：选项里有未替换的变量：${so.label}`); }
+            dlgRuns++;
+          } catch (e) { err(`对话 ${t.id} · ${nid} 选项 ${oi + 1} 运行出错：${(e as Error).message}`); }
+        }
+      }
+    }
+    console.log(`对话：${DIALOGUE.length} 个话题（试跑 ${dlgRuns} 次）`);
     // 图片
     let imgs = 0;
     for (const f of m.images || []) {

@@ -1,6 +1,9 @@
 // 应用主体：主循环、输入、HUD、上下文菜单
 import { UI, UI_W, UI_H } from '../engine/ui';
 import type { Mood } from './music';
+import { ConversationModal } from './conversation';
+import { storyObjectOptions } from '../content/story';
+import { EVENTS } from '../sim/events';
 import { WorldView, drawOverlays, WW, WH } from './worldview';
 import type { World, Person } from '../sim/types';
 import { stepMinute, nextEvent } from '../sim/tick';
@@ -160,7 +163,7 @@ export class App {
     if ((e.target as HTMLElement)?.tagName === 'INPUT') return;
     if (this.screen !== 'play' || !this.w) { if (e.key === 'Escape' && this.screen === 'settings') this.screen = 'title'; return; }
     if (e.key === 'Escape') { if (this.menu) { this.menu = null; return; } const t = this.top(); if (t) { if (!t.esc || t.esc(this)) this.pop(); return; } this.push(new M.PauseMenu()); return; }
-    if (this.modals.length) { const t = this.top(); if (t instanceof M.EventModal) t.key(this, e.key); return; }
+    if (this.modals.length) { const t = this.top(); if (t instanceof M.EventModal || t instanceof ConversationModal) t.key(this, e.key); return; }
     if (e.key === ' ') { e.preventDefault(); if (this.speed) { this.lastSpeed = this.speed; this.speed = 0; } else this.speed = this.lastSpeed || 1; }
     if (['1', '2', '3', '4'].includes(e.key)) this.speed = Number(e.key);
     if (e.key === 'j' || e.key === 'g') this.push(new M.JournalModal());
@@ -193,10 +196,11 @@ export class App {
       if (f >= 0) { const room = roomAt(f, wx); walkTo(w, room, wx); this.pendingTalk = null; }
     }
   }
-  openTalk(p: Person, x: number, y: number) {
+  // 点一个人：走过去，打开对话窗口
+  openTalk(p: Person, _x: number, _y: number) {
     const w = this.w!;
-    const items = talkOptions(w, p);
-    this.menu = { x, y, title: p.name, items, pick: (o) => this.pickTalk(p, o, x, y) };
+    if (!isNear(w, p)) { this.pendingTalk = { id: p.id, opt: '__conv' }; this.walkToPerson(p); this.toast(`你走向${p.name}……`, '#a0a8b0'); return; }
+    this.push(new ConversationModal(this, p.id));
   }
   pickTalk(p: Person, o: Opt, x: number, y: number) {
     const w = this.w!;
@@ -212,7 +216,7 @@ export class App {
     const pt = this.pendingTalk!; const w = this.w!;
     const p = P(w, pt.id);
     if (!p || !p.present || !p.alive) { this.pendingTalk = null; return; }
-    if (isNear(w, p)) { this.pendingTalk = null; this.me.action = null; if (pt.opt === 'trade') this.push(new M.TradeModal(p.id)); else this.execTalk(p, pt.opt); }
+    if (isNear(w, p)) { this.pendingTalk = null; this.me.action = null; if (pt.opt === '__conv') this.push(new ConversationModal(this, p.id)); else if (pt.opt === 'trade') this.push(new M.TradeModal(p.id)); else this.execTalk(p, pt.opt); }
     else if (!this.me.action) this.walkToPerson(p);
   }
   execTalk(p: Person, opt: string) {
@@ -224,8 +228,11 @@ export class App {
     const w = this.w!;
     const items = objOptions(w, id);
     if (!items.length) return;
+    // 内容包可以给物件挂剧情事件（story 的 object / label 字段）
+    for (const so of storyObjectOptions(w, id)) items.push(so);
     this.menu = { x, y, title: OBJ[id].name, items, pick: (o) => {
       this.menu = null;
+      if (o.id.startsWith('story:')) { const v = EVENTS[o.id.slice(6)]?.build(w, {}); if (v) this.openEvent(v); else this.toast('现在什么也没发生。', '#a0a8b0'); return; }
       if (o.sub) { this.applyResult(doObj(w, id, o.id), null); return; }
       this.applyResult(doObj(w, id, o.id), null);
     } };

@@ -2,8 +2,13 @@
   "name": "避难所 · 内容包",
   "version": "1",
   "author": "",
-  "events": ["events/example.json"],
+  "events": [
+    "events/example.json"
+  ],
   "text": [],
   "people": [],
-  "images": []
+  "images": [],
+  "dialogue": [
+    "dialogue/base.json"
+  ]
 }

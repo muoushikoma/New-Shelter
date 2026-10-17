@@ -46,7 +46,11 @@
     "myRel",
     "opinion",
     "asleep",
-    "room"
+    "room",
+    "goals",
+    "regime",
+    "grudge",
+    "grief"
   ],
   "traitsInUse": [
     "温柔",
@@ -72,5 +76,28 @@
     "噩梦",
     "固执",
     "好奇"
-  ]
+  ],
+  "objects": {
+    "door": "防爆门",
+    "hatch": "通往地表的竖井",
+    "cage": "仓库铁笼",
+    "post": "岗哨",
+    "stove": "炉灶",
+    "table": "长桌",
+    "radio": "收音机",
+    "crank": "手摇通风机",
+    "tank": "储水罐",
+    "bunks": "床铺",
+    "curtain": "挂帘子的床",
+    "gen": "发电机",
+    "barrels": "油桶",
+    "cot": "病床",
+    "cabinet": "药柜",
+    "bucket": "水桶与便桶",
+    "files": "档案柜",
+    "archdoor": "档案室的门",
+    "mattress": "床垫",
+    "rubble": "瓦砾",
+    "farmbed": "种植床"
+  }
 }

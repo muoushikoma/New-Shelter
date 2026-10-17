@@ -66,7 +66,7 @@ export function drawTitle(app: App) {
   ui.text('18+ · 含成人主题、暴力与政治压迫的描写。成人内容默认关闭。', 66, UI_H - 40, '#6a6058');
   ui.text('像素字体：Fusion Pixel（OFL）', 66, UI_H - 22, '#4a4840');
   const ps = packStats();
-  if (ps.loaded && (ps.events + ps.text + ps.people + ps.images || ps.errors.length)) ui.text(`内容包：剧情 ${ps.events} · 文本 ${ps.text} · 人物 ${ps.people} · 图片 ${ps.images}${ps.errors.length ? ` · ${ps.errors.length} 个错误（按 F12 看控制台）` : ''}`, 520, UI_H - 22, ps.errors.length ? '#c87060' : '#6a6858');
+  if (ps.loaded && (ps.events + ps.text + ps.people + ps.images || ps.errors.length)) ui.text(`内容包：剧情 ${ps.events} · 对话 ${ps.dialogue} · 文本 ${ps.text} · 人物 ${ps.people} · 图片 ${ps.images}${ps.errors.length ? ` · ${ps.errors.length} 个错误（按 F12 看控制台）` : ''}`, UI_W - 16, UI_H - 22, ps.errors.length ? '#c87060' : '#6a6858', { align: 'right' });
 }
 
 export class NewGameState {

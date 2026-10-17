@@ -29,7 +29,7 @@ export class UI {
     this.setScale(1);
   }
   get font() { return this.fontMode === 'clear' ? CLEAR_FONT : PIXEL_FONT; }
-  setFontMode(m: FontMode) { this.fontMode = m; this.textCache.clear(); try { localStorage.setItem('shelter.font', m); } catch { /* */ } }
+  setFontMode(m: FontMode) { this.fontMode = m; this.textCache.clear(); this.ascents.clear(); try { localStorage.setItem('shelter.font', m); } catch { /* */ } }
   // 画布按屏幕实际像素重建；逻辑坐标不变
   setScale(k: number) {
     if (k === this.k && this.cv.width) return;
@@ -103,6 +103,13 @@ export class UI {
     this.rect(x + 1, y + 1, fw, 1, 'rgba(255,255,255,0.25)');
     for (let i = 1; i < 5; i++) this.rect(x + 1 + Math.round((w - 2) * i / 5), y + 1, 1, h - 2, 'rgba(0,0,0,0.35)');
   }
+  private ascents = new Map<string, number>();
+  private ascent(t: CanvasRenderingContext2D, k: number): number {
+    const key = t.font + k;
+    let a = this.ascents.get(key);
+    if (a === undefined) { a = t.measureText('国').actualBoundingBoxAscent || 10 * k; this.ascents.set(key, a); }
+    return a;
+  }
   measure(s: string): number {
     this.measureCtx.font = `12px ${this.font}`;
     return Math.ceil(this.measureCtx.measureText(s).width);
@@ -119,9 +126,10 @@ export class UI {
     const t = c.getContext('2d')!;
     const px = Math.round(12 * k);
     t.font = `${this.fontMode === 'clear' ? Math.round(px * 0.96) : px}px ${this.font}`;
-    t.textBaseline = 'top';
+    // 按汉字的实际字形高度定位：字顶在 y + 1，占 y ~ y + 12（不同字体的上边距不一样，用 'top' 基线会偏低）
+    t.textBaseline = 'alphabetic';
     t.fillStyle = col;
-    t.fillText(s, Math.round(k), Math.round((this.fontMode === 'clear' ? 2.5 : 2) * k));
+    t.fillText(s, Math.round(k), Math.round(2 * k + this.ascent(t, k)));
     // 原生分辨率（k = 1）时仍阈值化成硬边像素，保持像素感
     if (k === 1 && this.fontMode === 'pixel') {
       const id = t.getImageData(0, 0, c.width, c.height);
