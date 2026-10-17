@@ -41,3 +41,23 @@ tools/         无头模拟、内容校验、截图与自动试玩脚本
 ```
 
 像素字体：Fusion Pixel（SIL OFL 1.1），见 `public/fonts/`。
+
+
+## 打包与发布
+
+| 命令 | 产物 |
+|---|---|
+| `npm run electron` | 本地用 Electron 运行桌面版 |
+| `npm run dist:win` | `release/` 下的 Windows 安装版和便携版 exe（在 Linux 上打包需要 wine，建议交给 CI） |
+| `npm run dist:linux` | Linux AppImage |
+| `npm run android:sync` | 生成或同步 `android/` 工程（Capacitor），之后 `cd android && ./gradlew assembleDebug` |
+| `npm run icons` | 重新生成应用图标（`tools/make-icons.mjs`） |
+
+**自动发布**：`.github/workflows/release.yml` 在推送 `v*` 标签、提交信息含 `[release]`、或手动运行时触发。它会构建 Windows exe（安装版和便携版）、安卓 APK、Linux AppImage 和 `content-template.zip`，然后发布到 GitHub Releases，说明文字取自 `docs/RELEASE_NOTES.md`。
+
+- 安卓签名：在仓库的 Settings → Secrets 里配置 `ANDROID_KEYSTORE_BASE64`、`ANDROID_KEYSTORE_PASSWORD`、`ANDROID_KEY_ALIAS`、`ANDROID_KEY_PASSWORD` 后会出正式签名的 APK；没有配置时出调试签名的 APK（可以安装，但以后换成正式签名后需要先卸载旧版）。
+- 桌面版会先在 exe 旁边的 `content/` 文件夹里找内容文件，找不到再用游戏自带的（`electron/main.cjs`）。
+
+## 内容填充
+
+见 [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md)：剧情事件、文本与台词、新增人物、图片、成人内容的规范，以及 `npm run validate:content`（校验并试跑）和 `npm run export:content`（导出参考数据）。

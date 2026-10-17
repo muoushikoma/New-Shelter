@@ -1,0 +1,6 @@
+{
+  "appId": "io.github.muoushikoma.newshelter",
+  "appName": "避难所",
+  "webDir": "dist",
+  "android": { "backgroundColor": "#050506" }
+}

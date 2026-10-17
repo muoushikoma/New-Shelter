@@ -23,3 +23,14 @@ async function start() {
   requestAnimationFrame(loop);
 }
 start();
+
+// 安卓：返回键 = Esc（标题画面按返回键退出）
+const cap = (window as unknown as { Capacitor?: { isNativePlatform?: () => boolean } }).Capacitor;
+if (cap?.isNativePlatform?.()) {
+  import('@capacitor/app').then(({ App }) => {
+    App.addListener('backButton', () => {
+      if (app.screen === 'title') App.exitApp();
+      else app.onKey(new KeyboardEvent('keydown', { key: 'Escape' }));
+    });
+  });
+}
