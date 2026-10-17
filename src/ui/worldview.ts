@@ -130,7 +130,7 @@ export function drawOverlays(ui: UI, wv: WorldView, w: World, alpha: number, sel
     let txt = '';
     let fg = '#e8dcc0', bd = '#8a8070';
     if (p.bark && p.bark.until > w.t) txt = p.bark.text;
-    else if (p.action?.type === 'sleep' && p.action.t > 0) { txt = 'z z'; fg = '#8a9ab0'; bd = '#4a5260'; }
+    else if (p.action?.type === 'sleep' && p.action.t > 0) { if (p.id !== sel && p.id !== hover && !p.isPlayer) continue; txt = 'z z'; fg = '#8a9ab0'; bd = '#4a5260'; }
     else if (p.action?.type === 'intimacy' && p.action.t > 0) { txt = '♥'; fg = '#ff9ab0'; bd = '#7a3a5a'; }
     else if (hasCond(p, 'drunk')) { txt = '～'; fg = '#d8b060'; }
     else if (p.needs.hunger < 15 && !p.isPlayer) { txt = '饿'; fg = '#e8a060'; bd = '#7a4a2a'; }

@@ -50,7 +50,7 @@ export function drawPersonPanel(app: App, p: Person, x: number, y: number, w: nu
   let ttx = tx;
   for (const t of p.traits.slice(0, 3)) { if (ttx > x + w - 40) break; ttx += ui.tag(ttx, y + 76, t, '#d8e8c8', '#2a3a24'); }
   if (!p.alive) { ui.text(`死于第 ${p.deathDay} 天`, tx, y + 96, '#e85a4a'); ui.text(p.deathCause || '', tx, y + 112, '#a87070'); return; }
-  if (!p.present) { ui.text(p.leftReason ? ({ crossed: '过河了', joined: '留在了外面', expelled: '被赶走了', taken: '被带走了', fled: '跑了' } as Record<string, string>)[p.leftReason] || '不在' : '不在避难所', tx, y + 96, '#a0c0d8'); }
+  if (!p.present) { ui.text(p.leftReason ? ({ crossed: '过河了', joined: '留在了外面', expelled: '被赶走了', taken: '被带走了', fled: '跑了' } as Record<string, string>)[p.leftReason] || '不在' : '不在避难所', tx, y + 96, '#a0c0d8'); if (!W.expeditions.some((e) => e.members.includes(p.id))) return; }
   // 需求
   let by = y + 126;
   const needs: [string, number, string][] = [['饱', p.needs.hunger, '#c8823a'], ['水', p.needs.thirst, '#5a9ad0'], ['暖', p.needs.warmth, '#7ab0e0'], ['精力', p.needs.energy, '#8a7ac0'], ['压力', p.needs.stress, '#c04a4a'], ['欲望', p.needs.desire, '#c05a9a'], ['健康', p.health, '#6ab06a']];

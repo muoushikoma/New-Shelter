@@ -131,6 +131,8 @@ function perMinute(w: World, p: Person, a: Action) {
   const s = w.shelter, n = p.needs;
   switch (a.type) {
     case 'sleep':
+      // 渴醒、饿醒、冻醒
+      if (n.thirst < 12 || n.hunger < 6 || n.warmth < 8) { a.t = a.dur; break; }
       // 早上醒来
       if (n.energy >= 97 || (n.energy > 70 && hour(w) >= 7 && hour(w) < 21 && !p.isPlayer) || (p.isPlayer && n.energy >= 99)) a.t = a.dur;
       break;
